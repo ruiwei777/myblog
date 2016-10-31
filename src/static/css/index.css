@@ -76,6 +76,12 @@
 	text-align: center;
 }
 
+@media(max-width: 768px){
+	.content-box{
+		padding: 0 2px;
+	}
+}
+
 .content-box:not(:last-child){
 	border-right: 1px solid rgba(150,150,150,.5);
 }
@@ -114,6 +120,12 @@
 	padding: 0;
 }
 
+@media(min-width: 1200px){
+	.content-box ul{
+		text-align:center;
+	}
+}
+
 @media(max-width: 768px){
 	.content-box ul{
 		text-align: center;
@@ -121,11 +133,7 @@
 	}
 }
 
-@media(max-width: 768px){
-	.content-box{
-		padding: 0 2px;
-	}
-}
+
 
 .content-box ul li{
 	font-size: 1.5em;

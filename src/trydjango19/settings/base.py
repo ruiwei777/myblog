@@ -147,3 +147,5 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 LOGIN_URL = "login"
 
+MY_TWILIO_ACCOUNT_SID = passwords.MY_TWILIO_ACCOUNT_SID
+MY_TWILIO_AUTH_TOKEN = passwords.MY_TWILIO_AUTH_TOKEN

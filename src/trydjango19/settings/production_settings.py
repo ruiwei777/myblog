@@ -16,6 +16,8 @@ if not settings.DEBUG:
 
     from . import passwords
 
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
     # from django.conf.urls import url
 
     # from accounts.views import login_view

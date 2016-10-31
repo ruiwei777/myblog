@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 
 from twilio import TwilioRestException
@@ -18,8 +19,8 @@ def home(request):
 		phone_number = form.cleaned_data.get("phone_number")
 		phone_number_str = str(phone_number)
 		# twilio logic
-		account_sid = "ACb61a1a7533233534787f9238a8c6cbe2" # Your Account SID from www.twilio.com/console
-		auth_token  = "4b56b71e8e9a46560559f96bc86af8f5"  # Your Auth Token from www.twilio.com/console
+		account_sid = settings.MY_TWILIO_ACCOUNT_SID
+		auth_token  =  settings.MY_TWILIO_AUTH_TOKEN
 
 		client = TwilioRestClient(account_sid, auth_token)
 

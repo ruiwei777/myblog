@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"passwo",
+				"passwords"
+			],
+			[
+				"pass",
+				"passwords"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
 				"phone",
 				"phone_number_str"
 			],
@@ -22,10 +38,6 @@
 			[
 				"User",
 				"UserRegistrationForm〔class〕"
-			],
-			[
-				"pass",
-				"password"
 			],
 			[
 				"us",
@@ -71,6 +83,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/trydjango19/settings/local_settings.py",
+			"settings":
+			{
+				"buffer_size": 3435,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/trydjango19/settings/passwords.py",
+			"settings":
+			{
+				"buffer_size": 96,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/trydjango19/settings/base.py",
+			"settings":
+			{
+				"buffer_size": 3704,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/trydjango19/settings/production_settings.py",
+			"settings":
+			{
+				"buffer_size": 3837,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -129,10 +173,22 @@
 	"expanded_folders":
 	[
 		"/home/user/djangoproject",
-		"/home/user/djangoproject/src"
+		"/home/user/djangoproject/src",
+		"/home/user/djangoproject/src/static",
+		"/home/user/djangoproject/src/static/css",
+		"/home/user/djangoproject/src/templates",
+		"/home/user/djangoproject/src/trydjango19",
+		"/home/user/djangoproject/src/trydjango19/settings"
 	],
 	"file_history":
 	[
+		"/home/user/djangoproject/src/trydjango19/settings/__init__.py",
+		"/home/user/djangoproject/src/static/css/base.css",
+		"/home/user/djangoproject/src/templates/base.html",
+		"/home/user/djangoproject/src/templates/index.html",
+		"/home/user/djangoproject/src/static/css/index.css",
+		"/home/user/djangoproject/src/templates/comment_delete.html",
+		"/home/user/djangoproject/src/trydjango19/settings/production.py",
 		"/home/user/djangoproject/trydjango19.sublime-project",
 		"/home/user/djangoproject/src/sms/views.py",
 		"/home/user/djangoproject/src/sms/forms.py",
@@ -149,18 +205,13 @@
 		"/home/user/djangoproject/src/templates/login_form.html",
 		"/home/user/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
 		"/home/user/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/user/djangoproject/src/templates/base.html",
 		"/home/user/djangoproject/src/posts/urls.py",
 		"/home/user/djangoproject/src/trydjango19/settings/local.py",
-		"/home/user/djangoproject/src/trydjango19/settings/__init__.py",
-		"/home/user/djangoproject/src/trydjango19/settings/production.py",
 		"/home/user/djangoproject/src/trydjango19/old_settings.py",
 		"/home/user/djangoproject/webfaction/httpd.conf",
 		"/home/user/djangoproject/src/trydjango19/setting/base.py",
 		"/home/user/djangoproject/src/trydjango19/setting/__init__.py",
-		"/home/user/djangoproject/src/static/css/base.css",
 		"/home/user/djangoproject/src/static/scripts/base.js",
-		"/home/user/djangoproject/src/templates/index.html",
 		"/home/user/djangoproject/src/accounts/forms.py",
 		"/home/user/djangoproject/src/trydjango19/settings.py",
 		"/home/user/djangoproject/src/accounts/views.py",
@@ -173,7 +224,6 @@
 		"/home/user/djangoproject/src/comments/models.py",
 		"/home/user/.config/sublime-text-3/Packages/SublimeCodeIntel/Default (Linux).sublime-keymap",
 		"/home/user/.config/sublime-text-3/Packages/Djaneiro/Settings/Python (Django).sublime-settings",
-		"/home/user/djangoproject/src/templates/comment_delete.html",
 		"/home/user/djangoproject/src/comments/urls.py",
 		"/home/user/djangoproject/src/posts/utils.py",
 		"/home/user/djangoproject/src/posts/templatetags/urlify.py",
@@ -232,8 +282,131 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/trydjango19/settings/local_settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3435,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3346,
+								3346
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2451.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/trydjango19/settings/passwords.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 96,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								96,
+								96
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/trydjango19/settings/base.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								321,
+								321
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 114.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/trydjango19/settings/production_settings.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3837,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3370,
+								3370
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 57.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
