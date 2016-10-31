@@ -1,0 +1,40 @@
+html{
+	font-size: 62.5%;
+}
+
+body{
+	min-height: 100vh;
+	/*padding-top: 50px;*/
+	font-family: "Open Sans", sans-serif, arial;
+}
+
+
+
+.positioner{
+	max-width: 80vw;
+	margin: 0 auto;
+}
+
+@media (max-width: 768px){
+	.positioner{
+		max-width: 95vw;
+	}
+}
+
+.navbar.navbar-default{
+	margin: 0;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+
+	font-size: 1.4em;
+}
+
+
+
+footer > p {
+	text-align: right;
+}
+
+
+

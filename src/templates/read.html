@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load urlify %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6";
+					fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+					</script>
+
+
+<div class="container">
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+		<h1 style="text-align: center">{{ instance.title }} <small> {{ instance.publish }}</small></h1>
+	{% if instance.image %}
+		<img src="{{ instance.image.url }}" class="img-responsive"/>
+		<br/>
+	{% endif %}
+		{% if instance.draft %}<p style="color: red">draft</p>{% endif %}
+		<div class="fb-like" data-href="{{ request.build_absolute_uri }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div> Author: {{ instance.user.get_full_name }} {% if request.user == instance.user %}<a href="{{ instance.get_update_url }}">Edit</a>{% endif %}
+		<hr/>
+		<div class="post-detail-item">
+		{{ instance.get_markdown }}
+		<p></p>
+		<hr/>
+		<br/>
+		</div>
+		
+
+	<!-- display comments -->
+		
+		<p class="lead" style="background-color: #EEEEEE; padding: 10px">Comments</p>
+		{% for comment in instance.comments %}
+		<blockquote>
+			 <p>{{ comment.content }}</p>
+			 <footer>via {{ comment.user }} | {{ comment.timestamp|timesince }} ago | {% if comment.children.count > 0 %}{{ comment.children.count }} comment{% if comment.children.count > 1 %}s{% endif %} | {% endif %}<a href="#" class="comment-reply-btn">Reply</a> | <a href="{{ comment.get_absolute_url }}">Thread</a>{% if request.user == comment.user %} | <a href="{{ comment.get_delete_url }}">Delete</a>{% endif %}</footer>
+			 	<div class="comment-reply">
+						{% for reply in comment.children %}
+						<blockquote>
+						<p>{{ reply.content }}</p>
+						<footer>via {{ reply.user }} | {{ reply.timestamp|timesince }} ago{% if request.user == reply.user %} | <a href="{{ reply.get_delete_url }}">Delete</a>{% endif %}</footer>
+						</blockquote>
+						{% endfor %}
+					<br/>
+						<form method="POST" action="">{% csrf_token %}
+						{{ comment_form|crispy }}
+						<input type="hidden" name="parent_id" value="{{ comment.id }}"/>
+						<button type="submit" class="btn btn-default">Reply</button>
+						</form>
+						
+				</div>
+		</blockquote>
+		{% endfor %}
+		<form method="POST" action="">{% csrf_token %}
+			{{ comment_form|crispy }}
+			<button type="submit" class="btn btn-default">Post comment</button>
+		</form>
+</div>
+</div>
+
+	
+</div>
+{% endblock content %}

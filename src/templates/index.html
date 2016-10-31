@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock head %}
+
+
+{% block content %}
+
+
+<!-- Jumbotron -->
+<div class="my-jumbotron">
+    <div class="heading-wrapper">
+        <p class="heading">Ruiwei's Blog</p>
+        <p class="side-heading">Django, Node & Angular Full-stack web developer.</p>
+    </div>
+</div>
+
+<div class="content-boxes-wrapper">
+    <div class="content-boxes positioner">
+        <div class="content-box">
+            <h3 class="heading">Backend</h3>
+            <p>
+                <ul>
+                    <li>Django</li>
+                    <li>Node & Express</li>
+                    <li>Ubuntu, bash</li>
+                    <li>Azure</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h3 class="heading">Frontend</h3>
+            <p>
+                <ul>
+                    <li>Angular 1.5</li>
+                    <li>jQuery</li>
+                    <li>SASS, Jade</li>
+                    <li>Bootstrap</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="content-box">
+            <h3 class="heading">Projects</h3>
+            <p>
+                <ul>
+                    <li>
+                        <a href="https://www.safeatnight.cf" target="_blank" rel="noreferrer nofollow">
+                            Safeatnight
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://loc8r-ruiwei.herokuapp.com" target="_blank" rel="noreferrer nofollow">
+                            MEAN Practice
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ruiwei777" target="_blank" rel="noreferrer nofollow">
+                            Github
+                        </a>
+                    </li>
+                </ul>
+            </p>
+            
+        </div>
+    </div>
+</div>
+
+
+
+    
+<footer class="positioner">
+    <p>&copy; Ruiwei Liang, Melbourne VIC, Australia</p>
+</footer>
+{% endblock content %}

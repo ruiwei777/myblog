@@ -1,0 +1,134 @@
+
+/*-----------------
+	my-jumbotron
+-----------------*/
+.my-jumbotron{
+	font-size: 1rem;
+	height: 40vh;
+	background-color: rgb(238,238,238);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2em;
+}
+
+@media(max-width: 768px){
+	.my-jumbotron{
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 768px){
+	.my-jumbotron{
+		font-size: .7rem;
+		height: auto;
+		padding: 5% 1%;
+	}
+}
+
+.heading-wrapper{
+	text-align: center;
+}
+
+.my-jumbotron .heading{
+	font-size: 4em;
+	text-transform: uppercase;
+	color: rgba(0,0,0, .9);
+
+	
+}
+
+.my-jumbotron .side-heading{
+	font-size: 2.8em;
+	/*color: rgba(130, 130, 130, 1);*/
+	color:rgba(0,0,0, .5);
+	text-transform: capitalize;
+	
+	font-family: "Ubuntu Condensed", arial, sans-serif;
+}
+
+/*
+	Content Boxes
+					*/
+.content-boxes-wrapper{
+	display: flex;
+	justify-content: center;
+	font-size: 1rem;
+	margin-bottom: 5em;
+
+}
+
+.content-boxes{
+	display: flex;
+	width: 100%;
+}
+
+@media(max-width: 768px){
+	.content-boxes{
+	flex-direction: column;
+	
+	}
+}
+
+.content-box{
+	flex: 1 1 0;
+	padding: 0 3em;
+	text-align: center;
+}
+
+.content-box:not(:last-child){
+	border-right: 1px solid rgba(150,150,150,.5);
+}
+
+@media(max-width: 768px){
+	.content-box:not(:last-child){
+	border-right: none;
+	border-bottom: 1px solid rgba(150,150,150,.5);
+}
+}
+
+.content-box .heading{
+	font-size: 4em;
+	text-align: center;
+	font-family: Exo, arial, sans-serif;
+	letter-spacing: 1px;
+}
+
+@media(max-width: 1100px){
+	.content-box .heading{
+	font-size: 3em;
+	}
+}
+
+@media(max-width: 768px){
+	.content-box .heading{
+	font-size: 2em;
+	}
+}
+
+.content-box ul{
+	max-width: 85%;
+	margin: 0 auto;
+	text-align: left;
+	list-style: none;
+	padding: 0;
+}
+
+@media(max-width: 768px){
+	.content-box ul{
+		text-align: center;
+		line-height: 1.1;
+	}
+}
+
+@media(max-width: 768px){
+	.content-box{
+		padding: 0 2px;
+	}
+}
+
+.content-box ul li{
+	font-size: 1.5em;
+	line-height: 1.5;
+	color:rgba(0,0,0,.7);
+}

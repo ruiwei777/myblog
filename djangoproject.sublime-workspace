@@ -1,0 +1,322 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"phone",
+				"phone_number_str"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"border",
+				"border-style"
+			],
+			[
+				"Http",
+				"HttpResponseRedirect〔module〕"
+			],
+			[
+				"User",
+				"UserRegistrationForm〔class〕"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"us",
+				"username"
+			],
+			[
+				"cl",
+				"cleaned_data"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"read",
+				"read_time_min"
+			],
+			[
+				"content",
+				"content_type"
+			],
+			[
+				"cont",
+				"content_type"
+			],
+			[
+				"ini",
+				"initial_data"
+			],
+			[
+				"is",
+				"is_superuser"
+			],
+			[
+				"pre",
+				"pre_save_post_receiver"
+			],
+			[
+				"get_",
+				"get_object_or_404"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 54.0,
+		"selected_items":
+		[
+			[
+				"set syntax: p",
+				"Set Syntax: Python"
+			],
+			[
+				"set syntax: dj",
+				"Set Syntax: Python (Django)"
+			],
+			[
+				"",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/user/djangoproject",
+		"/home/user/djangoproject/src"
+	],
+	"file_history":
+	[
+		"/home/user/djangoproject/trydjango19.sublime-project",
+		"/home/user/djangoproject/src/sms/views.py",
+		"/home/user/djangoproject/src/sms/forms.py",
+		"/home/user/djangoproject/src/sms/urls.py",
+		"/home/user/djangoproject/src/trydjango19/settings/base.py",
+		"/home/user/djangoproject/src/posts/forms.py",
+		"/home/user/djangoproject/src/posts/models.py",
+		"/home/user/djangoproject/src/posts/views.py",
+		"/home/user/djangoproject/src/templates/sms_home.html",
+		"/home/user/djangoproject/src/templates/post_home.html",
+		"/home/user/djangoproject/src/trydjango19/urls.py",
+		"/home/user/djangoproject/src/sms/models.py",
+		"/home/user/djangoproject/src/templates/create.html",
+		"/home/user/djangoproject/src/templates/login_form.html",
+		"/home/user/.config/sublime-text-3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/home/user/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/user/djangoproject/src/templates/base.html",
+		"/home/user/djangoproject/src/posts/urls.py",
+		"/home/user/djangoproject/src/trydjango19/settings/local.py",
+		"/home/user/djangoproject/src/trydjango19/settings/__init__.py",
+		"/home/user/djangoproject/src/trydjango19/settings/production.py",
+		"/home/user/djangoproject/src/trydjango19/old_settings.py",
+		"/home/user/djangoproject/webfaction/httpd.conf",
+		"/home/user/djangoproject/src/trydjango19/setting/base.py",
+		"/home/user/djangoproject/src/trydjango19/setting/__init__.py",
+		"/home/user/djangoproject/src/static/css/base.css",
+		"/home/user/djangoproject/src/static/scripts/base.js",
+		"/home/user/djangoproject/src/templates/index.html",
+		"/home/user/djangoproject/src/accounts/forms.py",
+		"/home/user/djangoproject/src/trydjango19/settings.py",
+		"/home/user/djangoproject/src/accounts/views.py",
+		"/home/user/djangoproject/notes.txt",
+		"/home/user/djangoproject/src/templates/messages.html",
+		"/home/user/djangoproject/src/comments/views.py",
+		"/home/user/djangoproject/src/templates/comment_thread.html",
+		"/home/user/djangoproject/src/templates/read.html",
+		"/home/user/djangoproject/src/comments/forms.py",
+		"/home/user/djangoproject/src/comments/models.py",
+		"/home/user/.config/sublime-text-3/Packages/SublimeCodeIntel/Default (Linux).sublime-keymap",
+		"/home/user/.config/sublime-text-3/Packages/Djaneiro/Settings/Python (Django).sublime-settings",
+		"/home/user/djangoproject/src/templates/comment_delete.html",
+		"/home/user/djangoproject/src/comments/urls.py",
+		"/home/user/djangoproject/src/posts/utils.py",
+		"/home/user/djangoproject/src/posts/templatetags/urlify.py",
+		"/home/user/djangoproject/src/posts/templatetags/__init__.py",
+		"/home/user/djangoproject/src/comments/admin.py",
+		"/home/user/djangoproject/src/comments/migrations/__init__.py",
+		"/home/user/djangoproject/src/posts/migrations/__init__.py",
+		"/home/user/djangoproject/src/posts/admin.py",
+		"/home/user/sample.html",
+		"/home/user/.config/sublime-text-3/Packages/Tag/Tag Package.sublime-settings",
+		"/home/user/.config/sublime-text-3/Packages/User/Tag Package.sublime-settings",
+		"/home/user/.config/sublime-text-3/Packages/Alignment/Default (Linux).sublime-keymap",
+		"/home/user/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"form",
+			"container",
+			"style=",
+			"style",
+			"stype",
+			"authen",
+			"form",
+			"kwargs",
+			"responseredi",
+			">",
+			">\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "djangoproject.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"src/templates/index.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 224.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

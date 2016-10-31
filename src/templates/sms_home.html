@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+			<h1>Sending Message to Your Phone</h1>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+			<form action="#" method="post">
+			    {% csrf_token %}
+			    {{ form | crispy }}
+			    <input type="submit" value="Submit" class="btn btn-info"/>
+			</form>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+			{% if phone_number %}
+			<p>Your entered phone number is {{ phone_number }}</p>
+			{% endif %}
+</div>
+</div>
+
+</div>
+{% endblock content %}

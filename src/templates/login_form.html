@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head_extra%}
+
+{% endblock head_extra %}
+
+
+{% block content %}
+<div class="container">
+<div class="row">
+	
+	<div class="col-sm-8 col-sm-offset-2">
+		<h1 style="text-align: center">{{ title }}</h1>
+		<form method="POST" action="">{% csrf_token %}
+			{{ form|crispy }}
+			<input type="submit" value="{{ title }}" class="btn btn-default"/>
+
+		</form>
+		<p class="pull-right">Not have an account? <a href="{% url 'register' %}">register</a> now!</p>
+	</div>
+</div>
+</div>
+{% endblock content %}
