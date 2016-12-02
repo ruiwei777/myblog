@@ -5,7 +5,7 @@
 .my-jumbotron{
 	font-size: 1rem;
 	height: 40vh;
-	background-color: rgb(238,238,238);
+	background-color: #2d2d2d;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -30,21 +30,33 @@
 	text-align: center;
 }
 
-.my-jumbotron .heading{
-	font-size: 4em;
-	text-transform: uppercase;
-	color: rgba(0,0,0, .9);
+.heading-wrapper p{
+	margin: 0;
+	line-height: 1.1;
+}
 
-	
+.my-jumbotron .heading{
+	font-size: 6em;
+	font-family: Exo;
+	letter-spacing: 2px;
+	color: #33e0ff;
+	margin-top: 20px;
+	margin-bottom: 10px;
+
 }
 
 .my-jumbotron .side-heading{
 	font-size: 2.8em;
 	/*color: rgba(130, 130, 130, 1);*/
-	color:rgba(0,0,0, .5);
 	text-transform: capitalize;
-	
+	color: #ddd;
 	font-family: "Ubuntu Condensed", arial, sans-serif;
+	margin: 20px;
+}
+
+.my-jumbotron .description-text a{
+	font-size: 2em;
+	color: #ddd;
 }
 
 /*
@@ -139,4 +151,109 @@
 	font-size: 1.5em;
 	line-height: 1.5;
 	color:rgba(0,0,0,.7);
+}
+
+.item-block{
+	float:left;
+	width: 32%;
+	
+}
+
+.img{
+	height: 200px;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.img.django{
+	background-image: url("../images/django_meitu_1.png");
+}
+
+.img.node{
+	background-image: url("../images/nodejs-index.png");
+}
+
+.img.ubuntu{
+	background-image: url("../images/ubuntu.png");
+}
+
+/* Frontend */
+.img.react{
+	background-image: url("../images/react-redux.png");
+}
+
+.img.angular{
+	background-image: url("../images/angularjs.png");
+}
+
+.img.html{
+	background-image: url("../images/html5-css3.png");
+}
+
+.square-blocks:last-child:after{
+	content: '';
+    display: block;
+    clear: both;
+}
+
+/* Projects */
+.project-blocks{
+	margin: 20px;
+}
+
+.project-blocks .block{
+	float:left;
+	text-align: center;
+}
+
+.project-blocks:after{
+	content:'';
+	display: block;
+    clear: both;
+}
+
+.project-blocks .block-1{
+	padding: 10px;
+	width: 35%;
+	height: 250px;
+
+	display:flex;
+	justify-content:center;
+	align-items: center;
+	background-color: white;
+	border-radius: 10px;
+}
+
+.project-blocks .block-2{
+	width: 64%;
+}
+
+.project-blocks .block .text-wrapper{
+	margin: 15px 30px;
+	text-align: left;
+}
+
+.project-blocks .block .text-wrapper p{
+	font-size: 1.5em;
+}
+
+
+
+.safeatnight{
+	flex: 1 0 auto;
+	background-image: url("../images/safeatnight.png");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 98%;
+}
+
+.loc8r{
+	flex: 1 0 auto;
+	background-image: url("../images/loc8r.png");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 98%;
 }

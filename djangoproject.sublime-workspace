@@ -4,11 +4,43 @@
 		"selected_items":
 		[
 			[
-				"passwo",
-				"passwords"
+				"border",
+				"border-radius"
+			],
+			[
+				"backgr",
+				"background-repeat"
+			],
+			[
+				"backg",
+				"background-image"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"back",
+				"background-position"
+			],
+			[
+				"backgro",
+				"background-size"
+			],
+			[
+				"MY_TWILI",
+				"MY_TWILIO_AUTH_TOKEN"
+			],
+			[
+				"MY",
+				"MY_TWILIO_ACCOUNT_SID〔variable〕"
 			],
 			[
 				"pass",
+				"passwords〔module〕"
+			],
+			[
+				"passwo",
 				"passwords"
 			],
 			[
@@ -26,10 +58,6 @@
 			[
 				"font",
 				"font-size"
-			],
-			[
-				"border",
-				"border-style"
 			],
 			[
 				"Http",
@@ -84,34 +112,34 @@
 	"buffers":
 	[
 		{
-			"file": "src/trydjango19/settings/local_settings.py",
+			"file": "src/templates/index.html",
 			"settings":
 			{
-				"buffer_size": 3435,
+				"buffer_size": 4628,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/trydjango19/settings/passwords.py",
+			"file": "src/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 96,
+				"buffer_size": 6113,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/trydjango19/settings/base.py",
+			"file": "src/static/css/base.css",
 			"settings":
 			{
-				"buffer_size": 3704,
+				"buffer_size": 483,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/trydjango19/settings/production_settings.py",
+			"file": "src/static/css/index.css",
 			"settings":
 			{
-				"buffer_size": 3837,
+				"buffer_size": 3731,
 				"line_ending": "Unix"
 			}
 		}
@@ -173,27 +201,34 @@
 	"expanded_folders":
 	[
 		"/home/user/djangoproject",
+		"/home/user/djangoproject/proj_env",
 		"/home/user/djangoproject/src",
+		"/home/user/djangoproject/src/sms",
 		"/home/user/djangoproject/src/static",
 		"/home/user/djangoproject/src/static/css",
+		"/home/user/djangoproject/src/static/images",
 		"/home/user/djangoproject/src/templates",
 		"/home/user/djangoproject/src/trydjango19",
 		"/home/user/djangoproject/src/trydjango19/settings"
 	],
 	"file_history":
 	[
-		"/home/user/djangoproject/src/trydjango19/settings/__init__.py",
-		"/home/user/djangoproject/src/static/css/base.css",
-		"/home/user/djangoproject/src/templates/base.html",
-		"/home/user/djangoproject/src/templates/index.html",
+		"/home/user/djangoproject/src/static/css/vendor/flatly.bootstrap.min.css",
+		"/home/user/djangoproject/src/trydjango19/settings/production_settings.py",
 		"/home/user/djangoproject/src/static/css/index.css",
+		"/home/user/djangoproject/src/templates/base.html",
+		"/home/user/djangoproject/src/trydjango19/settings/__init__.py",
+		"/home/user/djangoproject/src/trydjango19/settings/base.py",
+		"/home/user/djangoproject/src/sms/views.py",
+		"/home/user/djangoproject/src/trydjango19/settings/local_settings.py",
+		"/home/user/djangoproject/src/trydjango19/settings/passwords.py",
+		"/home/user/djangoproject/src/static/css/base.css",
+		"/home/user/djangoproject/src/templates/index.html",
 		"/home/user/djangoproject/src/templates/comment_delete.html",
 		"/home/user/djangoproject/src/trydjango19/settings/production.py",
 		"/home/user/djangoproject/trydjango19.sublime-project",
-		"/home/user/djangoproject/src/sms/views.py",
 		"/home/user/djangoproject/src/sms/forms.py",
 		"/home/user/djangoproject/src/sms/urls.py",
-		"/home/user/djangoproject/src/trydjango19/settings/base.py",
 		"/home/user/djangoproject/src/posts/forms.py",
 		"/home/user/djangoproject/src/posts/models.py",
 		"/home/user/djangoproject/src/posts/views.py",
@@ -240,7 +275,7 @@
 	],
 	"find":
 	{
-		"height": 35.0
+		"height": 43.0
 	},
 	"find_in_files":
 	{
@@ -254,6 +289,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"nofo",
+			"last",
 			"form",
 			"container",
 			"style=",
@@ -282,129 +319,126 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/trydjango19/settings/local_settings.py",
+					"file": "src/templates/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3435,
+						"buffer_size": 4628,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3346,
-								3346
+								1703,
+								1703
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2451.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/trydjango19/settings/passwords.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 96,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								96,
-								96
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/trydjango19/settings/base.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3704,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								321,
-								321
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 114.0,
+						"translation.y": 1233.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/trydjango19/settings/production_settings.py",
+					"buffer": 1,
+					"file": "src/templates/base.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3837,
+						"buffer_size": 6113,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3370,
-								3370
+								2684,
+								2684
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 57.0,
+						"translation.y": 285.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/static/css/base.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 483,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								210,
+								210
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/static/css/index.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3731,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3355,
+								3355
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4311.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
