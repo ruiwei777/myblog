@@ -31,7 +31,6 @@ export default class PostList extends React.Component {
 
     return (
         <div className="posts">
-          <h2 className="content-head debug-info">// Contents are dummy and only for test purpose.</h2>
           <h1 className="content-subhead">Recent Posts</h1>
           {content}
         </div>

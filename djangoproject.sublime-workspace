@@ -159,6 +159,46 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/trydjango19/settings/base.py",
+			"settings":
+			{
+				"buffer_size": 4260,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/trydjango19/urls.py",
+			"settings":
+			{
+				"buffer_size": 2519,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/templates/index.html",
+			"settings":
+			{
+				"buffer_size": 5401,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/components/PostList.js",
+			"settings":
+			{
+				"buffer_size": 1211,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/css/base.scss",
+			"settings":
+			{
+				"buffer_size": 786,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -222,8 +262,6 @@
 	[
 		"/home/user/djangoproject",
 		"/home/user/djangoproject/src",
-		"/home/user/djangoproject/src/comments",
-		"/home/user/djangoproject/src/posts",
 		"/home/user/djangoproject/src/static",
 		"/home/user/djangoproject/src/static/css",
 		"/home/user/djangoproject/src/static/css/vendor",
@@ -235,10 +273,16 @@
 		"/home/user/djangoproject/src/static/js/stores",
 		"/home/user/djangoproject/src/templates",
 		"/home/user/djangoproject/src/trydjango19",
-		"/home/user/djangoproject/src/trydjango19/settings"
+		"/home/user/djangoproject/src/trydjango19/settings",
+		"/home/user/djangoproject/webfaction"
 	],
 	"file_history":
 	[
+		"/home/user/djangoproject/src/static/css/base.css",
+		"/home/user/djangoproject/.gitignore",
+		"/home/user/djangoproject/requirements.txt",
+		"/home/user/djangoproject/webfaction/ssh.txt",
+		"/home/user/.ssh/known_hosts",
 		"/home/user/djangoproject/src/static/css/post_home.css",
 		"/home/user/djangoproject/src/static/js/client.js",
 		"/home/user/djangoproject/package.json",
@@ -255,10 +299,8 @@
 		"/home/user/djangoproject/src/static/css/base.scss",
 		"/home/user/djangoproject/npm-debug.log",
 		"/home/user/djangoproject/src/static/js/bundle.js",
-		"/home/user/djangoproject/src/static/css/base.css",
 		"/home/user/djangoproject/src/static/js/client.min.js",
 		"/home/user/djangoproject/src/static/js/components/App.js",
-		"/home/user/djangoproject/.gitignore",
 		"/home/user/djangoproject/src/static/js/components/CreatePost.js",
 		"/home/user/djangoproject/src/templates/index_backup.html",
 		"/home/user/djangoproject/src/templates/post_home.html",
@@ -406,8 +448,158 @@
 	"groups":
 	[
 		{
+			"selected": 4,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/trydjango19/settings/base.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4260,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3957,
+								3957
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2508.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/trydjango19/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2519,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								761,
+								761
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1140.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/static/js/components/PostList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								618,
+								618
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/static/css/base.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 786,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								253
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
