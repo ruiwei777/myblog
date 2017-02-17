@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'pagedown',
     'markdown_deux',
     'crispy_forms',
+    'rest_framework',
+    
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -62,6 +64,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #custom middleware to allow CORS
+    'posts.middleware.corsMiddleware',
 ]
 
 ROOT_URLCONF = 'trydjango19.urls'
@@ -149,3 +153,14 @@ LOGIN_URL = "login"
 
 MY_TWILIO_ACCOUNT_SID = passwords.MY_TWILIO_ACCOUNT_SID
 MY_TWILIO_AUTH_TOKEN = passwords.MY_TWILIO_AUTH_TOKEN
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    #     # 'rest_framework.permissions.IsAdminUser',
+
+    # ],
+    'PAGE_SIZE': 10,
+}

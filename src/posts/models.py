@@ -12,7 +12,16 @@ from markdown_deux import markdown
 
 from comments.models import Comment
 
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
+
 # Create your models here.
+
+LEXERS = [item for item in get_all_lexers() if item[1]]
+LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
+STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
+
+
 
 def upload_location(instance, filename):
 	return "%s/%s" % (instance.id, filename)
@@ -42,6 +51,9 @@ class Post(models.Model):
 	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	#override ModelManager
 	objects = PostManager()
+
+	class Meta:
+		ordering = ('publish',)
 
 	def __str__(self):
 		return self.title

@@ -110,3 +110,6 @@ static_cdn/
 webfaction/
 .pydevproject
 .project
+node_modules/
+migrations/
+run

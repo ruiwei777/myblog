@@ -1,77 +1,17 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/post_home.css' %}"/>
+
+{% endblock head %}
 
 {% block content %}
 
+<div id="app"></div>
+<script src="{% static 'js/client.min.js' %}" type="text/javascript"></script>
 
-<div class="container">
-	<div class="row">
-	
-	<div class="col-sm-6 col-sm-offset-3" style="padding-bottom: 10px">
-		<h1> Post</h1>
-			
-			<div class="col-sm-9 delete-padding">
-			<form method="GET" action="">
-					<div class="input-group">
-					<input class="form-control" type="text" placeholder="Search posts" name="q" value="{{ request.GET.q }}"/>
-					<span class="input-group-btn">
-					<button class="btn btn-default" type="submit"><span class="fa fa-search"></span></button>
-					</span>
-					</div>
-			</form>
-			</div>
 
-			<div class="col-sm-3 delete-padding	">
-				<a class="btn btn-default pull-right" href="{% url 'posts:create' %}">Create Post</a>
-			</div>
-			
-	</div>
-
-	</div>
-
-	{% for value in queryset %}
-
-			<div class="row">
-			  <div class="col-sm-6 col-sm-offset-3">
-			    <div class="thumbnail">
-			    {% if value.image %}
-			      <img src="{{ value.image.url }}" class="img-responsive">
-			    {% endif %}
-			      <div class="caption post-detail-item">
-			        <h3><a href="{{ value.get_absolute_url }}">{{ value.title }} <small>{{ value.timestamp|timesince }} ago</small></a></h3>
-			        {% if value.draft %}
-			        <p style="color: red">Staff only: draft</p>
-			        {% endif %}
-			        {% if value.publish > today %}
-			        <p style="color: red">Staff only: future post</p>
-			        {% endif %}
-			        {{ value.get_markdown|truncatechars_html:30 }}
-			        <p><a href="{{ value.get_absolute_url }}" class="btn btn-default" role="button">View</a></p>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-	{% endfor %}
-	
-	<div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
-	<div class="pagination">
-    <span class="step-links">
-        {% if queryset.has_previous %}
-            <a href="?page={{ quertset.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
-        </span>
-
-        {% if queryset.has_next %}
-            <a href="?page={{ queryset.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
-        {% endif %}
-    </span>
-	</div>
-	</div>
-	</div>
-
-	
 </div>
 {% endblock content %}
