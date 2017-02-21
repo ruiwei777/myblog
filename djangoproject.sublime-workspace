@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"pre",
+				"previewImage"
+			],
+			[
+				"post",
+				"postid"
+			],
+			[
+				"re",
+				"res"
+			],
+			[
 				"deb",
 				"debugText"
 			],
@@ -148,10 +160,6 @@
 				"is_superuser"
 			],
 			[
-				"pre",
-				"pre_save_post_receiver"
-			],
-			[
 				"get_",
 				"get_object_or_404"
 			]
@@ -160,18 +168,18 @@
 	"buffers":
 	[
 		{
-			"file": "src/trydjango19/settings/base.py",
+			"file": "src/static/js/components/PostDetail.js",
 			"settings":
 			{
-				"buffer_size": 4260,
+				"buffer_size": 1820,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/trydjango19/urls.py",
+			"file": "src/static/css/vendor/side-menu.scss",
 			"settings":
 			{
-				"buffer_size": 2519,
+				"buffer_size": 6009,
 				"line_ending": "Unix"
 			}
 		},
@@ -179,15 +187,31 @@
 			"file": "src/templates/index.html",
 			"settings":
 			{
-				"buffer_size": 5401,
+				"buffer_size": 5470,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/static/js/components/PostList.js",
+			"file": "src/static/js/components/CreatePost.js",
 			"settings":
 			{
-				"buffer_size": 1211,
+				"buffer_size": 857,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/actions/index.js",
+			"settings":
+			{
+				"buffer_size": 1974,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/components/PostForm.js",
+			"settings":
+			{
+				"buffer_size": 3368,
 				"line_ending": "Unix"
 			}
 		},
@@ -195,7 +219,15 @@
 			"file": "src/static/css/base.scss",
 			"settings":
 			{
-				"buffer_size": 786,
+				"buffer_size": 972,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/components/Snippet.js",
+			"settings":
+			{
+				"buffer_size": 1712,
 				"line_ending": "Unix"
 			}
 		}
@@ -262,6 +294,8 @@
 	[
 		"/home/user/djangoproject",
 		"/home/user/djangoproject/src",
+		"/home/user/djangoproject/src/posts",
+		"/home/user/djangoproject/src/posts/middleware",
 		"/home/user/djangoproject/src/static",
 		"/home/user/djangoproject/src/static/css",
 		"/home/user/djangoproject/src/static/css/vendor",
@@ -278,30 +312,40 @@
 	],
 	"file_history":
 	[
+		"/home/user/djangoproject/src/static/js/components/SnippetForm.js",
+		"/home/user/djangoproject/src/static/css/vendor/side-menu.scss",
+		"/home/user/djangoproject/src/static/js/components/Post.js",
+		"/home/user/djangoproject/src/trydjango19/settings/base.py",
+		"/home/user/djangoproject/src/static/js/components/App.js",
+		"/home/user/djangoproject/src/static/js/actions/index.js",
+		"/home/user/djangoproject/src/static/js/reducers/postReducer.js",
+		"/home/user/djangoproject/src/static/js/reducers/index.js",
+		"/home/user/djangoproject/package.json",
+		"/home/user/djangoproject/src/static/css/base.scss",
+		"/home/user/djangoproject/requirements.txt",
+		"/home/user/djangoproject/src/posts/views.py",
+		"/home/user/djangoproject/src/static/js/components/PostForm.js",
+		"/home/user/djangoproject/src/trydjango19/urls.py",
+		"/home/user/djangoproject/src/templates/index.html",
+		"/home/user/djangoproject/src/static/js/components/PostList.js",
+		"/home/user/djangoproject/src/static/js/client.js",
+		"/home/user/djangoproject/src/posts/models.py",
+		"/home/user/djangoproject/src/static/js/components/CreatePost.js",
+		"/home/user/djangoproject/src/posts/middleware/corsMiddleware.py",
+		"/home/user/djangoproject/src/posts/serializers.py",
 		"/home/user/djangoproject/src/static/css/base.css",
 		"/home/user/djangoproject/.gitignore",
-		"/home/user/djangoproject/requirements.txt",
 		"/home/user/djangoproject/webfaction/ssh.txt",
 		"/home/user/.ssh/known_hosts",
 		"/home/user/djangoproject/src/static/css/post_home.css",
-		"/home/user/djangoproject/src/static/js/client.js",
-		"/home/user/djangoproject/package.json",
 		"/home/user/djangoproject/webpack.config.js",
-		"/home/user/djangoproject/src/static/js/components/PostList.js",
-		"/home/user/djangoproject/src/static/js/components/PostForm.js",
-		"/home/user/djangoproject/src/static/js/components/Post.js",
-		"/home/user/djangoproject/src/static/js/actions/index.js",
 		"/home/user/djangoproject/src/static/js/constants.js",
 		"/home/user/djangoproject/src/static/js/datastructure.js",
 		"/home/user/djangoproject/src/static/js/components/Snippet.js",
-		"/home/user/djangoproject/src/templates/index.html",
 		"/home/user/djangoproject/src/static/js/components/PostDetail.js",
-		"/home/user/djangoproject/src/static/css/base.scss",
 		"/home/user/djangoproject/npm-debug.log",
 		"/home/user/djangoproject/src/static/js/bundle.js",
 		"/home/user/djangoproject/src/static/js/client.min.js",
-		"/home/user/djangoproject/src/static/js/components/App.js",
-		"/home/user/djangoproject/src/static/js/components/CreatePost.js",
 		"/home/user/djangoproject/src/templates/index_backup.html",
 		"/home/user/djangoproject/src/templates/post_home.html",
 		"/home/user/djangoproject/src/static/css/vendor/blog.css",
@@ -309,21 +353,12 @@
 		"/home/user/djangoproject/node_modules/webpack/package.json",
 		"/home/user/djangoproject/node_modules/webpack/README.md",
 		"/home/user/djangoproject/src/templates/base.html",
-		"/home/user/djangoproject/src/static/js/components/SnippetForm.js",
 		"/home/user/djangoproject/src/static/css/vendor/codemirror.css",
-		"/home/user/djangoproject/src/static/js/reducers/index.js",
 		"/home/user/djangoproject/src/static/js/stores/index.js",
-		"/home/user/djangoproject/src/posts/models.py",
-		"/home/user/djangoproject/src/posts/views.py",
-		"/home/user/djangoproject/src/static/js/reducers/postReducer.js",
-		"/home/user/djangoproject/src/posts/serializers.py",
-		"/home/user/djangoproject/src/trydjango19/urls.py",
-		"/home/user/djangoproject/src/trydjango19/settings/base.py",
 		"/home/user/djangoproject/src/posts/middleware/__init__.py",
 		"/home/user/djangoproject/src/trydjango19/settings/local_settings.py",
 		"/home/user/djangoproject/src/trydjango19/settings/__init__.py",
 		"/home/user/djangoproject/src/trydjango19/settings/production_settings.py",
-		"/home/user/djangoproject/src/posts/middleware/corsMiddleware.py",
 		"/home/user/djangoproject/src/static/css/post-home.css",
 		"/home/user/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
 		"/home/user/djangoproject/src/accounts/serializers.py",
@@ -394,6 +429,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"update",
+			"finder",
+			"staticfiles_finder",
 			"webpack",
 			"inline",
 			"png",
@@ -448,113 +486,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/trydjango19/settings/base.py",
+					"file": "src/static/js/components/PostDetail.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4260,
+						"buffer_size": 1820,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3957,
-								3957
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2508.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/trydjango19/urls.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2519,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								761,
-								761
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/templates/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5401,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1140.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/static/js/components/PostList.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1211,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								618,
-								618
+								407,
+								407
 							]
 						],
 						"settings":
@@ -564,27 +513,176 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 171.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/static/css/base.scss",
+					"buffer": 1,
+					"file": "src/static/css/vendor/side-menu.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 786,
+						"buffer_size": 6009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								253,
-								253
+								5940,
+								5940
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4237.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/templates/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1693,
+								1693
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 741.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/static/js/components/CreatePost.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 857,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								410,
+								410
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/static/js/actions/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1974,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1574,
+								1574
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/static/js/components/PostForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3368,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1333,
+								1333
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 399.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/static/css/base.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								967,
+								967
 							]
 						],
 						"settings":
@@ -594,10 +692,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 798.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/static/js/components/Snippet.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1007,
+								1007
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]

@@ -2,7 +2,7 @@ import React from "react";
 import PostList from "./PostList";
 import { connect } from "react-redux";
 
-import { fetchPost } from "../actions"
+import { fetchPosts } from "../actions"
 
 class App extends React.Component {
   constructor(){
@@ -15,7 +15,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.props.dispatch(fetchPost())
+    this.props.dispatch(fetchPosts())
   }
 
   render(){
@@ -25,7 +25,8 @@ class App extends React.Component {
     return (
         <div>
           {this.props.children && React.cloneElement(this.props.children,{
-                      posts: this.props.posts
+                      posts: this.props.posts,
+                      dispatch: this.props.dispatch
                     })}
         </div>
       )

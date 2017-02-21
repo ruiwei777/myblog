@@ -36,16 +36,17 @@ export default class Snippet extends React.Component{
     return(
         <div>
 
+        <label>Content</label>
         <Field 
           name={language.input.name} 
           component="select" 
           onChange={::this.selectChange}
           className="pure-button"
           >
-          <option value="javascript">javascript</option>
           <option value="markdown">markdown</option>
+          <option value="javascript">javascript</option>
         </Field>
-        <button className="pure-button remove-code button-warning" onClick={::this.removeBlock}>Remove</button>
+        {/*<button className="pure-button remove-code button-warning" onClick={::this.removeBlock}>Remove</button>*/}
         
           <CodeMirror 
             options={{ mode:language.input.value, theme:"erlang-dark"}}

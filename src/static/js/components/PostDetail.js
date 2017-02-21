@@ -1,50 +1,45 @@
 import { Link } from "react-router";
 import Markdown from "react-markdown";
 import React from "react";
+import { connect } from "react-redux";
+import { fetchAPost } from "../actions"
+import "../../css/vendor/side-menu.scss"
 
 
 
-export default class PostDetail extends React.Component{
+class PostDetail extends React.Component{
   constructor(){
     super();
-    this.state = {
-      post:null
-    }
+  }
+
+  componentWillMount(){
+    this.props.dispatch(fetchAPost(this.props.params.postid))
   }
 
 
   render(){
-    
-    const {posts} = this.props;
-    let post = posts.filter((item)=>{
-      return item.id === parseInt(this.props.params.postid)
-    }).pop()
-
-    let article = <h1>Trying to fetch data...</h1>
-
-
-    if (post){
-      article = <div>
-        <h2 className="post-title">{post.title} <span className="post-publish">{post.publish}</span></h2>
-        <p className="post-meta">By {post.username}</p>
-        <div className="post-content">
-          <Markdown source={post.content}></Markdown>
-        </div>
-        
-        <Link to="/" className="pure-button button-purple">back</Link>
-        {/*<div className="post-content">{post.content}</div>*/}
-        {/*<h3>Comments</h3>*/}
-      </div>
+    const {post} = this.props;
+    if (!post){
+      return <div id="main">Trying to fetch data...</div>
     }
 
+    let { subtitle } = post
+    
+
     return (
-        <div>
-          <div className="positioner">
-            
-              {article}
-            
+        <div id="main">
+          <div className="header">
+            <h1>{post.title}</h1>
+            <h2>{subtitle}</h2>
+          </div>
+          {/*<h2 className="post-title">{post.title} <span className="post-publish">{post.publish}</span></h2>*/}
+          
+          <div className="content">
+            <p>By {post.username}</p>
+            <Markdown source={post.content}></Markdown>
           </div>
           
+          <Link to="/" className="pure-button button-purple">back</Link>
         </div>
       )
   }
@@ -70,3 +65,9 @@ export default class PostDetail extends React.Component{
     request.send();
   }
 }
+
+function mapStateToProps(state) {
+  // console.log(state.postReducer)
+    return {post: state.postReducer.currentPost};
+}
+export default connect(mapStateToProps)(PostDetail);

@@ -1,11 +1,19 @@
+
 export default function postReducer(state={
     posts: [],
+    currentPost: null,
     fetching: false,
     fetched: false,
     error: null,
   }, action) {
 
     switch (action.type) {
+      case "FETCH_A_POST_FULFILLED": {
+        return {
+          ...state,
+          currentPost: action.payload,
+        }
+      }
       case "FETCH_POSTS": {
         return {...state, fetching: true}
       }
@@ -23,7 +31,12 @@ export default function postReducer(state={
       case "ADD_POST": {
         return {
           ...state,
-          posts: [...state.posts, action.payload],
+        }
+      }
+      case "ADD_POST_FULFILLED": {
+        console.log(action.payload)
+        return {
+          ...state,
         }
       }
       case "UPDATE_POST": {

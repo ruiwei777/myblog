@@ -39,7 +39,8 @@ export default class Post extends React.Component{
     return (
         <section className="post">
         <header className="post-header">
-            <img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" className="post-avatar" src="https://www.codemonkey.in/images/Code-Monkey.png" />
+            {/*<img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" className="post-avatar" src="https://www.codemonkey.in/images/Code-Monkey.png" />*/}
+            <img width="48" height="48" alt="avatar" className="post-avatar" src="/static/images/Code-Monkey.png" />
 
             <h2 className="post-title">{post.title}</h2>
 

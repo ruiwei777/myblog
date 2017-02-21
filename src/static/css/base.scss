@@ -48,3 +48,16 @@ $orange: rgb(223, 117, 20);
 .remove-code{
   float: right
 }
+
+.drop-text{
+  border-width: 2px;
+  border-color: black;
+  border-style: dashed;
+  border-radius: 4px;
+  margin: 30px auto;
+  padding: 30px;
+  width: 200px;
+  transition: all 0.5s;
+
+}
+

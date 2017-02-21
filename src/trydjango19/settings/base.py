@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'markdown_deux',
     'crispy_forms',
     'rest_framework',
+    'compressor',
     
 ]
 
@@ -162,5 +163,15 @@ REST_FRAMEWORK = {
     #     # 'rest_framework.permissions.IsAdminUser',
 
     # ],
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 30,
 }
+
+# django_compressor
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)

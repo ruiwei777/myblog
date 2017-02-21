@@ -1,3 +1,4 @@
+import { addPost } from "../actions";
 import { Link } from "react-router";
 import React from "react";
 import Markdown from "react-markdown"
@@ -11,8 +12,8 @@ export default class CreatePost extends React.Component{
 
 
   handleSubmit(formData){
-    // console.log(formData)
-    console.log("CreatePost", formData)
+    this.props.dispatch(addPost(formData))
+    // console.log("CreatePost", formData)
   }
 
 
@@ -23,10 +24,9 @@ export default class CreatePost extends React.Component{
           initialValues={{
             blocks:[{
               text:"",
-              language:"javascript"
+              language:"markdown"
             }]
-          }
-            
+          }        
           }
            />
           
