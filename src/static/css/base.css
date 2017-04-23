@@ -6,10 +6,7 @@ html{
 body{
 	min-height: 100vh;
 	font-size: 100%;
-	/*padding-top: 50px;*/
-	/*font-family: "Open Sans", sans-serif, arial;*/
 	color: #2d3e50;
-	/*background-color: rgba(238,238,238,1);*/
 }
 
 .navbar{

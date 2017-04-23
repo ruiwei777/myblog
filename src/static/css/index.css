@@ -4,31 +4,48 @@
 -----------------*/
 .my-jumbotron{
 	font-size: 1rem;
-	height: 40vh;
-	background-color: #2d2d2d;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 2em;
+	overflow: hidden;
+	position:relative;
+	color: #ffffff;
+
+	height: 60vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
 
-@media(max-width: 768px){
-	.my-jumbotron{
-		margin-bottom: 0;
-	}
-}
+
 
 @media (max-width: 768px){
 	.my-jumbotron{
 		font-size: .7rem;
 		height: auto;
-		padding: 5% 1%;
+		padding: 2em 0;
 	}
+}
+
+@media (max-width: 450px){
+	.my-jumbotron{
+		font-size: .4rem;
+		height: auto;
+		padding: 2em 0;
+	}
+}
+
+.jumbotron-bg{
+	z-index: -1;
+	position: absolute;
+	min-height: 100%
+	max-width: 100%;
+	top: 0;
 }
 
 .heading-wrapper{
 	text-align: center;
+	max-width: 60%
 }
+
+
 
 .heading-wrapper p{
 	margin: 0;
@@ -36,166 +53,41 @@
 }
 
 .my-jumbotron .heading{
-	font-size: 6em;
+	font-size: 2em;
 	font-family: Exo;
 	letter-spacing: 2px;
-	color: #33e0ff;
-	margin-top: 20px;
-	margin-bottom: 10px;
+	
+	margin: 20px 0 30px;
 
 }
 
 .my-jumbotron .side-heading{
-	font-size: 2.8em;
-	/*color: rgba(130, 130, 130, 1);*/
+	font-size: 1.5em;
 	text-transform: capitalize;
-	color: #ddd;
 	font-family: "Ubuntu Condensed", arial, sans-serif;
-	margin: 20px;
 }
 
 .my-jumbotron .description-text a{
-	font-size: 2em;
-	color: #ddd;
+	font-size: 1em;
+	color:#ffffff;
+	pointer: cursor;
+	padding: .5em 1em;
+	border-radius: .5em;
+	border-color: #ffffff;
+	border-width: 2px;
+	border-style: solid;
+	display: inline-block;
 }
 
-/*
-	Content Boxes
-					*/
-.content-boxes-wrapper{
-	display: flex;
-	justify-content: center;
-	font-size: 1rem;
-	margin-bottom: 5em;
-
-}
-
-.content-boxes{
-	display: flex;
-	width: 100%;
-}
-
-@media(max-width: 768px){
-	.content-boxes{
-	flex-direction: column;
-	
-	}
-}
-
-.content-box{
-	flex: 1 1 0;
-	padding: 0 3em;
-	text-align: center;
-}
-
-@media(max-width: 768px){
-	.content-box{
-		padding: 0 2px;
-	}
-}
-
-.content-box:not(:last-child){
-	border-right: 1px solid rgba(150,150,150,.5);
-}
-
-@media(max-width: 768px){
-	.content-box:not(:last-child){
-	border-right: none;
-	border-bottom: 1px solid rgba(150,150,150,.5);
-}
-}
-
-.content-box .heading{
-	font-size: 4em;
-	text-align: center;
-	font-family: Exo, arial, sans-serif;
-	letter-spacing: 1px;
-}
-
-@media(max-width: 1100px){
-	.content-box .heading{
-	font-size: 3em;
-	}
-}
-
-@media(max-width: 768px){
-	.content-box .heading{
-	font-size: 2em;
-	}
-}
-
-.content-box ul{
-	max-width: 85%;
-	margin: 0 auto;
-	text-align: left;
-	list-style: none;
-	padding: 0;
-}
-
-@media(min-width: 1200px){
-	.content-box ul{
-		text-align:center;
-	}
-}
-
-@media(max-width: 768px){
-	.content-box ul{
-		text-align: center;
-		line-height: 1.1;
-	}
+.my-jumbotron .description-text a:hover{
+	color:black;
+	background-color: deepskyblue;
+	border-color: deepskyblue;
 }
 
 
 
-.content-box ul li{
-	font-size: 1.5em;
-	line-height: 1.5;
-	color:rgba(0,0,0,.7);
-}
 
-.item-block{
-	float:left;
-	width: 32%;
-	
-}
-
-.img{
-	height: 200px;
-	background-size: contain;
-	background-position: center center;
-	background-repeat: no-repeat;
-}
-
-.img.django{
-	background-image: url("../images/django_meitu_1.png");
-}
-
-.img.node{
-	background-image: url("../images/nodejs-index.png");
-}
-
-.img.ubuntu{
-	background-image: url("../images/ubuntu.png");
-}
-
-/* Frontend */
-.img.react{
-	background-image: url("../images/react-redux.png");
-}
-
-.img.angular{
-	background-image: url("../images/angularjs.png");
-}
-
-.img.html{
-	background-image: url("../images/html5-css3.png");
-}
-
-.square-blocks:last-child:after{
-	content: '';
-    display: block;
-    clear: both;
-}
 
 /* Projects */
 .project-blocks{
@@ -256,4 +148,193 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 98%;
+}
+
+
+/*************
+		Blocks
+*************/
+
+.block.block-1{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background-color: rgba(239,239,239,1);
+	height: 30vh;
+}
+
+.block.block-2{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height: 30vh;
+}
+
+.block .heading{
+	color:#7a7c7d;
+	font-size: 2em;
+	text-transform: uppercase;
+}
+
+.block .items-block{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.block .items-block .item{
+	margin: .5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+.block .items-block .item p{
+	text-align: center;
+}
+
+@media(max-width: 1000px){
+	.block .items-block .item{
+		margin: .1em;
+	}
+
+		.block .items-block .item p{
+		font-size: .6em;
+	}
+}
+
+.block .items-block .item .skill-icon{
+	max-width: 100%;
+	display: inline-block;
+}
+
+.block.block-2{
+	color:#ffffff;
+	background-color: rgba(89,89,92,1);
+}
+
+.block.block-2 .heading{
+	color:#ffffff;
+	text-align: right;
+}
+
+
+/* Block 3 */
+.block.block-3{
+	background-color: rgba(239,239,239,1);
+	
+}
+
+.block.block-3 .project-wrapper{
+	margin: 0 auto;
+	width: 65%;
+	padding: 1.5em 0;
+}
+
+@media(max-width: 1200px){
+	.block.block-3 .project-wrapper{
+	margin: 0 auto;
+	width: 95%;
+	padding: .5em 0;
+}
+}
+
+/* project heading */
+.project-wrapper .heading{
+	text-align: center;
+	font-size: 1.7em;
+	margin: 0 0 1em;
+	color:#ffffff;
+}
+
+.block.block-3 .project-wrapper .heading{
+	color: #7a7c7d;
+}
+
+
+
+.block.block-3 .project{
+	display:flex;
+	justify-content: center;
+	align-items: stretch;
+	
+}
+
+
+
+.block.block-3 .project .project-icon{
+	flex: 0 1 30%;
+	background-image: url("../images/safeatnight.png");
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.block.block-3 .project .project-content{
+	flex: 1 0 0;
+	margin-left: 1em;
+}
+
+
+/*---------------
+		Block 4
+---------------*/
+.block.block-4{
+	color:#ffffff;
+	background-color: rgba(89,89,92,1);
+}
+
+.block.block-4 .project-wrapper{
+	margin: 0 auto;
+	width: 65%;
+	padding: 1.5em 0;
+}
+
+@media(max-width: 1200px){
+	.block.block-4 .project-wrapper{
+	margin: 0 auto;
+	width: 95%;
+	padding: .5em 0;
+}
+}
+
+
+
+.block.block-4 .project{
+	display:flex;
+	justify-content: center;
+	align-items: stretch;
+	
+}
+
+.block.block-4 .project-wrapper .heading{
+	color: #ffffff;
+}
+
+.block.block-4 .project .project-icon{
+	flex: 0 1 30%;
+	background-image: url("../images/react-redux.jpg");
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.block.block-4 .project .project-content{
+	flex: 1 0 0;
+	margin-left: 1em;
+}
+
+@media(max-width: 768px){
+		.project .project-content{
+		font-size: .7em;
+	}
+		.block .heading{
+			font-size: 1em;
+		}
+
+		.project .heading{
+			font-size: 1em;
+		}
 }

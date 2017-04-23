@@ -29,41 +29,41 @@ from rest_framework import status
 def home(request):
     
 
-    if request.user.is_staff or request.user.is_superuser:
-            queryset = Post.objects.all().order_by("-timestamp")
-    else:
-        queryset = Post.objects.active().order_by("-timestamp")
+    # if request.user.is_staff or request.user.is_superuser:
+    #         queryset = Post.objects.all().order_by("-timestamp")
+    # else:
+    #     queryset = Post.objects.active().order_by("-timestamp")
 
-    q = request.GET.get("q")
-    if q:
-        queryset = queryset.filter(
-            Q(title__icontains=q) |
-            Q(content__icontains=q) |
-            Q(user__first_name__icontains=q)|
-            Q(user__last_name__icontains=q)).distinct()
+    # q = request.GET.get("q")
+    # if q:
+    #     queryset = queryset.filter(
+    #         Q(title__icontains=q) |
+    #         Q(content__icontains=q) |
+    #         Q(user__first_name__icontains=q)|
+    #         Q(user__last_name__icontains=q)).distinct()
 
-    #Pagination
-    paginator = Paginator(queryset, 7) # Show 10 contacts per page
+    # #Pagination
+    # paginator = Paginator(queryset, 7) # Show 10 contacts per page
 
-    page = request.GET.get('page')
-    try:
-        post_list = paginator.page(page)
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        post_list = paginator.page(1)
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
-        post_list = paginator.page(paginator.num_pages)
-    #End of Pagination
+    # page = request.GET.get('page')
+    # try:
+    #     post_list = paginator.page(page)
+    # except PageNotAnInteger:
+    #     # If page is not an integer, deliver first page.
+    #     post_list = paginator.page(1)
+    # except EmptyPage:
+    #     # If page is out of range (e.g. 9999), deliver last page of results.
+    #     post_list = paginator.page(paginator.num_pages)
+    # #End of Pagination
 
-    today = timezone.now().date()
+    # today = timezone.now().date()
 
-    context = {
-        "queryset" : post_list,
-        "today" : today,
-    }
+    # context = {
+    #     "queryset" : post_list,
+    #     "today" : today,
+    # }
 
-    return render(request, "post_home.html", context)
+    return render(request, "posts.html", {})
 
 def create(request):
     if not request.user.is_staff and not request.user.is_superuser:

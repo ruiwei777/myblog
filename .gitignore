@@ -113,3 +113,6 @@ webfaction/
 node_modules/
 migrations/
 run
+.sublime-project
+.sublime-workspace
+README.md
