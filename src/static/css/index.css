@@ -71,6 +71,9 @@
 	
 	
 	margin: 20px 0 30px;
+	-webkit-transition: opacity 1s, letter-spacing 2s;
+	-moz-transition: opacity 1s, letter-spacing 2s;
+	-o-transition: opacity 1s, letter-spacing 2s;
 	transition: opacity 1s, letter-spacing 2s;
 	letter-spacing: 0px;
 	opacity: 0;
