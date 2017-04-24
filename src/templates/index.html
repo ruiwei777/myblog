@@ -192,10 +192,9 @@
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', ()=>{
-    document.querySelector(".my-jumbotron .heading").classList.add("show")
-}, false);
 
-    
+    $(() => {
+        document.querySelector(".my-jumbotron .heading").classList.add("show")
+    })
 </script>
 {% endblock content %}
