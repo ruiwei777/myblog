@@ -87,49 +87,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 <!-- End of Navbar new -->
-
-
-
-	<!-- Navigation Bar -->
-	<!-- <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-home fa-lg" aria-hidden="true"></i></a>
-        </div>
-    
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-          {% if request.user.is_staff or request.user.is_superuser %}<li><a href="{% url 'admin:index' %}">Administration</a></li>{% endif %}
-            <li><a href="{% url 'posts:home' %}">Blog</a></li>
-            
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Dev Log</a></li>
-              </ul>
-            </li>
-          </ul>
-          
-          <ul class="nav navbar-nav navbar-right">
-          {% if request.user.is_authenticated %}
-              <li><a><i class="fa fa-user" aria-hidden="true"></i> {{ request.user.get_full_name }}</a></li>
-              {% else %}
-              <li><a href="{% url 'login' %}">Login</a></li>
-              <li><a href="{% url 'register' %}">Register</a></li>
-              {% endif %}
-              {% if request.user.is_authenticated %}
-              <li><a href="{% url 'logout' %}"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Logout
-              </a>
-              </li>
-              {% endif %}      
-          </ul>
-        </div>/.navbar-collapse
-    </div>
-    </nav> -->
-
 	
-	{% include 'messages.html' %}
 	{% block content %}
 		
 	{% endblock content %}

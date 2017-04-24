@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"backgroun",
+				"background-size"
+			],
+			[
 				"pre",
 				"previewImage"
 			],
@@ -168,18 +172,50 @@
 	"buffers":
 	[
 		{
-			"file": "src/static/js/components/PostDetail.js",
+			"file": "src/trydjango19/urls.py",
 			"settings":
 			{
-				"buffer_size": 1820,
+				"buffer_size": 2568,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/static/css/vendor/side-menu.scss",
+			"file": "src/posts/urls.py",
 			"settings":
 			{
-				"buffer_size": 6009,
+				"buffer_size": 380,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/posts/views.py",
+			"settings":
+			{
+				"buffer_size": 6898,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/client.js",
+			"settings":
+			{
+				"buffer_size": 808,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/components/PostList.js",
+			"settings":
+			{
+				"buffer_size": 1211,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/static/js/components/App.js",
+			"settings":
+			{
+				"buffer_size": 799,
 				"line_ending": "Unix"
 			}
 		},
@@ -187,63 +223,31 @@
 			"file": "src/templates/index.html",
 			"settings":
 			{
-				"buffer_size": 5470,
+				"buffer_size": 5895,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/static/js/components/CreatePost.js",
+			"file": "src/static/css/index.css",
 			"settings":
 			{
-				"buffer_size": 857,
+				"buffer_size": 4976,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/static/js/reducers/index.js",
+			"file": "src/templates/posts.html",
 			"settings":
 			{
-				"buffer_size": 288,
+				"buffer_size": 5580,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "src/static/js/reducers/postReducer.js",
+			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 1407,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/static/js/actions/index.js",
-			"settings":
-			{
-				"buffer_size": 2044,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/static/js/components/PostForm.js",
-			"settings":
-			{
-				"buffer_size": 3368,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/static/css/base.scss",
-			"settings":
-			{
-				"buffer_size": 972,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/static/js/components/Snippet.js",
-			"settings":
-			{
-				"buffer_size": 1712,
+				"buffer_size": 1481,
 				"line_ending": "Unix"
 			}
 		}
@@ -328,42 +332,42 @@
 	],
 	"file_history":
 	[
-		"/home/user/djangoproject/src/static/js/components/SnippetForm.js",
-		"/home/user/djangoproject/src/static/css/vendor/side-menu.scss",
 		"/home/user/djangoproject/src/static/js/components/Post.js",
+		"/home/user/djangoproject/src/templates/post_home.html",
+		"/home/user/djangoproject/src/static/css/base.css",
+		"/home/user/djangoproject/src/static/js/components/Snippet.js",
+		"/home/user/djangoproject/src/static/css/base.scss",
+		"/home/user/djangoproject/src/static/js/components/PostForm.js",
+		"/home/user/djangoproject/src/static/js/constants.js",
+		"/home/user/djangoproject/src/static/js/actions/index.js",
+		"/home/user/djangoproject/src/static/js/components/PostDetail.js",
+		"/home/user/djangoproject/src/static/css/vendor/side-menu.scss",
+		"/home/user/djangoproject/src/templates/index.html",
+		"/home/user/djangoproject/src/static/js/components/CreatePost.js",
+		"/home/user/djangoproject/src/static/js/reducers/index.js",
+		"/home/user/djangoproject/src/static/js/reducers/postReducer.js",
+		"/home/user/djangoproject/src/static/js/components/SnippetForm.js",
 		"/home/user/djangoproject/src/trydjango19/settings/base.py",
 		"/home/user/djangoproject/src/static/js/components/App.js",
-		"/home/user/djangoproject/src/static/js/actions/index.js",
-		"/home/user/djangoproject/src/static/js/reducers/postReducer.js",
-		"/home/user/djangoproject/src/static/js/reducers/index.js",
 		"/home/user/djangoproject/package.json",
-		"/home/user/djangoproject/src/static/css/base.scss",
 		"/home/user/djangoproject/requirements.txt",
 		"/home/user/djangoproject/src/posts/views.py",
-		"/home/user/djangoproject/src/static/js/components/PostForm.js",
 		"/home/user/djangoproject/src/trydjango19/urls.py",
-		"/home/user/djangoproject/src/templates/index.html",
 		"/home/user/djangoproject/src/static/js/components/PostList.js",
 		"/home/user/djangoproject/src/static/js/client.js",
 		"/home/user/djangoproject/src/posts/models.py",
-		"/home/user/djangoproject/src/static/js/components/CreatePost.js",
 		"/home/user/djangoproject/src/posts/middleware/corsMiddleware.py",
 		"/home/user/djangoproject/src/posts/serializers.py",
-		"/home/user/djangoproject/src/static/css/base.css",
 		"/home/user/djangoproject/.gitignore",
 		"/home/user/djangoproject/webfaction/ssh.txt",
 		"/home/user/.ssh/known_hosts",
 		"/home/user/djangoproject/src/static/css/post_home.css",
 		"/home/user/djangoproject/webpack.config.js",
-		"/home/user/djangoproject/src/static/js/constants.js",
 		"/home/user/djangoproject/src/static/js/datastructure.js",
-		"/home/user/djangoproject/src/static/js/components/Snippet.js",
-		"/home/user/djangoproject/src/static/js/components/PostDetail.js",
 		"/home/user/djangoproject/npm-debug.log",
 		"/home/user/djangoproject/src/static/js/bundle.js",
 		"/home/user/djangoproject/src/static/js/client.min.js",
 		"/home/user/djangoproject/src/templates/index_backup.html",
-		"/home/user/djangoproject/src/templates/post_home.html",
 		"/home/user/djangoproject/src/static/css/vendor/blog.css",
 		"/home/user/djangoproject/webpack.config.backup.js",
 		"/home/user/djangoproject/node_modules/webpack/package.json",
@@ -445,6 +449,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			".project-wrapper .heading",
+			"70",
+			"restapi",
+			"color",
+			"translateY",
 			"update",
 			"finder",
 			"staticfiles_finder",
@@ -484,6 +493,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"50",
 			"posts",
 			"POST",
 			"user",
@@ -502,24 +512,112 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/static/js/components/PostDetail.js",
+					"file": "src/trydjango19/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1820,
+						"buffer_size": 2568,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								407,
-								407
+								959,
+								959
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 570.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/posts/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 380,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								378,
+								378
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/posts/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1072,
+								1072
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 399.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/static/js/client.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
 							]
 						],
 						"settings":
@@ -532,83 +630,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/static/css/vendor/side-menu.scss",
+					"buffer": 4,
+					"file": "src/static/js/components/PostList.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6009,
+						"buffer_size": 1211,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5940,
-								5940
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4237.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/templates/index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5470,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1693,
-								1693
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 741.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/static/js/components/CreatePost.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 857,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								410,
-								410
+								359,
+								359
 							]
 						],
 						"settings":
@@ -618,32 +657,34 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 114.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/static/js/reducers/index.js",
+					"buffer": 5,
+					"file": "src/static/js/components/App.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 288,
+						"buffer_size": 799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								101,
+								101
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage"
+							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -653,153 +694,121 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "src/static/js/reducers/postReducer.js",
+					"buffer": 6,
+					"file": "src/templates/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1407,
+						"buffer_size": 5895,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2729,
+								2729
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
-							"tab_size": 2,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 399.0,
+						"translation.y": 115.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "src/static/js/actions/index.js",
+					"buffer": 7,
+					"file": "src/static/css/index.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2044,
+						"buffer_size": 4976,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1676,
-								1676
+								2201,
+								2201
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 855.0,
+						"translation.y": 2803.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "src/static/js/components/PostForm.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3368,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1333,
-								1333
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2052.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
 					"buffer": 8,
-					"file": "src/static/css/base.scss",
+					"file": "src/templates/posts.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 972,
+						"buffer_size": 5580,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								967,
-								967
+								1703,
+								1703
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 798.0,
+						"translation.y": 670.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "src/static/js/components/Snippet.js",
+					"file": "package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1712,
+						"buffer_size": 1481,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1007,
-								1007
+								616,
+								616
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).tmLanguage",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -882,7 +891,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 254.0,
+	"side_bar_width": 296.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
