@@ -3,16 +3,28 @@
 	my-jumbotron
 -----------------*/
 .my-jumbotron{
-	font-size: 1rem;
+	font-size: .9rem;
 	overflow: hidden;
 	position:relative;
-	color: #ffffff;
+	/*color: #ffffff;*/
 
 	height: 60vh;
 	display:flex;
 	align-items:center;
 	justify-content:center;
+
+	background-color: #217dbb;
+  color: #ecf0f1;
 }
+
+/*To compensate image height*/
+/*@media (max-width: 1045px){
+	.my-jumbotron{
+		font-size: .8rem;
+		height: 40vh;
+		padding: 2em 0;
+	}
+}*/
 
 
 
@@ -35,9 +47,10 @@
 .jumbotron-bg{
 	z-index: -1;
 	position: absolute;
-	min-height: 100%
-	max-width: 100%;
+	width: auto;
+	height: 100%;
 	top: 0;
+	background: #dddddd;
 }
 
 .heading-wrapper{
@@ -53,7 +66,7 @@
 }
 
 .my-jumbotron .heading{
-	font-size: 2em;
+	font-size: 1.8em;
 	font-family: Exo;
 	letter-spacing: 2px;
 	
