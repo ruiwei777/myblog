@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"text-align"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
 				"backgroun",
 				"background-size"
 			],
@@ -26,10 +34,6 @@
 			[
 				"lang",
 				"languageRef"
-			],
-			[
-				"text",
-				"textRef"
 			],
 			[
 				"s",
@@ -223,7 +227,7 @@
 			"file": "src/templates/index.html",
 			"settings":
 			{
-				"buffer_size": 5895,
+				"buffer_size": 6561,
 				"line_ending": "Unix"
 			}
 		},
@@ -231,23 +235,7 @@
 			"file": "src/static/css/index.css",
 			"settings":
 			{
-				"buffer_size": 4976,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/templates/posts.html",
-			"settings":
-			{
-				"buffer_size": 5580,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 1481,
+				"buffer_size": 4753,
 				"line_ending": "Unix"
 			}
 		}
@@ -332,6 +320,9 @@
 	],
 	"file_history":
 	[
+		"/home/user/djangoproject/src/templates/base.html",
+		"/home/user/djangoproject/package.json",
+		"/home/user/djangoproject/src/templates/posts.html",
 		"/home/user/djangoproject/src/static/js/components/Post.js",
 		"/home/user/djangoproject/src/templates/post_home.html",
 		"/home/user/djangoproject/src/static/css/base.css",
@@ -349,7 +340,6 @@
 		"/home/user/djangoproject/src/static/js/components/SnippetForm.js",
 		"/home/user/djangoproject/src/trydjango19/settings/base.py",
 		"/home/user/djangoproject/src/static/js/components/App.js",
-		"/home/user/djangoproject/package.json",
 		"/home/user/djangoproject/requirements.txt",
 		"/home/user/djangoproject/src/posts/views.py",
 		"/home/user/djangoproject/src/trydjango19/urls.py",
@@ -372,7 +362,6 @@
 		"/home/user/djangoproject/webpack.config.backup.js",
 		"/home/user/djangoproject/node_modules/webpack/package.json",
 		"/home/user/djangoproject/node_modules/webpack/README.md",
-		"/home/user/djangoproject/src/templates/base.html",
 		"/home/user/djangoproject/src/static/css/vendor/codemirror.css",
 		"/home/user/djangoproject/src/static/js/stores/index.js",
 		"/home/user/djangoproject/src/posts/middleware/__init__.py",
@@ -449,6 +438,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"heading",
+			"50",
 			".project-wrapper .heading",
 			"70",
 			"restapi",
@@ -493,6 +484,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"70",
 			"50",
 			"posts",
 			"POST",
@@ -542,7 +534,7 @@
 						"translation.y": 570.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -570,7 +562,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -600,7 +592,7 @@
 						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -660,7 +652,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -699,15 +691,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5895,
+						"buffer_size": 6561,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2729,
-								2729
+								6528,
+								6528
 							]
 						],
 						"settings":
@@ -717,10 +709,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 115.0,
+						"translation.y": 3477.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -729,15 +721,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4976,
+						"buffer_size": 4753,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2201,
-								2201
+								1071,
+								1071
 							]
 						],
 						"settings":
@@ -746,69 +738,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2803.0,
+						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/templates/posts.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1703,
-								1703
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 670.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1481,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								616,
-								616
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 171.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
 					"type": "text"
 				}
 			]

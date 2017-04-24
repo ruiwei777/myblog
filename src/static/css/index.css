@@ -68,10 +68,18 @@
 .my-jumbotron .heading{
 	font-size: 1.8em;
 	font-family: Exo;
-	letter-spacing: 2px;
+	
 	
 	margin: 20px 0 30px;
+	transition: opacity 1s, letter-spacing 2s;
+	letter-spacing: 0px;
+	opacity: 0;
 
+}
+
+.my-jumbotron .heading.show{
+	letter-spacing: 2px;
+	opacity: 1;
 }
 
 .my-jumbotron .side-heading{
