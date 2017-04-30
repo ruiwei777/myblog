@@ -126,9 +126,10 @@
                 </p>
 
                 <div class="feature-wrapper">
-                    <div class="project-icon">
+                    <a class="project-icon" href="//www.safeatnight.cf" target="_blank" rel="noreferrer">
                     <!-- <img src="{% static 'images/safeatnight.png' %}" alt=""> -->
-                    </div>
+                    </a>
+                    
                     
                     <div class="project-content">
                         <ul>
@@ -136,12 +137,11 @@
                             <li>Implemented with Python Django, D3.js, Celery and Bootstrap</li>
                             <li>Deployed on Microsoft Azure</li>
                             <li>Team work of our four-student group</li>
-                            <li>* Currently shut down due to expired subscription</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="view-wrapper"><a href="//github.com/ruiwei777/safeatnight" target="_blank" rel="noreferrer">Github</a></div>
+                <div class="view-wrapper"><a href="//www.safeatnight.cf" target="_blank" rel="noreferrer">Go!</a></div>
                 
             </div>
 
@@ -160,18 +160,18 @@
                 <div class="feature-wrapper">
                     <div class="project-content">        
                         <ul>
-                            <li>Using mostly vanilla CSS with the elegence of Flexbox</li>
+                            <li>Using mostly vanilla CSS with Flexbox to layout</li>
                             <li>Powered by Django-Rest-Framework and React-Redux</li>
                             <li>Supports markdown, syntax highlight and CRUD</li>                     
                         </ul>
                     </div>
 
-                    <div class="project-icon">
+                    <a href="//www.liangruiwei.com/posts" rel="noreferrer" class="project-icon">
                         <!-- <img src="{% static 'images/safeatnight.png' %}" alt=""> -->
-                    </div>
+                    </a>
                 </div>
 
-                <div class="view-wrapper"><a href="//liangruiwei.com/posts" target="_blank" rel="noreferrer">Find out</a></div>
+                <div class="view-wrapper"><a href="//www.liangruiwei.com/posts" target="_blank" rel="noreferrer">Find out</a></div>
                 
             </div>
 
@@ -193,8 +193,25 @@
 
 <script>
 
-    $(() => {
-        document.querySelector(".my-jumbotron .heading").classList.add("show")
+    $(function(){
+        $(".block.block-1 .items-block .item .skill-icon").each(function(i){
+            var that = this
+            setTimeout(function(){
+                $(that).addClass("ani")
+            }, i * 400 + 800)
+        })
     })
+
+    $(function(){
+        $(".block.block-2 .items-block .item .skill-icon").each(function(i){
+            var that = this
+            setTimeout(function(){
+                $(that).addClass("ani-reverse")
+            }, i * 400 + 3500)
+        })
+    })
+
+    
+
 </script>
 {% endblock content %}

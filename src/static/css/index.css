@@ -8,7 +8,8 @@
 	position:relative;
 	/*color: #ffffff;*/
 
-	height: 60vh;
+	/*height: 60vh;*/
+	padding: 5em;
 	display:flex;
 	align-items:center;
 	justify-content:center;
@@ -71,19 +72,12 @@
 	
 	
 	margin: 20px 0 30px;
-	-webkit-transition: opacity 1s, letter-spacing 2s;
-	-moz-transition: opacity 1s, letter-spacing 2s;
-	-o-transition: opacity 1s, letter-spacing 2s;
-	transition: opacity 1s, letter-spacing 2s;
-	letter-spacing: 0px;
-	opacity: 0;
-
-}
-
-.my-jumbotron .heading.show{
+	transition: opacity 2s ease-out, letter-spacing 2s ease-out;
 	letter-spacing: 2px;
 	opacity: 1;
+
 }
+
 
 .my-jumbotron .side-heading{
 	font-size: 1.5em;
@@ -146,6 +140,19 @@
 .block .items-block .item .skill-icon{
 	max-width: 100%;
  	height: auto;
+
+ 	
+ 	visibility: hidden;
+}
+
+.block .items-block .item .skill-icon.ani{
+	visibility: visible;
+ 	animation: roll-in 800ms ease-out;
+}
+
+.block .items-block .item .skill-icon.ani-reverse{
+	visibility: visible;
+ 	animation: roll-in-reverse 800ms ease-out;
 }
 
 @media(max-width: 768px){
@@ -338,3 +345,51 @@
 	General Settings
  -----------------*/
 
+
+
+ footer.positioner{
+ 	font-size: .8em;
+ }
+
+
+/*-----------------
+		Animations
+	-----------------*/
+
+@Keyframes roll-in{
+	0%{
+		opacity: 0;
+		transform: translate(-200%) rotate(-540deg);
+	}
+
+	50%{
+		opacity: 1;
+	}
+
+	80%{
+		transform: translate(60%) rotate(45deg);
+	}
+
+	100%{
+		transform: translate(0)  rotate(0deg);
+	}
+}
+
+@Keyframes roll-in-reverse{
+	0%{
+		opacity: 0;
+		transform: translate(200%) rotate(540deg);
+	}
+
+	50%{
+		opacity: 1;
+	}
+
+	80%{
+		transform: translate(-60%) rotate(-45deg);
+	}
+
+	100%{
+		transform: translate(0)  rotate(0deg);
+	}
+}
