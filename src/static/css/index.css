@@ -18,16 +18,6 @@
   color: #ecf0f1;
 }
 
-/*To compensate image height*/
-/*@media (max-width: 1045px){
-	.my-jumbotron{
-		font-size: .8rem;
-		height: 40vh;
-		padding: 2em 0;
-	}
-}*/
-
-
 
 @media (max-width: 768px){
 	.my-jumbotron{
@@ -59,42 +49,59 @@
 	max-width: 60%
 }
 
-
-
-.heading-wrapper p{
-	margin: 0;
-	line-height: 1.1;
+@media(max-width: 768px){
+	.heading-wrapper{
+		max-width: 90%
+	}
 }
 
-.my-jumbotron .heading{
-	font-size: 1.8em;
-	font-family: Exo;
-	
-	
-	margin: 20px 0 30px;
+/*.lead*/
+.my-jumbotron .lead{
+	font-size: 20px;
+	margin: 10px 0 21px;
 	transition: opacity 2s ease-out, letter-spacing 2s ease-out;
 	letter-spacing: 2px;
 	opacity: 1;
-
 }
 
+@media(min-width: 992px){
+	.my-jumbotron .lead{
+		font-size: 30px;
+	}
+}
 
+@media(min-width: 768px){
+	.my-jumbotron .lead{
+		font-size: 24px;
+	}
+}
+
+/*side-heading*/
 .my-jumbotron .side-heading{
-	font-size: 1.5em;
+	color:#dddddd;
+	font-size: 16px;
 	text-transform: capitalize;
-	font-family: "Ubuntu Condensed", arial, sans-serif;
+	font-family: "Ubuntu Condensed", sans-serif;
 }
 
+@media(min-width: 768px){
+	.my-jumbotron .side-heading{
+		font-size: 25px;
+	}
+}
+
+/*github  button*/
 .my-jumbotron .description-text a{
-	font-size: 1em;
+	font-size: 18px;
 	color:#ffffff;
-	pointer: cursor;
-	padding: .5em 1em;
+	padding: .4em 3em;
 	border-radius: .5em;
 	border-color: #ffffff;
 	border-width: 2px;
 	border-style: solid;
 	display: inline-block;
+
+	letter-spacing: 2px;
 }
 
 .my-jumbotron .description-text a:hover{
@@ -111,10 +118,13 @@
 			Blocks
   ---------------*/
 
+ .block{
+ 	padding: 16px 0;
+ }
+
 /* heading */
 .block .heading{
 	text-align:center;
-	font-size: 2em;
 	text-transform: uppercase;
 }
 
@@ -132,17 +142,12 @@
 
 
 
-.block .items-block .item p{
-	margin: 0;
-	font-size: .8em;
-}
-
 .block .items-block .item .skill-icon{
 	max-width: 100%;
  	height: auto;
 
- 	
  	visibility: hidden;
+ 	margin-bottom: 10px;
 }
 
 .block .items-block .item .skill-icon.ani{
@@ -160,9 +165,6 @@
 		margin: 0 .2em 0;
 	}
 
-		.block .items-block .item p{
-		font-size: .6em;
-	}
 }
 
 
@@ -177,7 +179,12 @@
 	justify-content:center;
 	align-items:center;
 	background-color: rgba(239,239,239,1);
-	height: 30vh;
+}
+
+@media(min-width: 1001px){
+	.block.block-1{
+		height: 30vh;
+	}
 }
 
 .block.block-1 .heading{
@@ -193,9 +200,14 @@
 	display:flex;
 	justify-content:center;
 	align-items:center;
-	height: 30vh;
 	color:#ffffff;
 	background-color: rgba(89,89,92,1);
+}
+
+@media(min-width: 1001px){
+	.block.block-2{
+		height: 30vh;
+	}
 }
 
 
@@ -218,7 +230,6 @@
 .block .project-wrapper{
 	margin: 0 auto;
 	width: 65%;
-	padding: 1.5em 0;
 }
 
 @media(max-width: 768px){
@@ -231,8 +242,6 @@
 
 .project-wrapper .heading{
 	text-align: center;
-	font-size: 1.7em;
-	margin: .5em 0 ;
 	color:#ffffff;
 }
 
@@ -241,32 +250,32 @@
 	justify-content: center;
 	align-items: stretch;
 	
+	margin-bottom: 21px;
 }
 
-.block .project .project-description{
-		margin: 0 0 .8em;
-		font-size: 1.3em;
-	}
-
-@media(max-width: 768px){
-	.block .project .project-description{
-		margin: 0;
-		font-size: .8em;
+@media(max-width: 500px){
+	.block .project .feature-wrapper{
+		flex-direction: column;
+		height: 300px;
 	}
 }
 
 
 .block .project .feature-wrapper .project-icon{
-	flex: 0 1 30%;
-	
+	flex: 1 1 50%;
 	background-size: contain;
 	background-position: center center;
 	background-repeat: no-repeat;
 }
 
 .block .project .feature-wrapper .project-content{
-	flex: 1 0 0;
-	margin-left: 1em;
+	flex: 1 1 50%;
+}
+
+@media (min-width: 768px){
+	.block .project .feature-wrapper .project-content{
+		margin-left: 1em;
+	}
 }
 
 .block .project .view-wrapper{
@@ -274,9 +283,9 @@
 }
 
 .block .project .view-wrapper > a{
-	font-size: .7em;
 	background-color: dodgerblue;
 	color: white;
+	font-size: 18px;
 	border-radius: 2px;
 	padding: .4em 2em;
 	border: none;
@@ -328,18 +337,6 @@
 }
 
 
-@media(max-width: 768px){
-		.project .project-content{
-		font-size: .7em;
-	}
-		.block .heading{
-			font-size: 1em;
-		}
-
-		.project .heading{
-			font-size: 1em;
-		}
-}
 
 /*-----------------
 	General Settings

@@ -1,19 +1,96 @@
+*{
+	font-family: sans-serif;
+}
+
 html{
 	font-size: 100%;
-	font-family: sans-serif;
+	/*font-family: sans-serif;*/
 }
 
 body{
 	min-height: 100vh;
 	font-size: 100%;
-	color: #2d3e50;
+	/*color: #2d3e50;*/
+	margin: 0;
 }
 
-.navbar{
-	border-radius: 0
+p, li{
+	font-size: 16px;
+}
+
+p.lead{
+	font-size: 21px;
+	margin-bottom: 10px;
+}
+
+@media(min-width: 768px){
+	p.lead{
+		margin: 0 auto 10px;
+	}
 }
 
 
+
+h2{
+	font-size: 40px;
+	margin: 21px 0 10.5px;
+	font-weight: 400;
+}
+
+@media(max-width: 768px){
+	h2{
+		font-size: 30px;
+	}
+}
+
+
+
+/*------------------------
+	Custom Navbar
+  -------------------------*/
+  nav{
+  	min-height: 60px;
+  	background-color: #2c3e50;
+  	color: white;
+  }
+
+nav a{
+	color: white;
+	text-decoration: none;
+}
+
+nav a:hover{
+	color: deepskyblue;
+}
+
+
+nav .positioner{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav .logo{
+
+}
+
+.menu li{
+	float:left;
+	list-style: none;
+	text-align: center;
+	margin-left: 1em;
+}
+
+@media(min-width: 600px){
+	.menu li{
+		margin-left: 2em;
+	}
+}
+
+
+
+
+/*------------------------End of Navbar*/
 
 .positioner{
 	max-width: 80vw;
@@ -26,14 +103,13 @@ body{
 	}
 }
 
-.navbar.navbar-default{
+/* .navbar.navbar-default{
 	margin: 0;
 	border-top: 0;
 	border-left: 0;
 	border-right: 0;
-
-	font-size: 1.4em;
-}
+	font-size: 16px;
+} */
 
 
 
