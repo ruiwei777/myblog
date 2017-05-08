@@ -14,6 +14,7 @@ See Demo on http://www.liangruiwei.com.
 1. Routine Django set up, including activate virtualenv, install Python dependencies from `requirements.txt`, collect static files, make migrations, etc. If you don't want to modify React.js' code, that's it! otherwise:
 
 2. Under the root folder (containing package.json), run `npm install`, then run
+
     `npm run dev` (dev mode, watching files) or
   
     `npm run prod` (production mode, watching files) or
