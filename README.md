@@ -2,35 +2,36 @@
 This is a responsive blog implemeneted as a Single Page Application with Django, React and Webpack 2.
 See Demo on http://www.liangruiwei.com.
 
-# How to Run
-1. Creating a Python virtualenv, activate, then `pip install -r requirements.txt`;
-2. Under the root folder (containing package.json), run `npm install`
-3. Under the root folder (containing package.json), run 
+## Key Features
+1. The [Blog](http://www.liangruiwei.com/posts) uses Django-Rest-Framework to service RESTful service and React-Redux to implement the SPA blog
 
+2. Uses vanilla CSS to layout; Responsive design
+
+3. Uses React-Codemirror to support rich format text content.
+
+
+# How to Run
+1. Routine Django set up, including activate virtualenv, install Python dependencies from `requirements.txt`, collect static files, make migrations, etc. If you don't want to modify React.js' code, that's it! otherwise:
+
+2. Under the root folder (containing package.json), run `npm install`, then run
     `npm run dev` (dev mode, watching files) or
   
     `npm run prod` (production mode, watching files) or
 
     `npm run compile` (production mode, compile once)
 
-You can find the actual command (dev, prod, compile) in `package.json`.
+    to re-compile javaScript files. You can find the actual command (dev, prod, compile) in `package.json`.
 
 # Notes
-1. Under dev mode, all the `process.env.NODE_ENV` inside compiled js files will be evaluated to `true`, and the `debug` variable in `webpack.config.js` is true.
+1. Under Webpack 2 `dev` mode, all the `process.env.NODE_ENV` inside compiled js files, and the `debug` variable in `webpack.config.js` will be evaluated to `true`; vice versa under production mode.
+    Under dev mode, the REST base URL is "http://localhost:8000/", while under production mode, it is "http://www.liangruiwei.com/". This is defined in `src/js/constants.js`.
 
-2. Vice versa under production mode.
+2. The `webpack.config.backup.js` is a backup config for webpack 1, and the using `webpack.config.js` files is for webpack 2.
 
-3. Under dev mode, the REST base URL is "http://localhost:8000/", while under production mode, it is "http://www.liangruiwei.com/". This is defined in `src/js/constants.js`.
+3. Make sure you have the latest LTS Node installed (6.9.5 LTS)
 
-4. The `webpack.config.backup.js` is a backup config for webpack 1, and the using webpack.config.js files is for webpack 2.
+4. You need to include a `passwords.py` under `src/trydjango19/settings/`, and assign values to `MY_SECRET_KEY`([Django Secret Key Generator](http://www.miniwebtool.com/django-secret-key-generator/)), `DB_PASSWORD`, `MY_TWILIO_ACCOUNT_SID` and `MY_TWILIO_AUTH_TOKEN` inside it (some dummy values would suffice). Check `src/trydjango19/settings/base.py` for more details. 
 
-5. Make sure you have the latest LTS Node installed (6.9.5 LTS), otherwise it might not support some webpack 2 loaders such as node-sass and sass-loader.
-
-6. You might need to include a `passwords.py` and `production_settings.py` in `src/trydjango19/settings`. Check `src/trydjango19/settings/base.py` for more details
-
-
-# Code
-Backend and frontend communicate through RESTful apis and thus loosely coupled. To check React's code, go to "src/js/".
 
 # Tech Stack
 ## Backend
