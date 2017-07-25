@@ -4,18 +4,32 @@
 -----------------*/
 .my-jumbotron{
 	font-size: .9rem;
-	overflow: hidden;
 	position:relative;
-	/*color: #ffffff;*/
-
-	/*height: 60vh;*/
 	padding: 5em;
 	display:flex;
 	align-items:center;
 	justify-content:center;
 
-	background-color: #217dbb;
-  color: #ecf0f1;
+  color: white;
+  height: 50vh;
+
+  background-image: url("../images/index/earth_horizon-wide.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.my-jumbotron::after{
+	content:"";
+	background-color:rgba(0,0,0,.6);
+
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+
+
 }
 
 
@@ -23,30 +37,22 @@
 	.my-jumbotron{
 		font-size: .7rem;
 		height: auto;
-		padding: 2em 0;
+		padding: 70px 0 1em;
 	}
 }
 
 @media (max-width: 450px){
 	.my-jumbotron{
 		font-size: .4rem;
-		height: auto;
-		padding: 2em 0;
 	}
 }
 
-.jumbotron-bg{
-	z-index: -1;
-	position: absolute;
-	width: auto;
-	height: 100%;
-	top: 0;
-	background: #dddddd;
-}
 
 .heading-wrapper{
 	text-align: center;
-	max-width: 60%
+	max-width: 60%;
+	position:relative;
+	z-index: 101;
 }
 
 @media(max-width: 768px){
@@ -55,59 +61,47 @@
 	}
 }
 
-/*.lead*/
-.my-jumbotron .lead{
-	font-size: 20px;
-	margin: 10px 0 21px;
-	transition: opacity 2s ease-out, letter-spacing 2s ease-out;
-	letter-spacing: 2px;
-	opacity: 1;
-}
-
-@media(min-width: 992px){
-	.my-jumbotron .lead{
-		font-size: 30px;
-	}
-}
-
-@media(min-width: 768px){
-	.my-jumbotron .lead{
-		font-size: 24px;
-	}
-}
 
 /*side-heading*/
 .my-jumbotron .side-heading{
-	color:#dddddd;
-	font-size: 16px;
-	text-transform: capitalize;
-	font-family: "Ubuntu Condensed", sans-serif;
+	margin: 0;
+	font-size: 45px;
+	text-transform: uppercase;
 }
 
-@media(min-width: 768px){
-	.my-jumbotron .side-heading{
-		font-size: 25px;
-	}
+
+/*.lead*/
+.my-jumbotron .lead{
+	font-family: Cousine, sans-serif;
+	font-size: 17px;
+	margin: 2em 0;
+	line-height: 2;
+	transition: opacity 2s ease-out, letter-spacing 2s ease-out;
+	opacity: 1;
 }
+
 
 /*github  button*/
 .my-jumbotron .description-text a{
-	font-size: 18px;
-	color:#ffffff;
-	padding: .4em 3em;
-	border-radius: .5em;
-	border-color: #ffffff;
+	font-size: .8em;
+	color:white;
+	padding: .7em 2em;
+	border-radius: .2em;
+	border-color: dodgerblue;
+	background-color: dodgerblue;
 	border-width: 2px;
 	border-style: solid;
 	display: inline-block;
+	text-decoration: none;
 
 	letter-spacing: 2px;
+	text-transform: uppercase;
 }
 
 .my-jumbotron .description-text a:hover{
 	color:black;
-	background-color: deepskyblue;
-	border-color: deepskyblue;
+	background-color: white;
+	border-color: white;
 }
 
 
@@ -119,110 +113,357 @@
   ---------------*/
 
  .block{
- 	padding: 16px 0;
+ 	padding: 3.75em 0;
+ 	/*min-height: 80vh;*/
+ 	background-color: rgba(247, 247, 247, 1);
+ 	text-align: center;
+ }
+
+ @media(max-width: 768px){
+ 	.block{
+ 		padding: .5em 0;
+ 	}
+ }
+
+ .block > .block-wrapper {
+ 	width: 80%;
+ 	margin: 0 auto;
+ }
+
+ @media (max-width: 768px){
+ 	.block > .block-wrapper {
+ 		width: 98%;
+ 	}
  }
 
 /* heading */
 .block .heading{
-	text-align:center;
-	text-transform: uppercase;
+	color: #333;
+  margin: 0;
+  padding-bottom: 10px;
+  /*position: relative;*/
+  text-transform: uppercase;
+  /*font-family: "Montserrat",sans-serif;*/
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.1;
 }
 
-.block .items-block{
-	display:flex;
-	justify-content:center;
-	align-items:center;
+.block .content{
+	margin: 0 0;
+  line-height: 2;
+  color: #93989b;
+  font-family: "Cousine",sans-serif;
+  font-size: 13px;
+
 }
 
-/*Skill Icons Wrapper*/
-.block .items-block .item{
-	margin: 0 1em 0;
+.block .content .heading-separator{
+	background: #dd3333 none repeat scroll 0 0;
+  display: block;
+  height: 2px;
+  margin: 15px auto;
+  position: relative;
+  width: 70px;
+}
+
+
+/*----------------
+		Block 1: Skill thumbnails
+----------------*/
+.thumbnails .thumbnail{
+	background:white;
+	padding: 1em;
+	transition: all .2s ease-in-out;
+}
+
+@media(min-width: 1200px){
+	.thumbnails{
+		width: 80%;
+		margin: 0 auto;
+	}
+}
+
+
+/*---Grid begin---*/
+.thumbnails{
+	display:grid;
+	grid-template-rows:    1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:"python net javascript"
+											"angular react git";
+	grid-gap: 1em 1em;    /*row column*/
+}
+
+@media (max-width: 1000px){
+	.thumbnails{
+		grid-template-rows:    repeat(3, auto);
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:"python net"
+												"javascript angular"
+												"react git";
+	}
+}
+
+@media (max-width: 768px){
+	.thumbnails{
+		grid-template-rows:    repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-areas:"python net"
+												"javascript angular"
+												"react git"
+												 ;
+		grid-gap: .5em .5em;
+
+	}
+
+	.thumbnails .thumbnail{
+		padding: 0;
+		border-bottom: 2px solid #dd3333;
+	}
+}
+
+.thumbnail-python{
+	grid-area: python;
+}
+
+.thumbnail-net{
+	grid-area: net;
+}
+
+.thumbnail-javascript{
+	grid-area: javascript;
+}
+
+.thumbnail-angular{
+	grid-area: angular;
+}
+
+.thumbnail-react{
+	grid-area: react;
+}
+
+.thumbnail-git{
+	grid-area: git;
+}
+
+
+/*---Grid end---*/
+
+
+@media(min-width:768px){
+	.thumbnails .thumbnail:hover{
+		box-shadow: 0 0 10px 10px #dddddd;
+	}
+}
+
+
+.thumbnails .content{
+}
+
+.thumbnails .icon{
+  color: #dd3333;
+  font-size: 40px;
+  transition: all 0.2s ease 0s;
+}
+
+.thumbnails .title{
+	color: #333;
+  font-size: 16px;
+  margin: 0;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  font-family: "Montserrat",sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.thumbnails .text, .thumbnails .text a{
+  margin-bottom: 0;
+  line-height: 2;
+  color: #93989b;
+  font-family: "Cousine",sans-serif;
+  font-size: 13px;
+}
+
+/*---------
+		Block Separator
+	---------*/
+.block-separator{
+	color: white;
+	margin: 0px 0px 0px 0px;
+	padding: 30px 0px 30px 0px;
+	background-color: rgba(221, 51, 51, 1);
+}
+
+
+
+/*----------------
+		Block 2: Projects
+----------------*/
+.block#projects{
+	background-color: white;
+}
+
+.button-wrapper{
 	text-align: center;
 }
 
+.button-wrapper ul{
+	display: inline-block;
+	padding: 0;
+}
+.button-wrapper ul:after{
+	content:'';
+	display: block;
+	clear: both;
+}
+.button-wrapper ul li{
+	display: block;
+	float: left;
+	margin: 0 7px;
+}
+
+#projects .button-wrapper ul li a{
+	display: inline-block;
+	text-decoration: none;
+	border-radius: 0;
+  border: 1px solid #efefef;
+  color: #777;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  padding: 6px 21px;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  background: transparent;
+  font-family: "Cousine",sans-serif;
+  line-height: 1.42857;
+
+}
+
+#projects .button-wrapper ul li a.active{
+	color: #dd3333;
+	border-color: #dd3333;
+}
 
 
-.block .items-block .item .skill-icon{
+#projects .project-gallery{
+	margin: 0 auto;
+	overflow: hidden;
+
+}
+
+#projects .project-gallery > .project{
+	max-width: 600px;
+	position: relative;
+	margin: 0 auto;
+	display: none;
+}
+
+#projects .project-gallery > .project.active{
+	display: block;
+}
+
+#projects .project-gallery > .project.project-in{
+	-webkit-animation: project-in .5s ease-in-out;
+	-o-animation: project-in .5s ease-in-out;
+	animation: project-in .5s ease-in-out;
+}
+
+#projects .project-gallery > .project.project-out{
+	-webkit-animation: project-out .5s ease-in-out;
+	-o-animation: project-out .5s ease-in-out;
+	animation: project-out .5s ease-in-out;
+}
+
+#projects .project-gallery > .project > img{
 	max-width: 100%;
- 	height: auto;
-
- 	visibility: hidden;
- 	margin-bottom: 10px;
+	height: auto;
+	vertical-align: middle;
+	display: block;
+	position: relative;
+	margin: 0 0;
 }
 
-.block .items-block .item .skill-icon.ani{
-	visibility: visible;
- 	animation: roll-in 800ms ease-out;
+#projects .project-gallery > .project > .project-hover{
+	position: absolute;
+	top:0;
+	left:0;
+	bottom: 0;
+	right: 0;
+
+	background-color:#00bcd4;
+	color: white;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	opacity: 0;
+	transition: all .2s ease-in-out;
+	
 }
 
-.block .items-block .item .skill-icon.ani-reverse{
-	visibility: visible;
- 	animation: roll-in-reverse 800ms ease-out;
+
+
+#projects .project-gallery > .project:hover > .project-hover, #projects .project-gallery > .project:focus > .project-hover{
+	opacity: 1;
 }
 
-@media(max-width: 768px){
-	.block .items-block .item{
-		margin: 0 .2em 0;
+
+.project-hover .project-hover-wrapper{
+	max-width: 70%;
+}
+
+#projects .project-gallery{
+	line-height: 1.5;
+}
+
+#projects .project-gallery p{
+	text-align: left;
+	margin: 0 0 1em;
+}
+
+#projects .project-gallery a{
+	text-decoration: none;
+	color: white;
+}
+
+@keyframes project-in{
+	0%{
+		transform:translateX(100%);
+		opacity: 0;
 	}
 
-}
+	50%{
+		opacity: 1;
+	}
 
-
-
-
-
-/*---------
-		Block 1
-	---------*/
-.block.block-1{
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	background-color: rgba(239,239,239,1);
-}
-
-@media(min-width: 1001px){
-	.block.block-1{
-		height: 30vh;
+	100%{
+		transform:translateX(0);
 	}
 }
 
-.block.block-1 .heading{
-	color: #7a7c7d;
-}
+@keyframes project-out{
+	0%{
+		transform:translateX(0);
+	}
 
+	50%{
+		opacity: 1;
+	}
 
-
-/*-----------
-		Block 2
-	-----------*/
-.block.block-2{
-	display:flex;
-	justify-content:center;
-	align-items:center;
-	color:#ffffff;
-	background-color: rgba(89,89,92,1);
-}
-
-@media(min-width: 1001px){
-	.block.block-2{
-		height: 30vh;
+	100%{
+		transform:translateX(-100%);
+		opacity: 0;
 	}
 }
 
 
-.block.block-2 .heading{
-	color:#ffffff;
-}
-
-
-/*Block 1 and 2 Height*/
-@media(max-width: 768px){
-	.block.block-1, .block.block-2{
-		height: auto;
-		padding: 1em .5em;
-	}
-}
 
 /*------------------------
 	General Project Settings

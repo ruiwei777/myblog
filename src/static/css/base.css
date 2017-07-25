@@ -1,5 +1,6 @@
 *{
-	font-family: sans-serif;
+
+	font-family: 'Montserrat',sans-serif;
 }
 
 html{
@@ -48,11 +49,54 @@ h2{
 /*------------------------
 	Custom Navbar
   -------------------------*/
-  nav{
-  	min-height: 60px;
-  	background-color: #2c3e50;
-  	color: white;
-  }
+nav{
+	min-height: 60px;
+	background-color: rgba(0,0,0,0);
+	color: white;
+
+	position:absolute;
+	left: 0;
+	right:0;
+	top:0;
+	z-index: 102;
+	transition: all 0.2s ease-in-out;
+	color: #f3f3f3;
+	padding: 1em 0;
+}
+
+nav.nav-fixed{
+	position: fixed;
+	background: white;
+	color: #282828;
+	border-bottom: 1px solid #dddddd;
+	padding: .1em 0 .1em;
+}
+
+nav.nav-fixed ul li a{
+	color: #282828;
+}
+
+nav.nav-fixed ul li a:hover{
+	color: dodgerblue;
+}
+
+nav ul li{
+	float:left;
+	list-style: none;
+	text-align: center;
+	margin:0;
+	padding: 0;
+}
+
+nav ul li a{
+	color: #f3f3f3;
+	font-size: 1em;
+	padding: 12px;
+	line-height: 20px;
+	letter-spacing: 0;
+	text-transform: uppercase;
+
+}
 
 nav a{
 	color: white;
@@ -70,22 +114,14 @@ nav .positioner{
 	align-items: center;
 }
 
-nav .logo{
-
+nav .logo > img{
+	width: 50px;
+	max-width: 100%;
+	height: auto;
 }
 
-.menu li{
-	float:left;
-	list-style: none;
-	text-align: center;
-	margin-left: 1em;
-}
 
-@media(min-width: 600px){
-	.menu li{
-		margin-left: 2em;
-	}
-}
+
 
 
 
@@ -102,16 +138,6 @@ nav .logo{
 		max-width: 95vw;
 	}
 }
-
-/* .navbar.navbar-default{
-	margin: 0;
-	border-top: 0;
-	border-left: 0;
-	border-right: 0;
-	font-size: 16px;
-} */
-
-
 
 footer > p {
 	text-align: right;
