@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --progress --colors --watch --env",
-    "pro": "webpack --progress --colors --watch -p --env.production",
+    "prod": "webpack --progress --colors --watch -p --env.production",
     "compile": "webpack --progress --colors -p --env.production"
   },
   "repository": {

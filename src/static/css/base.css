@@ -5,43 +5,12 @@
 
 html{
 	font-size: 100%;
-	/*font-family: sans-serif;*/
 }
 
 body{
 	min-height: 100vh;
 	font-size: 100%;
-	/*color: #2d3e50;*/
 	margin: 0;
-}
-
-p, li{
-	font-size: 16px;
-}
-
-p.lead{
-	font-size: 21px;
-	margin-bottom: 10px;
-}
-
-@media(min-width: 768px){
-	p.lead{
-		margin: 0 auto 10px;
-	}
-}
-
-
-
-h2{
-	font-size: 40px;
-	margin: 21px 0 10.5px;
-	font-weight: 400;
-}
-
-@media(max-width: 768px){
-	h2{
-		font-size: 30px;
-	}
 }
 
 
@@ -50,9 +19,9 @@ h2{
 	Custom Navbar
   -------------------------*/
 nav{
-	min-height: 60px;
 	background-color: rgba(0,0,0,0);
 	color: white;
+	font-size: 1rem;
 
 	position:absolute;
 	left: 0;
@@ -61,8 +30,17 @@ nav{
 	z-index: 102;
 	transition: all 0.2s ease-in-out;
 	color: #f3f3f3;
-	padding: 1em 0;
+	padding: 0;
 }
+
+@media (max-width: 768px){
+	nav{
+		font-size: .7rem;
+		height: auto;
+		padding: 1em 0 1em;
+	}
+}
+
 
 nav.nav-fixed{
 	position: fixed;
@@ -91,8 +69,8 @@ nav ul li{
 nav ul li a{
 	color: #f3f3f3;
 	font-size: 1em;
-	padding: 12px;
-	line-height: 20px;
+	padding: .5em 0 .5em 1em;
+	line-height: 1.5em;
 	letter-spacing: 0;
 	text-transform: uppercase;
 

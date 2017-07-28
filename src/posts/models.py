@@ -1,8 +1,10 @@
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
+from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save
+from django.db.models.signals import post_save
 
 from django.utils import timezone
 from django.utils.safestring import mark_safe
@@ -11,6 +13,8 @@ from django.utils.text import slugify
 from markdown_deux import markdown
 
 from comments.models import Comment
+import os
+import logging
 
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
@@ -24,7 +28,10 @@ STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 
 def upload_location(instance, filename):
-	return "%s/%s" % (instance.id, filename)
+	id = "temp"
+	if instance.id:
+		id = instance.id
+	return "%s/%s" % (id, filename)
 
 class PostManager(models.Manager):
 	def active(self, *args, **kwargs):
@@ -97,13 +104,38 @@ def create_slug(instance, new_slug=None):
 def pre_save_post_receiver(sender, instance, raw, **kwargs):
 	slug = create_slug(instance)
 	instance.slug = slug
-	# print("raw is", raw)
-	# print("The sender class is", sender)
-	# for key, value in kwargs.items():
-	# 	print("Key",key, "value", value)
+
+def post_save_update_image_url(sender, instance, created, **kwargs):
+	""" 
+			Move the image from "MEDIA_CDN/temp/" to "MEDIA_CDN/posts/instance.id/".
+			Make sure to check the "created" flag to avoid infinite loop!
+	"""
+
+	if not instance.image or not created:
+		return
+
+	ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+	MEDIA_CDN = os.path.join(ROOT, "media_cdn")
+
+	new_img_relative_path = "posts/" + instance.image.name.replace("temp", str(instance.id))
+
+	img_abs_path = os.path.join(MEDIA_CDN, instance.image.name)
+	new_img_abs_path = os.path.join(MEDIA_CDN, new_img_relative_path)
+	new_img_dir = os.path.join(MEDIA_CDN, "posts/" + str(instance.id))
+
+	# os.rename requires the target folder to exist
+	if not os.path.exists(new_img_dir):
+		os.makedirs(new_img_dir)
+
+	os.rename(img_abs_path, new_img_abs_path)
+	instance.image = new_img_relative_path
+	instance.save()
 
 
 
 
 
+
+post_save.connect(post_save_update_image_url, sender=Post)
 pre_save.connect(pre_save_post_receiver, sender=Post)

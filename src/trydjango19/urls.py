@@ -26,6 +26,7 @@ from accounts.views import(
         GroupViewSet
     )
 
+from rest_framework.authtoken import views as authtoken_views
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
 
@@ -55,6 +56,11 @@ urlpatterns = [
     url(r'^sms/', include('sms.urls', namespace='sms')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', views.index, name="index"), 
+]
+
+# DRF TokenAuthentication setting
+urlpatterns += [
+    url(r'^api-token-auth/', authtoken_views.obtain_auth_token)
 ]
 
 

@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     #myapp
     'posts',
     'comments',
+    'accounts',
     #third party
     'pagedown',
     'markdown_deux',
     'crispy_forms',
     'rest_framework',
     'compressor',
+    'rest_framework.authtoken',
     
 ]
 
@@ -163,6 +165,14 @@ REST_FRAMEWORK = {
     #     # 'rest_framework.permissions.IsAdminUser',
 
     # ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #         'rest_framework.authentication.BasicAuthentication',
+    #         'rest_framework.authentication.SessionAuthentication',
+    #     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.BasicAuthentication',
+            'rest_framework.authentication.TokenAuthentication',
+        ),
     'PAGE_SIZE': 30,
 }
 

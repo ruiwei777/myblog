@@ -3,18 +3,6 @@ import { baseURL } from "../constants";
 import { reset } from "redux-form";
 import request from "superagent";
 
-export function fetchPosts() {
-  return function(dispatch) {
-    axios.get(baseURL + "api/posts")
-      .then((response) => {
-        dispatch({type: "FETCH_POSTS_FULFILLED", payload: response.data})
-        // console.log(response)
-      })
-      .catch((err) => {
-        dispatch({type: "FETCH_POSTS_REJECTED", payload: err})
-      })
-  }
-}
 
 export function fetchAPost(id) {
   id = "" + id
@@ -30,33 +18,84 @@ export function fetchAPost(id) {
   }
 }
 
+export function fetchPosts() {
+  return function(dispatch) {
+    axios.get(baseURL + "api/posts")
+      .then((response) => {
+        dispatch({type: "FETCH_POSTS_FULFILLED", payload: response.data})
+        // console.log(response)
+      })
+      .catch((err) => {
+        dispatch({type: "FETCH_POSTS_REJECTED", payload: err})
+      })
+  }
+}
+
+
+export function fetchUser(username, password){
+  return function(dispatch){
+    dispatch({
+      type:'FETCH_USER', 
+    });
+    request.post(baseURL + "api-token-auth/")
+    .send({username, password})
+    .end((err, res) => {
+      if(err || res.statusCode !== 200) {
+        handleSAError(err, res);
+        dispatch({
+          type: 'FETCH_USER_REJECTED',
+        });
+      } else if(res.statusCode === 200){
+        // console.log(res.body.token);
+        dispatch({
+          type:'FETCH_USER_FULFILLED', 
+          payload: {
+            token: res.body.token,
+          }
+        });
+      }
+        
+      
+    })
+  }
+}
+
+
+
+// publish, title, content are required
+// image is optional
 export function addPost(formData) {
   let {blocks, image, publish, title} = formData
+
+  // for now only using one block
   let content = blocks[0].text
+  
   let data = {
         title,
         content,
         publish,
         image
       }
-  console.log(data)
 
-  
-
-  // console.log(config)
 
   let fd = new FormData()
-  fd.append("title", data.title)
-  fd.append("content", data.content)
-  fd.append("publish", data.publish)
-  fd.append("image", data.image)
+  if(title) fd.append("title", data.title)
+  if(content) fd.append("content", data.content)
+  if(publish) fd.append("publish", data.publish)
+  if(image) fd.append("image", data.image)
+
+  
+  // console.log("[action/index.js] form data: ")
+  for (var item of fd){
+    console.log(item)
+  }
 
   return function(dispatch) {
     request.post(baseURL + "api/posts/")
     .send(fd)
     .end((err, res) => {
       if(err){
-        console.log("Post data failed:", err)
+        handleSAError(err, res)
       } else {
         console.log("Posing a post done!", res)
         dispatch({type:"ADD_POSTS_FULFILLED", payload:res.statusCode})
@@ -68,17 +107,18 @@ export function addPost(formData) {
       
     })
 
-
-    /*axios.post(baseURL+"api/posts/", data)
-      .then((response) => {
-        console.log(response)
-        dispatch({type: "ADD_POSTS_FULFILLED", payload: response.status})
-        fetchPost()
-        // console.log(response)
-      })
-      .catch((err) => {
-        console.log(err)
-        dispatch({type: "ADD_POSTS_REJECTED", payload: err})
-      })*/
   }
+
+  
+}
+
+
+
+function handleSAError(err, res){
+    console.log(err)
+    if(res.type === "application/json"){
+      console.log(JSON.parse(res.text))
+    } else {
+      console.log(res)
+    }
 }

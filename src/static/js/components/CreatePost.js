@@ -26,8 +26,7 @@ export default class CreatePost extends React.Component{
               text:"",
               language:"markdown"
             }]
-          }        
-          }
+          }}
            />
           
           

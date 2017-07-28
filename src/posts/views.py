@@ -24,6 +24,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+import logging
+
 # Create your views here.
 
 def home(request):
@@ -174,15 +176,20 @@ def index(request):
     return render(request, "index.html", context)
 
 
+
 class PostViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
+    This one is actually in use.
+    http://www.django-rest-framework.org/api-guide/viewsets/
     """
     queryset = Post.objects.all().order_by('-publish')
     serializer_class = PostSerializer
 
     def perform_create(self, serializer):
-        # serializer.save(owner=self.request.user)
+        # user cannot be an AnonymousUser obj otherwise it will raise an error
+        # serializer.save(user=self.request.user)
+        print(self.request.user)
         serializer.save()
 
 
@@ -198,9 +205,12 @@ class PostList(APIView):
       return Response(serializer.data)
 
   def post(self, request, format=None):
+      logging.basicConfig("example.log")
+      logging.debug("printing user..." + str(request.user))    
       serializer = PostSerializer(data=request.data)
       if serializer.is_valid():
           serializer.save()
+          logging.debug("here")
           return Response(serializer.data, status=status.HTTP_201_CREATED)
       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

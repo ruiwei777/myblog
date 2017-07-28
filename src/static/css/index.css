@@ -3,7 +3,7 @@
 	my-jumbotron
 -----------------*/
 .my-jumbotron{
-	font-size: .9rem;
+	font-size: 1rem;
 	position:relative;
 	padding: 5em;
 	display:flex;
@@ -28,22 +28,14 @@
 	width:100%;
 	top:0;
 	left:0;
-
-
 }
 
 
 @media (max-width: 768px){
 	.my-jumbotron{
-		font-size: .7rem;
+		font-size: .8rem;
 		height: auto;
 		padding: 70px 0 1em;
-	}
-}
-
-@media (max-width: 450px){
-	.my-jumbotron{
-		font-size: .4rem;
 	}
 }
 
@@ -65,7 +57,7 @@
 /*side-heading*/
 .my-jumbotron .side-heading{
 	margin: 0;
-	font-size: 45px;
+	font-size: 2em;
 	text-transform: uppercase;
 }
 
@@ -73,9 +65,9 @@
 /*.lead*/
 .my-jumbotron .lead{
 	font-family: Cousine, sans-serif;
-	font-size: 17px;
+	font-size: 1em;
 	margin: 2em 0;
-	line-height: 2;
+	line-height: 1.5;
 	transition: opacity 2s ease-out, letter-spacing 2s ease-out;
 	opacity: 1;
 }
@@ -207,11 +199,12 @@
 
 @media (max-width: 768px){
 	.thumbnails{
-		grid-template-rows:    repeat(3, 1fr);
+		grid-template-rows:    repeat(3, auto);
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-areas:"python net"
 												"javascript angular"
 												"react git"
+												
 												 ;
 		grid-gap: .5em .5em;
 
@@ -219,7 +212,6 @@
 
 	.thumbnails .thumbnail{
 		padding: 0;
-		border-bottom: 2px solid #dd3333;
 	}
 }
 
@@ -263,27 +255,33 @@
 
 .thumbnails .icon{
   color: #dd3333;
-  font-size: 40px;
+  font-size: 2.5em;
   transition: all 0.2s ease 0s;
 }
 
 .thumbnails .title{
 	color: #333;
-  font-size: 16px;
-  margin: 0;
-  padding-bottom: 20px;
+  font-size: 1em;
+  margin: .5em auto 1em;
+  padding: 0;
   text-transform: uppercase;
   font-family: "Montserrat",sans-serif;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .thumbnails .text, .thumbnails .text a{
-  margin-bottom: 0;
+  margin-bottom: 1em;
   line-height: 2;
   color: #93989b;
   font-family: "Cousine",sans-serif;
   font-size: 13px;
+}
+
+@media(max-width: 768px){
+	.thumbnails .text, .thumbnails .text a{
+		line-height: 1;
+	}
 }
 
 /*---------
@@ -465,169 +463,10 @@
 
 
 
-/*------------------------
-	General Project Settings
-	------------------------*/
-.block .project-wrapper{
-	margin: 0 auto;
-	width: 65%;
-}
-
-@media(max-width: 768px){
-	.block .project-wrapper{
-		margin: 0 auto;
-		width: 95%;
-		padding: .5em 0;
-	}
-}
-
-.project-wrapper .heading{
-	text-align: center;
-	color:#ffffff;
-}
-
-.block .project .feature-wrapper{
-	display:flex;
-	justify-content: center;
-	align-items: stretch;
-	
-	margin-bottom: 21px;
-}
-
-@media(max-width: 500px){
-	.block .project .feature-wrapper{
-		flex-direction: column;
-		height: 300px;
-	}
-}
-
-
-.block .project .feature-wrapper .project-icon{
-	flex: 1 1 50%;
-	background-size: contain;
-	background-position: center center;
-	background-repeat: no-repeat;
-}
-
-.block .project .feature-wrapper .project-content{
-	flex: 1 1 50%;
-}
-
-@media (min-width: 768px){
-	.block .project .feature-wrapper .project-content{
-		margin-left: 1em;
-	}
-}
-
-.block .project .view-wrapper{
-	text-align: center;
-}
-
-.block .project .view-wrapper > a{
-	background-color: dodgerblue;
-	color: white;
-	font-size: 18px;
-	border-radius: 2px;
-	padding: .4em 2em;
-	border: none;
-}
-
-.block .project .view-wrapper > a:hover{
-	background-color: deepskyblue;
-	color: #000000;
-}
-
-/*-------------
- 		Block 3 
- --------------*/
-
-.block.block-3{
-	background-color: rgba(239,239,239,1);
-}
-
-.block.block-3 .project-wrapper .heading{
-	color: #7a7c7d;
-}
-
-.block.block-3 .project .feature-wrapper .project-icon{
-	background-image: url("../images/safeatnight.png");
-}
-
-
-
-
-
-
-
-
-/*---------------
-		Block 4
----------------*/
-.block.block-4{
-	color:#ffffff;
-	background-color: rgba(89,89,92,1);
-}
-
-
-.block.block-4 .project-wrapper .heading{
-	color: #ffffff;
-}
-
-.block.block-4 .project .project-icon{
-	background-image: url("../images/react-redux.jpg");
-}
-
-
-
 /*-----------------
 	General Settings
  -----------------*/
-
-
-
  footer.positioner{
  	font-size: .8em;
  }
 
-
-/*-----------------
-		Animations
-	-----------------*/
-
-@Keyframes roll-in{
-	0%{
-		opacity: 0;
-		transform: translate(-200%) rotate(-540deg);
-	}
-
-	50%{
-		opacity: 1;
-	}
-
-	80%{
-		transform: translate(60%) rotate(45deg);
-	}
-
-	100%{
-		transform: translate(0)  rotate(0deg);
-	}
-}
-
-@Keyframes roll-in-reverse{
-	0%{
-		opacity: 0;
-		transform: translate(200%) rotate(540deg);
-	}
-
-	50%{
-		opacity: 1;
-	}
-
-	80%{
-		transform: translate(-60%) rotate(-45deg);
-	}
-
-	100%{
-		transform: translate(0)  rotate(0deg);
-	}
-}

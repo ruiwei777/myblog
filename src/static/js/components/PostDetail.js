@@ -37,9 +37,10 @@ class PostDetail extends React.Component{
           <div className="content">
             <p>By {post.username}</p>
             <Markdown source={post.content}></Markdown>
+            <Link to="/" className="btn btn-view">back</Link>
           </div>
           
-          <Link to="/" className="pure-button button-purple">back</Link>
+          
         </div>
       )
   }

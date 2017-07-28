@@ -7,6 +7,7 @@ import "codemirror/mode/markdown/markdown";
 
 
 
+
 export default class Snippet extends React.Component{
 
   handleChange(newText){
@@ -34,26 +35,29 @@ export default class Snippet extends React.Component{
     let { text, language } = this.props.blocks[i]
     
     return(
-        <div>
+        <div className="code-snippet">
 
-        <label>Content</label>
-        <Field 
-          name={language.input.name} 
-          component="select" 
-          onChange={::this.selectChange}
-          className="pure-button"
-          >
-          <option value="markdown">markdown</option>
-          <option value="javascript">javascript</option>
-        </Field>
-        {/*<button className="pure-button remove-code button-warning" onClick={::this.removeBlock}>Remove</button>*/}
-        
-          <CodeMirror 
-            options={{ mode:language.input.value, theme:"erlang-dark"}}
-            value={text.input.value}
-            onChange={::this.handleChange}
-            ref="codemirror"
-            ></CodeMirror>
+          <label>Body</label>
+          <div className="code-grid">
+            <Field 
+              name={language.input.name} 
+              component="select" 
+              onChange={::this.selectChange}
+              className="btn btn-grey code-type">
+              <option value="markdown">markdown</option>
+              <option value="javascript">javascript</option>
+            </Field>
+            {/*<button className="pure-button remove-code button-warning" onClick={::this.removeBlock}>Remove</button>*/}
+            
+            <CodeMirror
+              className="code-content" 
+              options={{ mode:language.input.value, theme:"mdn-like"}}
+              value={text.input.value}
+              onChange={::this.handleChange}
+              ref="codemirror">
+            </CodeMirror>
+          </div>
+          
         </div>
        
       )

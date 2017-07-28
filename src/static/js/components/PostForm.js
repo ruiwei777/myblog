@@ -7,6 +7,8 @@ import { Field, FieldArray, Fields, reduxForm } from 'redux-form';
 import CodeMirror from "react-codemirror";
 import "codemirror/mode/javascript/javascript";
 
+import "../../css/post_form.sass";
+
 
 class PostForm extends Component {
   constructor(){
@@ -37,14 +39,19 @@ class PostForm extends Component {
   }
 
   renderDropZone(props){
-    console.log(this.props)
+    // console.log(this.props)
     return (
-      <div>
-        <DropZone className="pure-u-1-3" onDrop={::this.onDrop(props.input)} multiple={false} >
-          <div className="drop-text">Drop the cover here, or click to to upload.</div>
+      <div className="dropzone-wrapper">
+        <DropZone className="drop-zone" onDrop={::this.onDrop(props.input)} multiple={false} >
+          <div className="drop-text">Drop the cover here, or click to to upload.
+          </div>
         </DropZone>
-        <img className="pure-u-1-3 pure-img-responsive" src={this.previewImage.preview} />
-        <div className="pure-u-1-3">
+        <div className="preview-wrapper">
+          <h3 className="preview-header">Image Preview</h3>
+          <img className="preview-img" src={this.previewImage.preview} />
+        </div>
+        
+        <div className="drop-message">
           {props.touched && props.error && <span className="error">{props.error}</span>}
         </div>
         
@@ -65,7 +72,7 @@ class PostForm extends Component {
           
 
           {fields.map((block, i) =>
-              <section key={i} className="post">
+              <section key={i} className="code-section">
                 {/*<header className="post-header">
                   <div className="post-meta">
                     <p className="post-author">Write your code here... </p>
@@ -83,7 +90,7 @@ class PostForm extends Component {
               
           )}
 
-          <button className="button-success pure-button " type="submit">Submit</button>
+          <button className="btn btn-success" type="submit">Submit</button>
         </div>
       )
   }
@@ -93,25 +100,17 @@ class PostForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form className="pure-form pure-form-stacked pure-g" onSubmit={handleSubmit}>
-        <div className="pure-u-1">
+      <form className="" onSubmit={handleSubmit}>
           <label>Title</label>
-          <Field name="title" className="pure-u-2-3" placeholder="title" component="input" />
-        </div>
+          <Field name="title" placeholder="title" component="input" />
         
-        <div className="pure-u-1">
           <label>Publish Date</label>
-          <Field name="publish" className="pure-u-2-3" placeholder="yyyy-mm-dd" component="input" />
-        </div>
+          <Field name="publish" placeholder="yyyy-mm-dd" component="input" />
         
-        <div className="pure-u-1">
           <label>Cover</label>
-          <Field className="pure-u-1" name="image" component={::this.renderDropZone} />
-        </div>
+          <Field name="image" component={::this.renderDropZone} />
 
-        <div className="pure-u-1">
           <FieldArray name="blocks" component={this.renderBlocks} />
-        </div>
         
         
       </form>

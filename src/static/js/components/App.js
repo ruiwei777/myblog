@@ -26,6 +26,7 @@ class App extends React.Component {
         <div>
           {this.props.children && React.cloneElement(this.props.children,{
                       posts: this.props.posts,
+                      userState: this.props.userState,
                       dispatch: this.props.dispatch
                     })}
         </div>
@@ -34,7 +35,10 @@ class App extends React.Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state.postReducer)
-    return {posts: state.postReducer.posts};
+  // console.log(state.userReducer)
+    return {
+      posts: state.postReducer.posts,
+      userState: state.userReducer
+    };
 }
 export default connect(mapStateToProps)(App);
