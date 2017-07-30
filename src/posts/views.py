@@ -194,7 +194,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 # Non viewset
-# This is not in use, just for reference purpose
+# Following two are not in use, just for reference purpose
 class PostList(APIView):
   """
   List all posts, or create a new post.

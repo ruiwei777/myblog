@@ -9,25 +9,34 @@ body{
   font-family: "Rubik", sans-serif;
 }
 
+@media(max-width: 768px){
+  body{
+    font-size: .8em;
+  }
+}
+
 p{
   font-weight: lighter;
 }
 
 .btn{
   font-family: inherit;
-  font-size: 100%;
-  padding: .5em 1em;
+  font-size: .8em;
+  padding: 6px 12px;
   color: #444;
-  color: rgba(0,0,0,.8);
+  color: #6dc9ff;
   border: 1px solid #999;
   border: transparent;
   background-color: #E6E6E6;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  line-height: 1.42857143;
 }
 
 .btn.btn-view{
-  background-color: rgb(66, 184, 221);
+  background-color: #29bbff;
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -66,7 +75,7 @@ p{
   background: white;
   text-align: center;
   border-radius: .5em;
-  padding: 0 1.5em 2em;
+  padding: 0
 }
 
 .login-window .button-wrapper{
@@ -85,8 +94,9 @@ p{
   text-align:center;
   background: none;
   font-size: .8em;
+  color: #333333;
   cursor: pointer;
-  border-radius: .5em;
+  border-radius: 0 .5em 0 0;
   float: right;
 }
 
@@ -100,41 +110,78 @@ p{
   margin: 0 0 1em;
 }
 
+.login-window .form-wrapper{
+  padding: 0 4em 2em;
+}
+
 .login-window input{
   width: 100%;
 }
 
-.login-form .btn{
-  font-size: .7em;
-  letter-spacing: 1.5px;
-}
-
 .login-form .btn-submit{
-  background-color: lawngreen;
-  color: honeydew;
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
 }
 
 .login-form .btn-clear{
   margin-left: 1em;
-  background-color: #777777;
-  color:#dddddd;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.login-window .login-error{
+  color: rgb(255, 51,51);
+  margin-bottom: 1em;
+  font-size: .8em;
+  display: none;
+}
+
+.login-window .login-error.active{
+  display: block;
 }
 
 
 /*-----------------
   Top Login Button nav
 -----------------*/
-.login-wrapper:after{
-  content:'';
-  display: table;
-  clear:both;
+
+.credential-wrapper{
+  font-size: .8em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.btn-login{
-  float:right;
+
+.credential-wrapper .btn{
+  float: right;
+  margin-left: 1em;
+  font-size: .8em;
+  flex: 0 0 auto;
+  cursor: pointer;
+}
+
+.credential-wrapper .btn-login{
   background-color: #29bbff;
   color: white;
-  font-size: .8em;
+}
+
+.credential-wrapper .btn-logout{
+  background-color: #29bbff;
+  color: white;
+}
+
+
+
+
+.credential-wrapper .usertext{
+  float:right;
+  color: #bbbbbb;
+  margin: 0;
+  height: 100%;
 }
 
 
@@ -154,23 +201,39 @@ p{
   ;
 }
 
+
+@media(max-width: 768px){
+  .grid-container{
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "article" "footer";
+  }
+}
+
+
 .grid-container > .header{
   grid-area: header;
   background-color: rgb(61,79,93);
-  position: fixed;
-  height: 100vh;
-  width: 20em;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: right;
+  text-align: center;
+  padding: 1em .5em;
+
 }
 
-.grid-container > .header > .header-wrapper{
-  margin: 0 2em 0;
+
+@media(min-width: 769px){
+  .grid-container > .header{
+    position: fixed;
+    height: 100vh;
+    width: 20em;
+    text-align: right;
+    padding: 0 1.5em 0 1em;
+  }
 }
+
 
 .grid-container > .header > .header-wrapper > *{
   margin : 0;
@@ -180,6 +243,7 @@ p{
   text-transform: uppercase;
   color: white;
   font-size: 2.5em;
+  font-style: italic;
 }
 
 .grid-container > .header .brand-tagline{
@@ -187,6 +251,15 @@ p{
   color: rgb(176, 202, 219);
   font-size: 1.2em;
 }
+
+@media(max-width: 768px){
+  .grid-container > .header .nav ul{
+    display: flex;
+    padding: 0;
+    justify-content: space-around;
+  }
+}
+
 
 .grid-container > .header .nav li{
   list-style: none;
@@ -208,12 +281,20 @@ p{
 
 .grid-container > .article{
   grid-area: article;
-  padding: 2em 3em;
+  margin: 2em auto 0;
+  max-width: 80%;
+}
+
+@media(max-width: 768px){
+  .grid-container > .article{
+    max-width: 95%;
+  }
 }
 
 .posts .content-subhead{
   text-transform: uppercase;
   color: #aaa;
+  max-width: 960px;
   border-bottom: 1px solid #eee;
   padding: 0.4em 0;
   font-size: 80%;

@@ -1,6 +1,6 @@
 
 export default function userReducer(state={
-    user: null,
+    username: null,
     token: null,
     fetching: false,
     fetched: false,
@@ -23,6 +23,14 @@ export default function userReducer(state={
 
       case "FETCH_USER_REJECTED": {
         return {...state, fetching: false, error: true}
+      }
+
+      case "LOGOUT_USER": {
+        return {...state, username: null, token: null, fetched: false}
+      }
+
+      case "CONFIRM_ERROR": {
+        return {...state, error: false}
       }
     }
 

@@ -8,13 +8,4 @@ import reducer from "../reducers"
 
 // const middleware = applyMiddleware(promise(), thunk, logger())
 const middleware = applyMiddleware(promise(), thunk)
-let initialState = {
-  postReducer: {
-    posts: [],
-    fetching: false,
-    fetched: false,
-    error: null,
-  }
-}
-
 export default createStore(reducer, undefined, middleware)

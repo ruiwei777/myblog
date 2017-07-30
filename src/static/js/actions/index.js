@@ -37,25 +37,57 @@ export function fetchUser(username, password){
     dispatch({
       type:'FETCH_USER', 
     });
-    request.post(baseURL + "api-token-auth/")
-    .send({username, password})
-    .end((err, res) => {
-      if(err || res.statusCode !== 200) {
-        handleSAError(err, res);
-        dispatch({
-          type: 'FETCH_USER_REJECTED',
-        });
-      } else if(res.statusCode === 200){
-        // console.log(res.body.token);
-        dispatch({
-          type:'FETCH_USER_FULFILLED', 
-          payload: {
-            token: res.body.token,
-          }
-        });
-      }
-        
-      
+    
+    return new Promise((resolve, reject) => {
+      request.post(baseURL + "api-token-auth/")
+      .send({username, password})
+      .end((err, res) => {
+        if(err || res.statusCode !== 200) {
+          handleSAError(err, res);
+          reject(
+            dispatch({
+              type: 'FETCH_USER_REJECTED',
+            })
+          )
+        } else if(res.statusCode === 200){
+          // console.log(res.body.token);
+          resolve(
+            dispatch({
+            type:'FETCH_USER_FULFILLED', 
+            payload: {
+              username,
+              token: res.body.token,
+            }
+            })
+          )
+          
+        }
+      })
+    })
+
+
+
+
+
+    
+  }
+
+
+
+}
+
+export function logout(){
+  return function(dispatch){
+    dispatch({
+      type: 'LOGOUT_USER'
+    })
+  }
+}
+
+export function confirmLoginError(){
+  return function(dispatch){
+    dispatch({
+      type: 'CONFIRM_ERROR'
     })
   }
 }
