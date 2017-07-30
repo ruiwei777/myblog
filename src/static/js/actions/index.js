@@ -96,7 +96,7 @@ export function confirmLoginError(){
 
 // publish, title, content are required
 // image is optional
-export function addPost(formData) {
+export function addPost(formData, token) {
   let {blocks, image, publish, title} = formData
 
   // for now only using one block
@@ -117,15 +117,16 @@ export function addPost(formData) {
   if(image) fd.append("image", data.image)
 
   
-  // console.log("[action/index.js] form data: ")
-  for (var item of fd){
-    console.log(item)
-  }
 
   return function(dispatch) {
-    request.post(baseURL + "api/posts/")
-    .send(fd)
-    .end((err, res) => {
+    let req = request.post(baseURL + "api/posts/")
+                .send(fd)
+                
+    if(token) req.set({
+      Authorization:"Token " + token
+    })
+
+    req.end((err, res) => {
       if(err){
         handleSAError(err, res)
       } else {

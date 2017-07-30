@@ -13,9 +13,9 @@ class CreatePost extends React.Component{
 
 
   handleSubmit(formData){
-    let { username } = this.props;
+    let { username, token } = this.props;
     let confirm = false;
-    if (username) this.props.dispatch(addPost(formData));
+    if (username && token) this.props.dispatch(addPost(formData, token));
     else {
       confirm = window.confirm("Your IP address will be logged for reference if you create a post as a non-staff user. Are you sure to proceed?");
       if (confirm) this.props.dispatch(addPost(formData));
@@ -44,7 +44,8 @@ class CreatePost extends React.Component{
 function mapStateToProps(state){
   // console.log(state)
   return {
-    username: state.userReducer.username
+    username: state.userReducer.username,
+    token: state.userReducer.token
   }
 }
 
