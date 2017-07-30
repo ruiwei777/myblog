@@ -41,7 +41,7 @@ class PostManager(models.Manager):
 
 
 class Post(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=12)
 	title = models.CharField(max_length=120)
 	slug = models.SlugField(unique=True)
 	image = models.ImageField(upload_to=upload_location, 

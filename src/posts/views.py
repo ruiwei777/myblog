@@ -25,46 +25,11 @@ from rest_framework.response import Response
 from rest_framework import status
 
 import logging
+from datetime import datetime
 
 # Create your views here.
 
 def home(request):
-    
-
-    # if request.user.is_staff or request.user.is_superuser:
-    #         queryset = Post.objects.all().order_by("-timestamp")
-    # else:
-    #     queryset = Post.objects.active().order_by("-timestamp")
-
-    # q = request.GET.get("q")
-    # if q:
-    #     queryset = queryset.filter(
-    #         Q(title__icontains=q) |
-    #         Q(content__icontains=q) |
-    #         Q(user__first_name__icontains=q)|
-    #         Q(user__last_name__icontains=q)).distinct()
-
-    # #Pagination
-    # paginator = Paginator(queryset, 7) # Show 10 contacts per page
-
-    # page = request.GET.get('page')
-    # try:
-    #     post_list = paginator.page(page)
-    # except PageNotAnInteger:
-    #     # If page is not an integer, deliver first page.
-    #     post_list = paginator.page(1)
-    # except EmptyPage:
-    #     # If page is out of range (e.g. 9999), deliver last page of results.
-    #     post_list = paginator.page(paginator.num_pages)
-    # #End of Pagination
-
-    # today = timezone.now().date()
-
-    # context = {
-    #     "queryset" : post_list,
-    #     "today" : today,
-    # }
-
     return render(request, "posts.html", {})
 
 def create(request):
@@ -189,8 +154,15 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         # user cannot be an AnonymousUser obj otherwise it will raise an error
         # serializer.save(user=self.request.user)
-        print(self.request.user)
-        serializer.save()
+        # print(self.request.user)
+        if self.request.user.is_authenticated():
+            serializer.save(user=self.request.user)
+        else:
+            serializer.save()
+        
+        if not self.request.user.is_staff:
+            logging.basicConfig(filename="post_creation.log", level=logging.DEBUG)
+            logging.debug(str(datetime.now())+" Non-staff post writer from "+self.request.META["REMOTE_ADDR"])
 
 
 # Non viewset

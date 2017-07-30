@@ -43,7 +43,7 @@ p{
 }
 
 .btn.btn-success{
-  background-color: palegreen;
+  background-color: #5cb85c;
   color: white;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
@@ -202,7 +202,7 @@ p{
 }
 
 
-@media(max-width: 768px){
+@media(max-width: 980px){
   .grid-container{
     grid-template-rows: repeat(3, auto);
     grid-template-columns: 1fr;
@@ -224,7 +224,7 @@ p{
 }
 
 
-@media(min-width: 769px){
+@media(min-width: 981px){
   .grid-container > .header{
     position: fixed;
     height: 100vh;
@@ -252,7 +252,7 @@ p{
   font-size: 1.2em;
 }
 
-@media(max-width: 768px){
+@media(max-width: 980px){
   .grid-container > .header .nav ul{
     display: flex;
     padding: 0;
@@ -283,6 +283,7 @@ p{
   grid-area: article;
   margin: 2em auto 0;
   max-width: 80%;
+  width: 100%;
 }
 
 @media(max-width: 768px){
