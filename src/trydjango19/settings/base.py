@@ -63,12 +63,14 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    # custom middleware to allow CORS
+    'posts.middleware.corsMiddleware',
+    # Continue default middlewares...
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #custom middleware to allow CORS
-    'posts.middleware.corsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'trydjango19.urls'
@@ -127,7 +129,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-au'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Australia/Melbourne'
 
 USE_I18N = True
 
@@ -170,7 +172,7 @@ REST_FRAMEWORK = {
     #         'rest_framework.authentication.SessionAuthentication',
     #     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework.authentication.BasicAuthentication',
+            # 'rest_framework.authentication.BasicAuthentication',
             'rest_framework.authentication.TokenAuthentication',
         ),
     'PAGE_SIZE': 30,

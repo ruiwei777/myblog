@@ -1,6 +1,6 @@
-/*This is a sample Webpack configuration.
+/*This is a sample Webpack 2 configuration.
 Just run webpack and it will produce unminified output with sourcemaps.
-Run NODE_ENV=production webpack and it will minify the output and de-dupe all the unnecessary code.*/
+Run the webpack command with "--env.production" flag and it will minify the output and de-dupe all the unnecessary code.*/
 
 
 
@@ -15,7 +15,7 @@ module.exports = function (env){
   console.log('\033[33m', "Now running under", debugText, "mode...",'\033[0m')
   return {
     context: path.join(__dirname, "src/static/js"),
-    devtool: debug ? "inline-sourcemap" : "cheap-module-source-map",
+    devtool: debug ? "eval" : "source-map",
     entry: "./client.js",
     module:{
       rules:[

@@ -22,8 +22,6 @@ export default class PostList extends React.Component {
   
 
   componentDidMount(){
-    console.log(this.props)
-    // this.props.userState == {uesername, token, fetching, fetchded, error}
   }
 
 

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { baseURL } from "../constants";
 import { reset } from "redux-form";
-import request from "superagent";
 
 
 export function fetchAPost(id) {
@@ -39,41 +38,31 @@ export function fetchUser(username, password){
     });
     
     return new Promise((resolve, reject) => {
-      request.post(baseURL + "api-token-auth/")
-      .send({username, password})
-      .end((err, res) => {
-        if(err || res.statusCode !== 200) {
-          handleSAError(err, res);
-          reject(
-            dispatch({
-              type: 'FETCH_USER_REJECTED',
-            })
-          )
-        } else if(res.statusCode === 200){
-          // console.log(res.body.token);
-          resolve(
-            dispatch({
+      axios({
+        method: "post",
+        url: baseURL + "api-token-auth/",
+        data: { username, password }
+      })
+      .then(response => {
+        resolve(
+          dispatch({
             type:'FETCH_USER_FULFILLED', 
             payload: {
               username,
-              token: res.body.token,
+              token: response.data.token,
             }
-            })
-          )
-          
-        }
+          })
+        )
+      }).catch(error => {
+        console.log(error)
+        reject(
+          dispatch({
+            type: 'FETCH_USER_REJECTED',
+          })
+        )
       })
     })
-
-
-
-
-
-    
-  }
-
-
-
+  }  // return
 }
 
 export function logout(){
@@ -116,33 +105,27 @@ export function addPost(formData, token) {
   if(publish) fd.append("publish", data.publish)
   if(image) fd.append("image", data.image)
 
-  
+  return dispatch => {
+    let config = {
+      method: "post",
+      url: baseURL + "api/posts/",
+      data: fd
+    }
 
-  return function(dispatch) {
-    let req = request.post(baseURL + "api/posts/")
-                .send(fd)
-                
-    if(token) req.set({
-      Authorization:"Token " + token
-    })
+    if(token) config.headers = {Authorization: "Token " + token};
 
-    req.end((err, res) => {
-      if(err){
-        handleSAError(err, res)
-      } else {
-        console.log("Posing a post done!", res)
-        dispatch({type:"ADD_POSTS_FULFILLED", payload:res.statusCode})
-        dispatch(reset('post'))
-        dispatch(fetchPosts())
-
+    axios(config).then(response => {
+      console.log(response);
+      if(response.status === 201){
+        console.log(response.data);
+        dispatch({type:"ADD_POSTS_FULFILLED", payload:response.statusCode});
+        dispatch(reset('post'));
+        dispatch(fetchPosts());
       }
-      
-      
+    }).catch(error => {
+      console.log(error.response);
     })
-
-  }
-
-  
+  };
 }
 
 

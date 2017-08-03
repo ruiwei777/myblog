@@ -11,48 +11,35 @@ import "../../css/post_form.sass";
 
 
 class PostForm extends Component {
-  constructor(){
-    super()
-    this.previewImage = {
-      preview : null
-    }
+  constructor(props){
+    super(props);
   }
 
-  static renderField = ({ input, label, type, meta: { touched, error } }) => {
-    return (
-      <div>
-        <label>{label}</label>
-        <div>
-          <input {...input} type={type} placeholder={label}/>
-          {touched && error && <span>{error}</span>}
-        </div>
-      </div>
-      )
-  }
-
+  /**
+    the returned function is the one being processed by react-dropzone
+  */
   onDrop(input){
     return (files, rejectedFile) => {
-      this.previewImage = files[0]
-      input.onChange(files[0])
-
+      input.onChange(files[0]);
     }
   }
 
-  renderDropZone(props){
-    // console.log(this.props)
+  renderDropZone(field){
+    // field == { input: { value:any, onChange: func(newVal) } }
     return (
       <div className="dropzone-wrapper">
-        <DropZone className="drop-zone" onDrop={::this.onDrop(props.input)} multiple={false} >
+        <DropZone className="drop-zone" onDrop={::this.onDrop(field.input)} multiple={false} >
           <div className="drop-text">Drop the cover here, or click to to upload.
           </div>
         </DropZone>
         <div className="preview-wrapper">
           <h3 className="preview-header">Image Preview</h3>
-          <img className="preview-img" src={this.previewImage.preview} />
+          <img className="preview-img" src={field.input.value.preview} />
         </div>
         
         <div className="drop-message">
-          {props.touched && props.error && <span className="error">{props.error}</span>}
+          {field.touched && field.error && <span className="error">{field.error}</span>}
+          {field.touched}
         </div>
         
       </div>
@@ -68,16 +55,8 @@ class PostForm extends Component {
     return (
         <div>
           {/*<button className="pure-button pure-button-primary" onClick={()=>{fields.push({text:"", language:"javascript"})}}>Add Block</button>*/}
-          
-          
-
           {fields.map((block, i) =>
               <section key={i} className="code-section">
-                {/*<header className="post-header">
-                  <div className="post-meta">
-                    <p className="post-author">Write your code here... </p>
-                  </div>
-                </header>*/}
 
 
                 <Fields
@@ -105,7 +84,7 @@ class PostForm extends Component {
           <Field name="title" placeholder="title" component="input" />
         
           <label>Publish Date</label>
-          <Field name="publish" placeholder="yyyy-mm-dd" component="input" />
+          <Field name="publish" placeholder="eg. 29/01/2018" component="input" />
         
           <label>Cover</label>
           <Field name="image" component={::this.renderDropZone} />

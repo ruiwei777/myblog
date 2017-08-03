@@ -11,6 +11,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     username = serializers.ReadOnlyField(source="user.username")
     height_field = serializers.ReadOnlyField()
     width_field = serializers.ReadOnlyField()
+    publish = serializers.DateField(format="%d %b %Y", input_formats=["%d/%m/%Y"])
 
     class Meta:
         model = Post

@@ -1,23 +1,28 @@
 # Introduction
-This is a responsive blog implemeneted as a Single Page Application with Django, React and Webpack 2.
-See Demo on http://www.liangruiwei.com.
+This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com))
 
 ## Key Features
-1. The [Blog](http://www.liangruiwei.com/posts) uses Django-Rest-Framework to service RESTful service and React-Redux to implement the SPA blog
+1. The [Blog](http://www.liangruiwei.com/posts) uses Django-Rest-Framework and React-Redux to implement.
 
-2. Uses vanilla CSS to layout; Responsive design
+2. Uses native CSS grid and flexbox to layout. No Bootstrap.
 
-3. Uses React-Codemirror to support rich format text content.
+3. Supports Token Authentication.
+
+# Change log
+03/Aug/2017
+1. Fixed a but that won't reset image after submitting a post form.
+2. removed super-agent dependency, now completely uses Axios.
+3. Fixed date input/ouput format for localisation, now using the Australia/British format.
 
 
 # How to Run
-1. Routine Django set up, including activate virtualenv, install Python dependencies from `requirements.txt`, collect static files, make migrations, etc. If you don't want to modify React.js' code, that's it! otherwise:
+1. Routine Django set up, including activate virtualenv, install Python dependencies from `requirements.txt`, collect static files, make migrations, etc. If you don't want to modify React's code, that's it! otherwise:
 
 2. Under the root folder (containing package.json), run `npm install`, then run
 
-    `npm run dev` (dev mode, watching files) or
+    `npm run dev` (dev mode, watching) or
   
-    `npm run prod` (production mode, watching files) or
+    `npm run prod` (production mode, watching) or
 
     `npm run compile` (production mode, compile once)
 
@@ -29,7 +34,7 @@ See Demo on http://www.liangruiwei.com.
 
 2. The `webpack.config.backup.js` is a backup config for webpack 1, and the using `webpack.config.js` files is for webpack 2.
 
-3. Make sure you have the latest LTS Node installed (6.9.5 LTS)
+3. Make sure you have at least Node.js 6.9.5 LTS installed to run webpack plugins.
 
 4. You need to include a `passwords.py` under `src/trydjango19/settings/`, and assign values to `MY_SECRET_KEY`([Django Secret Key Generator](http://www.miniwebtool.com/django-secret-key-generator/)), `DB_PASSWORD`, `MY_TWILIO_ACCOUNT_SID` and `MY_TWILIO_AUTH_TOKEN` inside it (some dummy values would suffice). Check `src/trydjango19/settings/base.py` for more details. 
 
@@ -39,7 +44,7 @@ See Demo on http://www.liangruiwei.com.
 Django, Djang-rest-framework
 
 ## Frontend
-React, React-router, Redux, Redux-form, React-codemirror, Pure CSS, Webpack 2, SASS
+React, React-router, Redux, Redux-form, Redux-thunk, React-codemirror, Webpack 2, SASS
 
 # Todo
 1. add feedback animation after submitting a creating post form.
