@@ -8,10 +8,18 @@
 
 
 {% block content %}
-
+<img class="pre-load" src="{% static 'images/index/earth_horizon-wide.jpg' %}">
 
 <!-- Jumbotron -->
 <div class="my-jumbotron">
+
+    <div class="cssload-dots">
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+        <div class="cssload-dot"></div>
+    </div>
 
     <div class="heading-wrapper">
         
@@ -246,7 +254,25 @@ $projBtns.click(function(e){
     })
 })
 
+var image = document.querySelector(".pre-load");
+if(image.complete) stopLoadAnimation();
+else image.addEventListener('load', stopLoadAnimation);
+
+function stopLoadAnimation(){
+    document.querySelector(".my-jumbotron").classList.add("loaded");
+}
     
 
 </script>
+
+<!-- This svg is used by image loader -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12" ></feGaussianBlur>
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0    0 1 0 0 0   0 0 1 0 0   0 0 0 18 -7" result="goo" ></feColorMatrix>
+            <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
+        </filter>
+    </defs>
+</svg>
 {% endblock content %}
