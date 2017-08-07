@@ -11,7 +11,7 @@ input
   height: 2em
   padding: .5em 1em
   font-size: 1em
-  margin-bottom: 1em
+  margin-bottom: 2em
   line-height: 1.42857143
   color: #555
   background-color: #fff
@@ -82,17 +82,29 @@ input
 
 // codemirror
 .code-section
-  margin-bottom: 1em
+  margin-bottom: 2em
 
   & .code-grid
-    display: grid
-    grid-template-columns: auto 1fr
-    grid-template-areas: "type content"
-    border: 2px solid #777777
+    
+    
 
-    & .code-type
-      grid-area: type
+    & .code-meta
+      margin: 0 0 .5em
+      & .code-type
+        display: inline-block
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+      
 
     & .code-content
-      grid-area: content
+      // border: 2px solid #ccc
+
+.CodeMirror
+  border: 2px solid #ccc
+  transition: border-color .5s
+
+  &.CodeMirror-focused
+    border-color: dodgerblue
+
 

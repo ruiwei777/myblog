@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import Snippet from "./Snippet";
 import { Field, FieldArray, Fields, reduxForm } from 'redux-form';
 
-
-import CodeMirror from "react-codemirror";
-import "codemirror/mode/javascript/javascript";
-
 import "../../css/post_form.sass";
 
 
@@ -33,7 +29,7 @@ class PostForm extends Component {
           </div>
         </DropZone>
         <div className="preview-wrapper">
-          <h3 className="preview-header">Image Preview</h3>
+          <h3 className="preview-header">Preview</h3>
           <img className="preview-img" src={field.input.value.preview} />
         </div>
         

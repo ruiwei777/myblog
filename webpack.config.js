@@ -32,7 +32,7 @@ module.exports = function (env){
           ]
         },
         {
-          test: /\.s[ac]ss$/,
+          test: /\.(s[ac])|css$/,
           use:[
             {
               loader:"style-loader",

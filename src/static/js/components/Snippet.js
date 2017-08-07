@@ -1,7 +1,7 @@
 import { Field } from "redux-form";
 import React from "react";
 import CodeMirror from "react-codemirror";
-// import "codemirror/lib/codemirror.css"
+import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/markdown/markdown";
 
@@ -37,21 +37,27 @@ export default class Snippet extends React.Component{
     return(
         <div className="code-snippet">
 
-          <label>Body</label>
+          <label>Content</label>
           <div className="code-grid">
-            <Field 
-              name={language.input.name} 
-              component="select" 
-              onChange={::this.selectChange}
-              className="btn btn-grey code-type">
-              <option value="markdown">markdown</option>
-              <option value="javascript">javascript</option>
-            </Field>
+            <div className="code-meta">
+              <Field 
+                name={language.input.name} 
+                component="select" 
+                onChange={::this.selectChange}
+                className="btn btn-grey code-type">
+                <option value="markdown">markdown</option>
+                <option value="javascript">javascript</option>
+              </Field>
+            </div>
             {/*<button className="pure-button remove-code button-warning" onClick={::this.removeBlock}>Remove</button>*/}
             
             <CodeMirror
               className="code-content" 
-              options={{ mode:language.input.value, theme:"mdn-like"}}
+              options={{ 
+                lineWrapping: true,
+                mode:language.input.value, 
+                theme:"mdn-like", 
+                lineNumbers: true}}
               value={text.input.value}
               onChange={::this.handleChange}
               ref="codemirror">
