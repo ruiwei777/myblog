@@ -9,8 +9,14 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
 3. Supports Token Authentication.
 
 # Change log
+10/Aug/2017
+1. Fixed a bug causing 500 error when uploading post cover.
+2. Now it displays cover on post_detail page correctly.
+3. Fixed a CodeMirror bug that won't wrap the line if pressing the key for too long.
+
+
 03/Aug/2017
-1. Fixed a but that won't reset image after submitting a post form.
+1. Fixed a bug that won't reset image after submitting a post form.
 2. removed super-agent dependency, now completely uses Axios.
 3. Fixed date input/ouput format for localisation, now using the Australia/British format.
 
@@ -24,7 +30,7 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
   
     `npm run prod` (production mode, watching) or
 
-    `npm run compile` (production mode, compile once)
+    `npm run build` (production mode, compile once)
 
     to re-compile javaScript files. You can find the actual command (dev, prod, compile) in `package.json`.
 

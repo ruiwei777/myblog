@@ -24,7 +24,7 @@ class PostDetail extends React.Component{
       return <div className="post-detail">Trying to fetch data...</div>
     }
 
-    let { title, subtitle, username, content } = post
+    let { title, subtitle, username, content, image } = post;
     
 
     return (
@@ -34,8 +34,15 @@ class PostDetail extends React.Component{
             <h2>{subtitle}</h2>
           </div>
           
+          
+
           <div className="content word-break">
             <p>By {username}</p>
+
+            <div className="cover">
+              {image && <img src={image} />}
+            </div>
+            
             <Markdown escapeHtml={true} source={content} 
             containerProps={{id: "markdown-container"}}></Markdown>
             <Link to="/" className="btn btn-view">back</Link>

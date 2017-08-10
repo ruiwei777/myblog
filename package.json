@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --progress --colors --watch --env",
     "prod": "webpack --progress --colors --watch -p --env.production",
-    "compile": "webpack --progress --colors -p --env.production"
+    "build": "webpack --progress --colors -p --env.production"
   },
   "repository": {
     "type": "git",

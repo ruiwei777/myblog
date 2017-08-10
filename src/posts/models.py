@@ -107,7 +107,7 @@ def pre_save_post_receiver(sender, instance, raw, **kwargs):
 
 def post_save_update_image_url(sender, instance, created, **kwargs):
 	""" 
-			Move the image from "MEDIA_CDN/temp/" to "MEDIA_CDN/posts/instance.id/".
+			Move the image from "MEDIA_ROOT/temp/" to "MEDIA_ROOT/posts/instance.id/".
 			Make sure to check the "created" flag to avoid infinite loop!
 	"""
 
@@ -116,13 +116,14 @@ def post_save_update_image_url(sender, instance, created, **kwargs):
 
 	ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-	MEDIA_CDN = os.path.join(ROOT, "media_cdn")
+	MEDIA_ROOT = settings.MEDIA_ROOT
+
 
 	new_img_relative_path = "posts/" + instance.image.name.replace("temp", str(instance.id))
 
-	img_abs_path = os.path.join(MEDIA_CDN, instance.image.name)
-	new_img_abs_path = os.path.join(MEDIA_CDN, new_img_relative_path)
-	new_img_dir = os.path.join(MEDIA_CDN, "posts/" + str(instance.id))
+	img_abs_path = os.path.join(MEDIA_ROOT, instance.image.name)
+	new_img_abs_path = os.path.join(MEDIA_ROOT, new_img_relative_path)
+	new_img_dir = os.path.join(MEDIA_ROOT, "posts/" + str(instance.id))
 
 	# os.rename requires the target folder to exist
 	if not os.path.exists(new_img_dir):
