@@ -5,26 +5,37 @@ import Markdown from "react-markdown"
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 import "../../css/base.scss";
+import "../../css/create_post.sass";
+
+import Win8Spinner from "./ui_components/win8-spinner";
 
 class CreatePost extends React.Component{
-  constructor(props){
-    super(props);
-  }
-
 
   handleSubmit(formData){
     let { username, token } = this.props;
-    let confirm = false;
     if (username && token) this.props.dispatch(addPost(formData, token));
     else {
-      confirm = window.confirm("Your IP address will be logged for reference if you create a post as a non-staff user. Are you sure to proceed?");
-      if (confirm) this.props.dispatch(addPost(formData));
+      let message = "Your IP address will be logged for reference if you create a post as a non-staff user. Are you sure to proceed?";
+      if (window.confirm(message)) this.props.dispatch(addPost(formData));
     }
   }
 
 
   render(){
+    let {adding, added, rejected} = this.props;
+    
     return (
+      <div>
+        {adding && <div className="fetching">
+        <div>
+          <Win8Spinner />
+          <h3 className="message">Creating the post...</h3>
+        </div>
+        
+        </div>}
+        {!adding && added && <div className="message success">You have successfully created a post.</div>}
+        {!adding && rejected && <div className="message error">Error: failed to create the post.</div>}
+
         <PostForm 
           onSubmit={::this.handleSubmit}
           initialValues={{
@@ -32,12 +43,10 @@ class CreatePost extends React.Component{
               text:"",
               language:"markdown"
             }]
-          }}
-           />
-          
-          
-          
-      )
+          }} />
+        
+      </div>
+    )
   }
 }
 
@@ -45,7 +54,10 @@ function mapStateToProps(state){
   // console.log(state)
   return {
     username: state.userReducer.username,
-    token: state.userReducer.token
+    token: state.userReducer.token,
+    adding: state.postReducer.adding,
+    added: state.postReducer.added,
+    rejected: state.postReducer.rejected
   }
 }
 

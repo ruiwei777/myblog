@@ -3,17 +3,19 @@ import Markdown from "react-markdown";
 import React from "react";
 import { connect } from "react-redux";
 import { fetchAPost } from "../actions";
+import Win8Spinner from "./ui_components/win8-spinner";
 
 import "../../css/post_detail.sass";
 
 
 
 class PostDetail extends React.Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
 
   componentWillMount(){
+    
     this.props.dispatch(fetchAPost(this.props.params.postid))
   }
 
@@ -21,7 +23,9 @@ class PostDetail extends React.Component{
   render(){
     const {post} = this.props;
     if (!post){
-      return <div className="post-detail">Trying to fetch data...</div>
+      return <div className="fetching">
+        <Win8Spinner />
+      </div>
     }
 
     let { title, subtitle, username, content, image } = post;

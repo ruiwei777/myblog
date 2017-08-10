@@ -2,6 +2,7 @@ import React from "react";
 import Post from "./Post";
 import axios from "axios";
 import { fetchUser, logout, confirmLoginError } from "../actions";
+import Win8Spinner from "./ui_components/win8-spinner";
 
 import LoginForm from "./redux_forms/LoginForm";
 
@@ -56,8 +57,11 @@ export default class PostList extends React.Component {
         return <Post post={post} key={i} id={i} />;
       })
     } else {
-      content = <div>Trying to fetch data...</div>;
+      content = <div className="fetching">
+        <Win8Spinner />
+      </div>;
     }
+
 
     const { fetching, fetched, error } = this.props.userState;
 
@@ -75,9 +79,7 @@ export default class PostList extends React.Component {
                 <div className={"login-error "+(this.props.userState.error ? "active" : "")}>Username or password not match, please try again.</div>
                 <LoginForm className="login-form" onSubmit={::this.loginSubmit} />
               </div>
-              
             </div>
-            
           </div>
 
 

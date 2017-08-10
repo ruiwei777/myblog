@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import Snippet from "./Snippet";
 import { Field, FieldArray, Fields, reduxForm } from 'redux-form';
 
-import "../../css/post_form.sass";
-
-
 class PostForm extends Component {
   constructor(props){
     super(props);
@@ -64,8 +61,6 @@ class PostForm extends Component {
               </section>
               
           )}
-
-          <button className="btn btn-success" type="submit">Submit</button>
         </div>
       )
   }
@@ -87,7 +82,7 @@ class PostForm extends Component {
 
           <FieldArray name="blocks" component={this.renderBlocks} />
         
-        
+          <button className="btn btn-success" type="submit">Submit</button>
       </form>
     );
   }

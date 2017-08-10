@@ -106,6 +106,8 @@ export function addPost(formData, token) {
   if(image) fd.append("image", data.image)
 
   return dispatch => {
+    dispatch({type:"ADD_POST"});
+
     let config = {
       method: "post",
       url: baseURL + "api/posts/",
@@ -115,15 +117,16 @@ export function addPost(formData, token) {
     if(token) config.headers = {Authorization: "Token " + token};
 
     axios(config).then(response => {
-      console.log(response);
+      // console.log(response);
       if(response.status === 201){
-        console.log(response.data);
-        dispatch({type:"ADD_POSTS_FULFILLED", payload:response.statusCode});
+        // console.log(response.data);
+        dispatch({type:"ADD_POST_FULFILLED"});
         dispatch(reset('post'));
         dispatch(fetchPosts());
       }
     }).catch(error => {
       console.log(error.response);
+      dispatch({type:"ADD_POST_REJECTED"});
     })
   };
 }

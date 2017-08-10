@@ -13,6 +13,7 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
 1. Fixed a bug causing 500 error when uploading post cover.
 2. Now it displays cover on post_detail page correctly.
 3. Fixed a CodeMirror bug that won't wrap the line if pressing the key for too long.
+4. Added **animation feedback** when making requests.
 
 
 03/Aug/2017
