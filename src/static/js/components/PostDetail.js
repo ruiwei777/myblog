@@ -42,10 +42,10 @@ class PostDetail extends React.Component{
             <div className="cover">
               {image && <img src={image} />}
             </div>
-            
+
             <Markdown escapeHtml={true} source={content} 
             containerProps={{id: "markdown-container"}}></Markdown>
-            <Link to="/" className="btn btn-view">back</Link>
+            <Link to="/" className="back">back</Link>
           </div>
           
           

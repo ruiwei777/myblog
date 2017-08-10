@@ -1,5 +1,6 @@
 from urllib.parse import quote_plus
 
+from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
@@ -161,8 +162,13 @@ class PostViewSet(viewsets.ModelViewSet):
             serializer.save()
         
         if not self.request.user.is_staff:
-            logging.basicConfig(filename="post_creation.log", level=logging.DEBUG)
-            logging.debug(str(datetime.now())+" Non-staff post writer from "+self.request.META["REMOTE_ADDR"])
+            logging.basicConfig(filename="post_creation.log", level=logging.INFO)
+            ip = self.request.META["REMOTE_ADDR"]
+
+            # Webfaction fix to see the real IP address
+            if not settings.DEBUG:
+                ip = request.META['HTTP_X_FORWARDED_FOR'].split(",")[0].strip()
+            logging.info(str(datetime.now())+" Non-staff post writer from "+ str(ip))
 
 
 # Non viewset

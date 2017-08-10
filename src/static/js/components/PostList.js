@@ -29,8 +29,8 @@ export default class PostList extends React.Component {
     let credentialBlock = null;
 
     const { username, token } = this.props.userState;
-    let loginBtn = <button className="btn btn-login" onClick={::this.loginView}>Login</button>;
-    let logoutBtn = <button onClick={::this.onLogoutClick} className="btn btn-logout">Logout</button>;
+    let loginBtn = <button className="btn btn-view" onClick={::this.loginView}>Login</button>;
+    let logoutBtn = <button onClick={::this.onLogoutClick} className="btn">Logout</button>;
 
     let btnShowed = username && token ? logoutBtn : loginBtn;
 

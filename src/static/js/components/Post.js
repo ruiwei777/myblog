@@ -38,8 +38,8 @@ export default class Post extends React.Component{
               <h2 className="post-title">{post.title}</h2>
 
               <p className="post-meta">
-                By <a className="post-author" href="#">{post.username} </a> at {post.publish} under <a className="post-category post-category-js" href="#">JavaScript</a>
-                <a className="post-category post-category-design" href="#">CSS</a>
+                By <a className="post-author" href="#">{post.username} </a> at {post.publish} {/*under <a className="post-category post-category-js" href="#">JavaScript</a>
+                <a className="post-category post-category-design" href="#">CSS</a>*/}
                  
               </p>
           </header>
@@ -54,7 +54,7 @@ export default class Post extends React.Component{
                 {post.content}
               </p>
               
-              <Link to={"" + post.id} className="btn btn-view"> View</Link>
+              <Link to={"" + post.id} className="view">Read Full Article</Link>
           </div>
         </section>
 

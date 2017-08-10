@@ -20,11 +20,11 @@ class LoginForm extends React.Component{
                placeholder="password" />
 
         <div>
-          <button className="btn btn-submit" type="submit" disabled={pristine || submitting}>
+          <button className="btn btn-view" type="submit" disabled={pristine || submitting}>
                     Submit
           </button>
 
-          <button className="btn btn-clear" type="button" disabled={pristine || submitting} onClick={reset}>
+          <button className="btn" type="button" disabled={pristine || submitting} onClick={reset}>
             Clear 
           </button>
         </div>
