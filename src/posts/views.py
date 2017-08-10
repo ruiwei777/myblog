@@ -167,7 +167,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
             # Webfaction fix to see the real IP address
             if not settings.DEBUG:
-                ip = request.META['HTTP_X_FORWARDED_FOR'].split(",")[0].strip()
+                ip = self.request.META['HTTP_X_FORWARDED_FOR'].split(",")[0].strip()
             logging.info(str(datetime.now())+" Non-staff post writer from "+ str(ip))
 
 
