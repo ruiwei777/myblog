@@ -33,8 +33,14 @@
 
       <ul class="menu">
         <li><a href="{% url 'posts:home' %}">Blog</a></li>
-        <!-- <li><a href="{% url 'login' %}}">Login</a></li>
-        <li><a href="{% url 'register' %}}">Register</a></li> -->
+        
+        {% if user.is_authenticated %}
+        <li><a href="#" id="username">Hello, {{ user.username }}</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}}">Login</a></li>
+        <li><a href="{% url 'register' %}}">Register</a></li>
+        {% endif %}
     </div>
     
 </nav>

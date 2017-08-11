@@ -8,7 +8,7 @@ from django.contrib.auth import (
 from django.core.urlresolvers import reverse
 from django.forms import ValidationError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .forms import UserLoginForm, UserRegistrationForm
 from .serializers import UserSerializer, GroupSerializer
@@ -52,6 +52,7 @@ def login_view(request):
     }
     return render(request, "login_form.html", context)
 
+
 def register_view(request):
     title = "Register"
 
@@ -72,14 +73,11 @@ def register_view(request):
     }
     return render(request, "login_form.html", context)
 
-def logout_view(request):
-    
-    logout(request)
 
-    context = {
-        
-    }
-    return render(request, "index.html", context)
+def logout_view(request):
+    logout(request)
+    return redirect("/")
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """

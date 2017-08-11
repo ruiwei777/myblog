@@ -98,7 +98,10 @@ nav .logo > img{
 	height: auto;
 }
 
-
+nav #username{
+	cursor: default;
+	text-transform: capitalize;
+}
 
 
 

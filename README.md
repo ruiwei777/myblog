@@ -9,6 +9,11 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
 3. Supports Token Authentication.
 
 # Change log
+11/Aug/2017
+1. Re-enable register
+2. Update some js libraries including Webpack to 3
+
+
 10/Aug/2017
 1. Fixed a bug causing 500 error when uploading post cover.
 2. Now it displays cover on post_detail page correctly.
@@ -51,10 +56,7 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
 Django, Djang-rest-framework
 
 ## Frontend
-React, React-router, Redux, Redux-form, Redux-thunk, React-codemirror, Webpack 2, SASS
-
-# Todo
-1. add feedback animation after submitting a creating post form.
+React, React-router, Redux, Redux-form, Redux-thunk, Code Mirror, Webpack 3, SASS
 
 # License
 **MIT**
