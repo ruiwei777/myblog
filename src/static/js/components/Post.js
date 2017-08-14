@@ -26,6 +26,20 @@ export default class Post extends React.Component{
 
   }
 
+  processPostBody(body){
+    let processed = body.replace(/\#/g, "");
+    processed = processed.replace(/\*/g, "");
+    processed = processed.replace(/\</g, "");
+    processed = processed.replace(/\=/g, "");
+    processed = processed.replace(/```/g, "");
+    const maxLength = 200;
+    if (processed.length > maxLength){
+      processed = processed.slice(0, maxLength-1);
+      processed += "...";
+    }
+    return processed;
+  }
+
   render(){
     // console.log(this.props.post)
     let {post} = this.props;
@@ -51,7 +65,7 @@ export default class Post extends React.Component{
           <div className="post-description word-break">
               
               <p>
-                {post.content}
+                {this.processPostBody(post.content)}
               </p>
               
               <Link to={"" + post.id} className="view">Read Full Article</Link>

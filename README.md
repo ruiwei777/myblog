@@ -41,10 +41,10 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
     to re-compile javaScript files. You can find the actual command (dev, prod, compile) in `package.json`.
 
 # Notes
-1. Under Webpack 2 `dev` mode, all the `process.env.NODE_ENV` inside compiled js files, and the `debug` variable in `webpack.config.js` will be evaluated to `true`; vice versa under production mode.
+1. Under Webpack 3 `dev` mode, all the `process.env.NODE_ENV` inside compiled js files, and the `debug` variable in `webpack.config.js` will be evaluated to `true`; vice versa under production mode.
     Under dev mode, the REST base URL is "http://localhost:8000/", while under production mode, it is "http://www.liangruiwei.com/". This is defined in `src/js/constants.js`.
 
-2. The `webpack.config.backup.js` is a backup config for webpack 1, and the using `webpack.config.js` files is for webpack 2.
+2. The `webpack.config.backup.js` is a backup config for webpack 1, and the using `webpack.config.js` files is for webpack 3.
 
 3. Make sure you have at least Node.js 6.9.5 LTS installed to run webpack plugins.
 

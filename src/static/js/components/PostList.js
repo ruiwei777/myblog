@@ -6,6 +6,8 @@ import Win8Spinner from "./ui_components/win8-spinner";
 
 import LoginForm from "./redux_forms/LoginForm";
 
+import "../../css/post_home.css";
+
 
 // Homepage for www.domainname.com/posts
 export default class PostList extends React.Component {

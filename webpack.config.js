@@ -1,11 +1,41 @@
-/*This is a sample Webpack 2 configuration.
+/*This is a sample Webpack 3 configuration.
 Just run webpack and it will produce unminified output with sourcemaps.
-Run the webpack command with "--env.production" flag and it will minify the output and de-dupe all the unnecessary code.*/
+Run the webpack command with "--env.production" flag and it will minify the output.*/
 
 
 
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
+
+
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCSS = new ExtractTextPlugin("css/[name]-[contenthash].css");
+const extractSASS = new ExtractTextPlugin("sass/[name]-[contenthash].css");
+
+
+const pathToClean = ["src/static/dist"];
+const cleanOptions = {
+  root: __dirname,
+  verbose: true,
+  watch: false
+};
+const cleanWebpackPlugin = new CleanWebpackPlugin(pathToClean, cleanOptions);
+
+
+// Plugins used in both DEV and PRODUCTION mode.
+const basePlugins = [
+  cleanWebpackPlugin,
+  new HtmlWebpackPlugin({
+    template: "../templates/post_home.html",
+    favicon: "../images/react-icon.png",
+    filename: "./templates/post_home.html"
+  }), 
+  new webpack.optimize.ModuleConcatenationPlugin(),
+  extractCSS,
+  extractSASS
+];
 
 
 
@@ -31,9 +61,10 @@ module.exports = function (env){
             }
           ]
         },
-        {
+        /*{
           test: /\.(s[ac])|css$/,
-          use:[
+          use: extractCSS.extract(["css-loader", "sass-loader"])
+          [
             {
               loader:"style-loader",
               options:{
@@ -53,19 +84,36 @@ module.exports = function (env){
               }
             }
           ]
+        },*/
+        {
+          test : /\.css$/,
+          use: extractCSS.extract(["css-loader"])
+        },
+        {
+          test : /\.s[ac]ss$/,
+          use: extractSASS.extract(["css-loader", "sass-loader"])
+        },
+        {
+          test: /\.html$/,
+          use:[{
+              loader:"html-loader",
+              options: {
+                minimize: true
+              }
+            }]
         }
       ]
     },
     output: {
-      path: __dirname + "/src/static/js/",
-      publicPath: "/js/",
-      filename: "bundle.js"
+      path: __dirname + "/src/static/dist/",
+      publicPath: "/static/dist/",
+      filename: "js/[chunkhash]-bundle.js"
     },
-    plugins: debug ? [] : [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }),
-      new webpack.optimize.ModuleConcatenationPlugin()
-    ]
+    plugins: basePlugins.concat(debug ? [] : [
+          new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+          }),
+          
+        ])
   }
 };

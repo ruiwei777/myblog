@@ -31,7 +31,7 @@ from datetime import datetime
 # Create your views here.
 
 def home(request):
-    return render(request, "posts.html", {})
+    return render(request, "post_home.html", {})
 
 def create(request):
     if not request.user.is_staff and not request.user.is_superuser:
