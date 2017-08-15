@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseURL } from "../constants";
+import { DEBUG, baseURL } from "../constants";
 import { reset } from "redux-form";
 
 
@@ -19,7 +19,9 @@ export function fetchAPost(id) {
 
 export function fetchPosts() {
   return function(dispatch) {
-    axios.get(baseURL + "api/posts")
+    let url = baseURL + "api/posts/";
+    if (DEBUG) url += "?page=2";
+    axios.get(url)
       .then((response) => {
         dispatch({type: "FETCH_POSTS_FULFILLED", payload: response.data})
         // console.log(response)
@@ -116,18 +118,27 @@ export function addPost(formData, token) {
 
     if(token) config.headers = {Authorization: "Token " + token};
 
-    axios(config).then(response => {
-      // console.log(response);
-      if(response.status === 201){
-        // console.log(response.data);
-        dispatch({type:"ADD_POST_FULFILLED"});
-        dispatch(reset('post'));
-        dispatch(fetchPosts());
-      }
-    }).catch(error => {
-      console.log(error.response);
-      dispatch({type:"ADD_POST_REJECTED"});
-    })
+    return new Promise((resolve, reject) => {
+      axios(config).then(response => {
+        response = Object.assign({}, response);
+        //console.log(response);
+        if(response.status === 201){
+          // console.log(response.data);
+          dispatch({type:"ADD_POST_FULFILLED"});
+          dispatch(reset('post'));
+          dispatch(fetchPosts());
+          resolve(response.data);
+        }
+      }).catch(error => {
+        error = Object.assign({}, error);
+
+        //console.log(error);
+        dispatch({type:"ADD_POST_REJECTED"});
+        reject(error.response)
+      })
+    }); // Promise
+
+    
   };
 }
 

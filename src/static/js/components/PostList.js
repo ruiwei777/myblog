@@ -54,7 +54,7 @@ export default class PostList extends React.Component {
     let content = null;
     if(this.props.posts.length){
       let {posts} = this.props;
-      // console.log(posts)
+      posts = posts.filter(({publish}) => new Date(publish) < new Date() );
       content = posts.map(function(post, i){
         return <Post post={post} key={i} id={i} />;
       })
@@ -84,14 +84,12 @@ export default class PostList extends React.Component {
             </div>
           </div>
 
-
           {this.getCredentialBlock()}
-            
 
           <div className="posts">
-          <h1 className="content-subhead">Recent Posts</h1>
-          {content}
-        </div>
+            <h1 className="content-subhead">Recent Posts</h1>
+            {content}
+          </div>
 
         </div>
         
@@ -123,10 +121,6 @@ export default class PostList extends React.Component {
 
   }
 
-
-  setLoginWindowState(){
-
-  }
 
   onLogoutClick(e){
     this.props.dispatch(logout());

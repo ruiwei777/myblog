@@ -43,7 +43,7 @@ class PostManager(models.Manager):
 class Post(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=12)
 	title = models.CharField(max_length=120)
-	slug = models.SlugField(unique=True)
+	slug = models.SlugField(unique=True, blank=True, null=True)
 	image = models.ImageField(upload_to=upload_location, 
 		null=True, 
 		blank=True,
@@ -87,23 +87,43 @@ class Post(models.Model):
 	
 	
 	
+# TRY to create slug using post save with id, might need to delete
+# the following afterwards
 
-def create_slug(instance, new_slug=None):
-	slug = slugify(instance.title)
-	if new_slug is not None:
-		slug = new_slug
+# def create_slug(instance, new_slug=None):
+# 	slug = slugify(instance.title)
+# 	if new_slug is not None:
+# 		slug = new_slug
 		
-	qs = Post.objects.filter(slug=slug).order_by("-id")
-	exists = qs.exists()
-	if exists:
-		new_slug = "%s-%s" % (slug, qs.first().id)
-		slug = create_slug(instance, new_slug=new_slug)
-	return slug
+# 	qs = Post.objects.filter(slug=slug).order_by("-id")
+# 	exists = qs.exists()
+# 	if exists:
+# 		new_slug = "%s-%s" % (slug, qs.first().id)
+# 		slug = create_slug(instance, new_slug=new_slug)
+# 	return slug
 
 
-def pre_save_post_receiver(sender, instance, raw, **kwargs):
-	slug = create_slug(instance)
+# def pre_save_post_receiver(sender, instance, raw, **kwargs):
+# 	slug = create_slug(instance)
+# 	instance.slug = slug
+# pre_save.connect(pre_save_post_receiver, sender=Post)
+
+def post_save_create_slug(sender, instance, created, **kwargs):
+	"""
+		Create the slug for each instance after saving for the first time.
+	"""
+	if not created:
+		return
+
+	slug = slugify(instance.title)
+	slug += "-" + str(instance.id)
+
 	instance.slug = slug
+	instance.save()
+
+post_save.connect(post_save_create_slug, sender=Post)
+
+
 
 def post_save_update_image_url(sender, instance, created, **kwargs):
 	""" 
@@ -133,10 +153,4 @@ def post_save_update_image_url(sender, instance, created, **kwargs):
 	instance.image = new_img_relative_path
 	instance.save()
 
-
-
-
-
-
 post_save.connect(post_save_update_image_url, sender=Post)
-pre_save.connect(pre_save_post_receiver, sender=Post)

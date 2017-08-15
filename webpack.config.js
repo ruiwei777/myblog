@@ -45,7 +45,7 @@ module.exports = function (env){
   console.log('\033[33m', "Now running under", debugText, "mode...",'\033[0m')
   return {
     context: path.join(__dirname, "src/static/js"),
-    devtool: debug ? "eval" : "source-map",
+    devtool: debug ? "inline-source-map" : "source-map",
     entry: "./client.js",
     module:{
       rules:[

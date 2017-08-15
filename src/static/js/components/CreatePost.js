@@ -15,13 +15,23 @@ class CreatePost extends React.Component{
     let { username, token } = this.props;
     if (username && token) this.props.dispatch(addPost(formData, token));
     else {
-      let message = "Your IP address will be logged for reference if you create a post as a non-staff user. Are you sure to proceed?";
-      if (window.confirm(message)) this.props.dispatch(addPost(formData));
+      let message = "Your IP address will be logged if creating as a non-staff user. Are you sure to proceed?";
+      if (window.confirm(message)) {
+        this.props.dispatch(addPost(formData))
+        .then(data => {
+          // data is a post instance
+          // console.log(data.id);
+          this.props.router.push("/" + data.id);
+        }).catch(error => {
+          console.log(error.data)
+        });
+      }
     }
   }
 
 
   render(){
+    // console.log(this.props);
     let {adding, added, rejected} = this.props;
     
     return (

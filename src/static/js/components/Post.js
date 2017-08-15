@@ -32,6 +32,7 @@ export default class Post extends React.Component{
     processed = processed.replace(/\</g, "");
     processed = processed.replace(/\=/g, "");
     processed = processed.replace(/```/g, "");
+    processed = processed.replace(/---/g, "");
     const maxLength = 200;
     if (processed.length > maxLength){
       processed = processed.slice(0, maxLength-1);
