@@ -149,7 +149,7 @@ class PostViewSet(viewsets.ModelViewSet):
     This one is actually in use.
     http://www.django-rest-framework.org/api-guide/viewsets/
     """
-    queryset = Post.objects.all().order_by('-publish')
+    queryset = Post.objects.all().order_by('-publish').filter(publish__lte=datetime.today())
     serializer_class = PostSerializer
 
     def perform_create(self, serializer):

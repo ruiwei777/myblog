@@ -17,10 +17,10 @@ export function fetchAPost(id) {
   }
 }
 
-export function fetchPosts() {
+export function fetchPosts(page=1) {
   return function(dispatch) {
     let url = baseURL + "api/posts/";
-    if (DEBUG) url += "?page=2";
+     url += "?page=" + page;
     axios.get(url)
       .then((response) => {
         dispatch({type: "FETCH_POSTS_FULFILLED", payload: response.data})

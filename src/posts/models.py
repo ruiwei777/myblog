@@ -63,7 +63,7 @@ class Post(models.Model):
 		ordering = ('publish',)
 
 	def __str__(self):
-		return self.title
+		return str(self.id) + ": " + self.title
 
 	def get_absolute_url(self):
 		return reverse("posts:read", kwargs={"slug":self.slug})

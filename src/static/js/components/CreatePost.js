@@ -13,11 +13,21 @@ class CreatePost extends React.Component{
 
   handleSubmit(formData){
     let { username, token } = this.props;
-    if (username && token) this.props.dispatch(addPost(formData, token));
-    else {
+    let loggedIn = username && token;
+
+    // if not loggined in , prompt to confirm
+    let confirmed = false;
+    if (!loggedIn) {
       let message = "Your IP address will be logged if creating as a non-staff user. Are you sure to proceed?";
-      if (window.confirm(message)) {
-        this.props.dispatch(addPost(formData))
+      confirmed = window.confirm(message);
+    }
+
+    let requestPromise = null;
+    if (loggedIn) requestPromise = this.props.dispatch(addPost(formData, token));
+    else if (!loggedIn && confirmed) requestPromise = this.props.dispatch(addPost(formData));
+    
+    if (requestPromise !== null){
+      requestPromise
         .then(data => {
           // data is a post instance
           // console.log(data.id);
@@ -25,8 +35,8 @@ class CreatePost extends React.Component{
         }).catch(error => {
           console.log(error.data)
         });
-      }
     }
+    
   }
 
 
