@@ -12,6 +12,8 @@ import Win8Spinner from "./ui_components/win8-spinner";
 class CreatePost extends React.Component{
 
   handleSubmit(formData){
+    console.log(formData);
+
     let { username, token } = this.props;
     let loggedIn = username && token;
 
@@ -53,7 +55,6 @@ class CreatePost extends React.Component{
         </div>
         
         </div>}
-        {!adding && added && <div className="message success">You have successfully created a post.</div>}
         {!adding && rejected && <div className="message error">Error: failed to create the post.</div>}
 
         <PostForm 

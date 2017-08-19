@@ -2,6 +2,16 @@
 *
   box-sizing: border-box
 
+.field
+  margin-bottom: 1em
+
+form
+  span.error
+    color: #700
+    margin-top: 5px
+    padding: 5px 8px
+    display: block
+
 label
   display: block
   margin: 0 0 .5em
@@ -12,7 +22,6 @@ input
   height: 2em
   padding: .5em 1em
   font-size: 1em
-  margin-bottom: 2em
   line-height: 1.42857143
   color: #555
   background-color: #fff
@@ -49,6 +58,22 @@ input
 
 
 // dropzone
+.drop-header
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+  > label
+    float: left
+
+  > .btn
+    padding: 0
+    float: right
+    background-color: rgba(0,0,0,0)
+    box-shadow: none;
+
+
 .dropzone-wrapper
   display: grid
   grid-template-rows: auto 1fr
@@ -99,24 +124,23 @@ input
 
 
 // codemirror
-.code-section
+.code-blocks
   margin-bottom: 2em
 
-  & .code-grid
-    
-    
+  .code-section
+    margin-bottom: 1em
 
-    & .code-meta
-      margin: 0 0 .5em
-      & .code-type
-        display: inline-block
-        color: #333;
-        background-color: #fff;
-        border-color: #ccc;
-      
+    & .code-grid
+      & .code-meta
+        margin: 0 0 .5em
+        display: flex
+        justify-content: space-between
 
-    & .code-content
-      // border: 2px solid #ccc
+        & .code-type
+          display: inline-block
+          color: #333;
+          background-color: #fff;
+          border-color: #ccc;
 
 .CodeMirror
   border: 2px solid deepskyblue
@@ -127,5 +151,10 @@ input
 
   &.CodeMirror-wrap pre
     word-break: break-all
+
+form 
+  .btn-group
+    #postSubmit
+      margin-left: .5em
 
 

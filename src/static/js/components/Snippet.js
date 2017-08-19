@@ -14,10 +14,7 @@ export default class Snippet extends React.Component{
     const { id } = this.props
     let { text } = this.props.blocks[id]
     text.input.onChange(newText)
-    // console.log(this.refs.codemirror.codeMirror.options.mode)
-    // console.log(this.refs.codemirror.codeMirror)
-    // console.log(newText, text.input.value)
-    // console.log(this.refs.codemirror.getCodeMirror())
+    // console.log(this.props);
   }
 
   selectChange(event, newValue, previousValue){
@@ -31,14 +28,21 @@ export default class Snippet extends React.Component{
   }
 
   render(){
-    let i = this.props.id
-    let { text, language } = this.props.blocks[i]
+    let i = this.props.id;
+    let { text, language } = this.props.blocks[i];
+    // console.log(this.props)
+    const { touched, error, warning } = text.meta;
     
     return(
         <div className="code-snippet">
 
-          <label>Content</label>
-          <div className="code-grid">
+          {/*Error message*/}
+          {touched &&
+            ((error && <span className="error">&#x203C; {error}</span>) ||
+              (warning && <span className="warning">{warning}</span>))}
+
+          {/*dropdown menu to select content type*/}
+          <div className="code-grid">   
             <div className="code-meta">
               <Field 
                 name={language.input.name} 
@@ -48,8 +52,10 @@ export default class Snippet extends React.Component{
                 <option value="markdown">markdown</option>
                 <option value="javascript">javascript</option>
               </Field>
+
+              {i>0 &&<button className="btn btn-danger" onClick={::this.removeBlock}>Remove</button>}
             </div>
-            {/*<button className="pure-button remove-code button-warning" onClick={::this.removeBlock}>Remove</button>*/}
+            
             
             <CodeMirror
               className="code-content" 

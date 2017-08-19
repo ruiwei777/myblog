@@ -145,7 +145,7 @@ def index(request):
 
 class PostViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows posts to be viewed or edited.
     This one is actually in use.
     http://www.django-rest-framework.org/api-guide/viewsets/
     """

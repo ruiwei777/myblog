@@ -1,88 +1,142 @@
+import CodeMirror from "react-codemirror";
 import DropZone from "react-dropzone";
 import React, { Component } from 'react';
 import Snippet from "./Snippet";
 import { Field, FieldArray, Fields, reduxForm } from 'redux-form';
+import { dateTillNow, required, hasText, hasTextInBlock } from "../validations/postform.validate";
 
-class PostForm extends Component {
-  constructor(props){
-    super(props);
-  }
+// Stateless methods to render redux-form
+const renderField = ({input, label, type, meta: { touched, error, warning }  }) => {
+  return (<div className="field">
+    <label>
+      {label}
+    </label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      {touched &&
+        ((error && <span className="error">&#x203C; {error}</span>) ||
+          (warning && <span className="warning">{warning}</span>))}
+    </div>
+  </div>)
+}
 
-  /**
-    the returned function is the one being processed by react-dropzone
-  */
-  onDrop(input){
-    return (files, rejectedFile) => {
-      input.onChange(files[0]);
-    }
-  }
 
-  renderDropZone(field){
-    // field == { input: { value:any, onChange: func(newVal) } }
-    return (
-      <div className="dropzone-wrapper">
-        <DropZone className="drop-zone" onDrop={::this.onDrop(field.input)} multiple={false} >
-          <div className="drop-text">Drop the cover here, or click to to upload.
-          </div>
-        </DropZone>
-        <div className="preview-wrapper">
-          <h3 className="preview-header">Preview</h3>
-          <img className="preview-img" src={field.input.value.preview} />
-        </div>
-        
-        <div className="drop-message">
-          {field.touched && field.error && <span className="error">{field.error}</span>}
-          {field.touched}
-        </div>
+const renderBlocks = (props) => {
+  const { fields, meta: { touched, error, submitFailed } } = props;
+  // console.log(props);
+  return (
+      <div className="code-blocks">
+        <label>Content*</label>
+        {fields.map((name, i, fields) =>
+            <section key={i} className="code-section">
+
+
+              <Fields
+                names={[`${name}.text`, `${name}.language`]}
+                component={Snippet}
+                id={i}
+                remove={()=>{fields.remove(i)}} />
+
+                      
+            </section>
+            
+        )}
+
+        { error && <span className="error">{error}</span>}
+
+        {<button id="addBlock" className="btn btn-orange disabled" onClick={()=>{fields.push({text:"", language:"javascript"})}} title="Currently only support one block" >Add Block</button>}
+
         
       </div>
     )
+}
+
+
+/**
+  @params input The input component from redux-form. Use input.onChange(newVal) to change its value.
+
+  @return An anonymous function passed to "renderDropZone".
+
+  This function will be passed to "renderDropZone".
+  The returned function is processed by react-dropzone.
+*/
+const onDrop = (input) => {
+  return (files, rejectedFile) => {
+    input.onChange(files[0]);
   }
-
-  
-
+}
 
 
-  renderBlocks({ fields, meta: { touched, error } }){
+const renderDropZone = (field) => {
+    // field == { input: { value:any, onChange: func(newVal) } }
+    const clearImage = (event) => {
+      event.preventDefault();;
+      input.onChange(null);
+    }
 
+    const {label, input, error, touched} = field;
     return (
-        <div>
-          {/*<button className="pure-button pure-button-primary" onClick={()=>{fields.push({text:"", language:"javascript"})}}>Add Block</button>*/}
-          {fields.map((block, i) =>
-              <section key={i} className="code-section">
-
-
-                <Fields
-                  names={[`${block}.text`, `${block}.language`]}
-                  component={Snippet}
-                  id={i}
-                  remove={()=>{fields.remove(i)}}
-                 />
-              </section>
-              
-          )}
+      <div>
+        <div className="drop-header">
+        <label>{label}</label>
+        <button className="btn btn-grey" onClick={clearImage}>&#9746;</button>
         </div>
-      )
+        
+        
+        <div className="dropzone-wrapper">
+          <DropZone className="drop-zone" onDrop={onDrop(input)} multiple={false} >
+            <div className="drop-text">Drop the cover here, or click to to upload.
+            </div>
+          </DropZone>
+          <div className="preview-wrapper">
+            <h3 className="preview-header">Preview</h3>
+            <img className="preview-img" src={input.value.preview} />
+          </div>
+          
+          <div className="drop-message">
+            {touched && field.error && <span className="error">{error}</span>}
+            {touched}
+          </div>
+        </div>
+      </div>
+      
+    )
   }
 
-  
+
+
+class PostForm extends Component {
+
+  componentDidMount(){
+    // a dirty way to make the  "AddBtn" and "SubmitBtn" same line.
+    const btnSubmit = document.getElementById("postSubmit");
+    const btnAdd = document.getElementById("addBlock");
+    const btnGroup = document.getElementsByClassName("btn-group")[0];
+
+    btnGroup.insertBefore(btnAdd, btnSubmit);
+  }
 
   render() {
-    const { handleSubmit } = this.props;
+    // console.log(this.props);
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
       <form className="" onSubmit={handleSubmit}>
-          <label>Title</label>
-          <Field name="title" placeholder="title" component="input" />
+          <Field name="title" placeholder="title" component={renderField} 
+          validate={[hasText]} label="Title*" type="text"
+            />
         
-          <label>Publish Date</label>
-          <Field name="publish" placeholder="eg. 29/01/2018" component="input" />
+          <Field name="publish" placeholder="eg. 29/01/2018" component={renderField} 
+          label="Publish Date*" type="date" validate={[dateTillNow]}/>
         
-          <label>Cover</label>
-          <Field name="image" component={::this.renderDropZone} />
+          <Field name="image" component={renderDropZone} label="Cover" />
 
-          <FieldArray name="blocks" component={this.renderBlocks} />
+          <FieldArray name="blocks" component={renderBlocks} 
+          validate={[hasTextInBlock]}/>
         
-          <button className="btn btn-success" type="submit">Submit</button>
+          <div className="btn-group">
+            <button id="postSubmit" className="btn btn-success" type="submit" disabled={submitting}>Submit</button>
+          </div>
+          
       </form>
     );
   }
@@ -91,8 +145,6 @@ class PostForm extends Component {
 // Decorate the form component
 PostForm = reduxForm({
   form: 'post', // a unique name for this form,
-  
-  
 })(PostForm);
 
 export default PostForm;
