@@ -46,7 +46,7 @@ module.exports = function (env){
   return {
     context: path.join(__dirname, "src/static/js"),
     devtool: debug ? "inline-source-map" : "source-map",
-    entry: "./client.js",
+    entry: ["babel-polyfill", "./client.js"],
     module:{
       rules:[
         {
@@ -107,13 +107,12 @@ module.exports = function (env){
     output: {
       path: __dirname + "/src/static/dist/",
       publicPath: "/static/dist/",
-      filename: "js/[chunkhash]-bundle.js"
+      filename: "js/[id].[hash:5].bundle.js"
     },
     plugins: basePlugins.concat(debug ? [] : [
           new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
           }),
-          
-        ])
+    ])
   }
 };
