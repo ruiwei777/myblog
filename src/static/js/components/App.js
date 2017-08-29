@@ -42,8 +42,8 @@ class App extends React.Component {
         })}*/}
         
           <Switch>
-            <Route path="/create" render={()=><CreatePost /> } />
-            <Route path="/:postid" render={(props)=><PostDetail params={props.match.params}/>} />
+            <Route path="/create" render={({match, location, history})=> <CreatePost history={history} /> } />
+            <Route path="/:postid" render={({match, location, history})=><PostDetail params={match.params}/>} />
             <Route exact path="/" render={()=><PostList {...this.props}/>} />
           </Switch>
 

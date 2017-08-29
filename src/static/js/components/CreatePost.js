@@ -12,7 +12,7 @@ import Win8Spinner from "./ui_components/win8-spinner";
 class CreatePost extends React.Component{
 
   handleSubmit(formData){
-    console.log(formData);
+    // console.log(formData);
 
     let { username, token } = this.props;
     let loggedIn = username && token;
@@ -33,9 +33,9 @@ class CreatePost extends React.Component{
         .then(data => {
           // data is a post instance
           // console.log(data.id);
-          this.props.router.push("/posts/" + data.id);
+          this.props.history.push("/" + data.id);
         }).catch(error => {
-          console.log(error.data)
+          console.log(error)
         });
     }
     
