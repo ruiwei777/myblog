@@ -27,8 +27,12 @@ from rest_framework.views import APIView
 # Create your views here.
 
 def login_view(request):
+
     title = "Login"
+    data = request.POST.copy()
+    print(data)
     form = UserLoginForm(request.POST or None)
+    print(form)
     if form.is_valid():
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
@@ -45,6 +49,8 @@ def login_view(request):
                 pass
         else:
             pass
+    else:
+        print("Error")
 
     context = {
         "form": form,
@@ -76,7 +82,13 @@ def register_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect("/")
+    to = "/"
+    next = request.GET.get("next")
+    if next:
+        to += next + "/"
+
+
+    return redirect(to)
 
 
 class UserViewSet(viewsets.ModelViewSet):

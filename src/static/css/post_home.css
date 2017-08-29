@@ -23,6 +23,7 @@ p{
   font-weight: lighter;
 }
 
+
 .btn{
   font-family: inherit;
   font-size: 1em;
@@ -146,6 +147,10 @@ p{
   width: 100%;
 }
 
+.login-form > input{
+  margin-bottom: 1em;
+}
+
 
 .login-form .btn:nth-child(2){
   margin-left: 1em;
@@ -242,7 +247,7 @@ p{
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 1em .5em;
+  padding: 3em .5em;
 
 }
 
@@ -253,7 +258,7 @@ p{
     height: 100vh;
     width: 20em;
     text-align: right;
-    padding: 0 1.5em 0 1em;
+    padding: 0 3em 0 2.5em;
   }
 }
 
@@ -286,6 +291,7 @@ p{
 
 .grid-container > .header .nav li{
   list-style: none;
+  margin-bottom: .2em;
 }
 
 
@@ -295,11 +301,15 @@ p{
   color: white;
   text-transform: uppercase;
   line-height: 1.5;
+  padding: 0 0 2px;
 }
 
-.grid-container > .header .nav li a:hover{
-  text-decoration: underline;
+.grid-container > .header .nav li a.active, .grid-container > .header .nav li a:hover{
+  color: rgb(135, 164, 183);
+  border-bottom: 2px solid rgb(135, 164, 183);
 }
+
+
 /* .header end */
 
 .grid-container > .article{

@@ -33,7 +33,7 @@ class CreatePost extends React.Component{
         .then(data => {
           // data is a post instance
           // console.log(data.id);
-          this.props.router.push("/" + data.id);
+          this.props.router.push("/posts/" + data.id);
         }).catch(error => {
           console.log(error.data)
         });

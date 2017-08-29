@@ -38,7 +38,7 @@ export default class Snippet extends React.Component{
 
           {/*Error message*/}
           {touched &&
-            ((error && <span className="error">&#x203C; {error}</span>) ||
+            ((error && <span className="error">{error}</span>) ||
               (warning && <span className="warning">{warning}</span>))}
 
           {/*dropdown menu to select content type*/}

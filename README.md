@@ -9,22 +9,15 @@ This is my personal website with an SPA blog. ([demo](http://www.liangruiwei.com
 3. Supports Token Authentication.
 
 # Change log
+29/Aug/2017
+1. Upgrade to react-router-dom v4. Now supports active link style in blog.
+2. Fix a bug that makes the date input font size inconsistent.
+
 11/Aug/2017
 1. Re-enable register
 2. Update some js libraries including Webpack to 3
 
 
-10/Aug/2017
-1. Fixed a bug causing 500 error when uploading post cover.
-2. Now it displays cover on post_detail page correctly.
-3. Fixed a CodeMirror bug that won't wrap the line if pressing the key for too long.
-4. Added **animation feedback** when making requests.
-
-
-03/Aug/2017
-1. Fixed a bug that won't reset image after submitting a post form.
-2. removed super-agent dependency, now completely uses Axios.
-3. Fixed date input/ouput format for localisation, now using the Australia/British format.
 
 
 # How to Run
@@ -59,4 +52,4 @@ Django, Djang-rest-framework
 React, React-router, Redux, Redux-form, Redux-thunk, Code Mirror, Webpack 3, SASS
 
 # License
-**MIT**
+MIT

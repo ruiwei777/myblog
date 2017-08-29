@@ -6,15 +6,15 @@ import { Field, FieldArray, Fields, reduxForm } from 'redux-form';
 import { dateTillNow, required, hasText, hasTextInBlock } from "../validations/postform.validate";
 
 // Stateless methods to render redux-form
-const renderField = ({input, label, type, meta: { touched, error, warning }  }) => {
+const renderField = ({input, label, placeholder, type, meta: { touched, error, warning }  }) => {
   return (<div className="field">
     <label>
       {label}
     </label>
     <div>
-      <input {...input} placeholder={label} type={type} />
+      <input {...input} placeholder={placeholder} type={type} />
       {touched &&
-        ((error && <span className="error">&#x203C; {error}</span>) ||
+        ((error && <span className="error">{error}</span>) ||
           (warning && <span className="warning">{warning}</span>))}
     </div>
   </div>)
@@ -125,7 +125,7 @@ class PostForm extends Component {
           validate={[hasText]} label="Title*" type="text"
             />
         
-          <Field name="publish" placeholder="eg. 29/01/2018" component={renderField} 
+          <Field name="publish" placeholder="dd/mm/yyyy" component={renderField} 
           label="Publish Date*" type="date" validate={[dateTillNow]}/>
         
           <Field name="image" component={renderDropZone} label="Cover" />

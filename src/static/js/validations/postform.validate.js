@@ -6,7 +6,7 @@ const hasTextInBlock = (value, allValues, props) => {
 
   for(let i=0; i<value.length; i++){
     if(!(typeof value[i].text === "string") || !value[i].text.trim()){
-      return "Empty paragraph(s) not allowed";
+      return "Empty paragraph is not allowed";
     }
   }
 
@@ -14,7 +14,6 @@ const hasTextInBlock = (value, allValues, props) => {
     return "Currently only support one paragraph. Extra paragraphs need to be deleted before submission.";
   }
 
-  console.log("OK");
   return undefined;
 };
 

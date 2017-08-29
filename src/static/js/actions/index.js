@@ -67,6 +67,19 @@ export function fetchUser(username, password){
   }  // return
 }
 
+export function loginFromCookies(username, token){
+  return function(dispatch){
+    dispatch({
+      type: 'LOGIN_FROM_COOKIES',
+      payload: {
+        username, 
+        token
+      }
+    });
+  };
+}
+
+
 export function logout(){
   return function(dispatch){
     dispatch({

@@ -1,7 +1,9 @@
 import React from "react";
 import Post from "./Post";
 import axios from "axios";
-import { fetchUser, logout, confirmLoginError } from "../actions";
+import cookie from "react-cookies";
+import { fetchUser, loginFromCookies, logout, confirmLoginError } from "../actions";
+import { baseURL } from "../constants";
 import Win8Spinner from "./ui_components/win8-spinner";
 
 import LoginForm from "./redux_forms/LoginForm";
@@ -22,6 +24,17 @@ export default class PostList extends React.Component {
     this.props.router.push("/");
   }
 
+  componentWillMount(){
+    // try to get username and token from cookies, and refresh its period
+    const username = cookie.load("username");
+    const token = cookie.load("token");
+    if(username && token){
+      this.props.dispatch(loginFromCookies(username, token));
+      const oneWeek = 60*60*24*7;
+      cookie.save("username", username, {maxAge: oneWeek});
+      cookie.save("token", token, {maxAge: oneWeek});
+    }
+  }
   
 
   componentDidMount(){
@@ -33,7 +46,7 @@ export default class PostList extends React.Component {
 
     const { username, token } = this.props.userState;
     let loginBtn = <button className="btn btn-view" onClick={::this.loginView}>Login</button>;
-    let logoutBtn = <button onClick={::this.onLogoutClick} className="btn">Logout</button>;
+    let logoutBtn = <a onClick={::this.onLogoutClick} className="btn" href="/logout/">Logout</a>;
 
     let btnShowed = username && token ? logoutBtn : loginBtn;
 
@@ -113,7 +126,10 @@ export default class PostList extends React.Component {
     .then(val => {
       this.setState({
         showLoginView: false
-      })
+      });
+      cookie.save("username", this.props.userState.username);
+      cookie.save("token", this.props.userState.token);
+
     }).catch(err => {
       console.log(err)
     })
@@ -123,7 +139,10 @@ export default class PostList extends React.Component {
 
 
   onLogoutClick(e){
+    e.preventDefault();
     this.props.dispatch(logout());
+    cookie.remove("username");
+    cookie.remove("token");
   }
 
   closeLoginView(e){

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Markdown from "react-markdown";
 import React from "react";
 import { connect } from "react-redux";

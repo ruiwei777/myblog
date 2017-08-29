@@ -1,5 +1,5 @@
 import EllipsisText from "react-ellipsis-text";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import React from "react";
 import Markdown from "react-markdown"
 
@@ -69,7 +69,7 @@ export default class Post extends React.Component{
                 {this.processPostBody(post.content)}
               </p>
               
-              <Link to={"" + post.id} className="view">Read Full Article</Link>
+              <Link to={"/" + post.id} className="view">Read Full Article</Link>
           </div>
         </section>
 

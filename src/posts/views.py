@@ -28,125 +28,24 @@ from rest_framework import status
 import logging
 from datetime import datetime
 
-# Create your views here.
 
 def home(request):
+    """
+        The home view for this app: www.domain.com/posts/
+    """
     return render(request, "post_home.html", {})
 
-def create(request):
-    if not request.user.is_staff and not request.user.is_superuser:
-        context = {
-            "message" : "403 Forbidden: Only authenticated users can create post."
-        }
-        
-        return render(request, "error.html", context)
-
-    form = PostForm(request.POST or None, request.FILES or None)
-
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, "New post created.")
-        return HttpResponseRedirect(instance.get_absolute_url())
-
-    context = {
-        "form" : form
-    }
-
-    return render(request, "create.html", context)
-
-def read(request, slug=None):
-    instance = get_object_or_404(Post, slug=slug)
-    if instance.draft or instance.publish > timezone.now().date():
-        if not request.user.is_staff and not request.user.is_superuser:
-            raise Http404
-
-    share_string = quote_plus(instance.content)
-
-
-    comment_form = CommentForm(request.POST or None)
-    if comment_form.is_valid():
-        if not request.user.is_authenticated():
-            return HttpResponseRedirect(reverse("login"))
-        content = comment_form.cleaned_data.get("content")
-        parent_obj = None
-        try:
-            parent_id = comment_form.cleaned_data.get("parent_id")
-            parent_qs = Comment.objects.filter(id=parent_id)
-            parent_obj = parent_qs.first()
-        except:
-            parent_id = None    
-            
-        new_comment = Comment(
-                user = request.user,
-                content = content,
-                parent = parent_obj,
-                content_object = instance,
-            )
-        new_comment.save()
-        return HttpResponseRedirect(new_comment.content_object.get_absolute_url())
-
-
-
-
-    context = {
-        "instance" : instance,
-        "share_string" : share_string,
-        "comment_form" : comment_form,
-        
-    }
-
-    return render(request, "read.html", context)
-
-def update(request, slug=None):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
-
-    instance = get_object_or_404(Post, slug=slug)
-    form = PostForm(request.POST or None, request.FILES or None, instance=instance)
-
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save()
-        return HttpResponseRedirect(instance.get_absolute_url())
-
-    context={
-        "form" : form
-    }
-
-    return render(request, "create.html", context)
-
-
-def delete(request, slug=None):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
-
-    instance = get_object_or_404(Post, slug=slug)
-    instance.delete()
-    messages.success(request, "delete success.")
-
-    queryset = Post.objects.all()
-    context={
-        "queryset" : queryset,
-        
-    }
-
-    return render(request, "index.html", context)
 
 def index(request):
-
-    context = {
-
-    }
-    return render(request, "index.html", context)
-
+    """
+        The home view for the index url: www.domain.com
+    """
+    return render(request, "index.html", {})
 
 
 class PostViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows posts to be viewed or edited.
-    This one is actually in use.
     http://www.django-rest-framework.org/api-guide/viewsets/
     """
     queryset = Post.objects.all().order_by('-publish').filter(publish__lte=datetime.today())
@@ -161,6 +60,7 @@ class PostViewSet(viewsets.ModelViewSet):
         else:
             serializer.save()
         
+        # log the ip address if non-staff trying to create a post
         if not self.request.user.is_staff:
             logging.basicConfig(filename="post_creation.log", level=logging.INFO)
             ip = self.request.META["REMOTE_ADDR"]
@@ -169,54 +69,3 @@ class PostViewSet(viewsets.ModelViewSet):
             if not settings.DEBUG:
                 ip = self.request.META['HTTP_X_FORWARDED_FOR'].split(",")[0].strip()
             logging.info(str(datetime.now())+" Non-staff post writer from "+ str(ip))
-
-
-# Non viewset
-# Following two are not in use, just for reference purpose
-class PostList(APIView):
-  """
-  List all posts, or create a new post.
-  """
-  def get(self, request, format=None):
-      posts = Post.objects.all()
-      serializer = PostSerializer(posts, many=True, context={'request': request})
-      return Response(serializer.data)
-
-  def post(self, request, format=None):
-      logging.basicConfig("example.log")
-      logging.debug("printing user..." + str(request.user))    
-      serializer = PostSerializer(data=request.data)
-      if serializer.is_valid():
-          serializer.save()
-          logging.debug("here")
-          return Response(serializer.data, status=status.HTTP_201_CREATED)
-      return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class PostDetail(APIView):
-    """
-    Retrieve, update or delete a post instance.
-    """
-    def get_object(self, pk):
-        try:
-            return Post.objects.get(pk=pk)
-        except Post.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        post = self.get_object(pk)
-        serializer = PostSerializer(post, context={'request': request})
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        post = self.get_object(pk)
-        serializer = PostSerializer(post, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        post = self.get_object(pk)
-        post.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)

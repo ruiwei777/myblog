@@ -34,13 +34,13 @@
       <ul class="menu">
         <li><a href="{% url 'posts:home' %}">Blog</a></li>
         
-        {% if user.is_authenticated %}
+        <!-- {% if user.is_authenticated %}
         <li><a href="#" id="username">Hello, {{ user.username }}</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         {% else %}
-        <li><a href="{% url 'login' %}}">Login</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
         <li><a href="{% url 'register' %}}">Register</a></li>
-        {% endif %}
+        {% endif %} -->
     </div>
     
 </nav>
@@ -55,7 +55,7 @@
 
 	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
 
 	<script type="text/javascript src={% static 'js/base.js' %}">
 

@@ -29,6 +29,10 @@ export default function userReducer(state={
         return {...state, username: null, token: null, fetched: false}
       }
 
+      case "LOGIN_FROM_COOKIES": {
+        return {...state, username: action.payload.username, token: action.payload.token};
+      }
+
       case "CONFIRM_ERROR": {
         return {...state, error: false}
       }

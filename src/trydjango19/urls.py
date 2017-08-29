@@ -1,4 +1,4 @@
-"""trydjango19 URL Configuration
+"""The root URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -35,17 +35,13 @@ import accounts
 
 # rest_framework ViewSet
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)  # http://127.0.0.1:8000/api/users/ , relative to api root
+router.register(r'users', UserViewSet)  # domain.com/api/users/ , relative to api root
 router.register(r'groups', GroupViewSet)
 router.register(r'posts', posts.views.PostViewSet)
 
 
 
 urlpatterns = [
-    # url(r'^api/posts/$', posts.views.PostList.as_view(), name='post-list'),
-    # url(r'^api/posts/(?P<pk>[0-9]+)/$', posts.views.PostDetail.as_view(), name='post-detail'),
-    # url(r'^api/users/$', accounts.views.UserList.as_view(), name='user-list'),
-    # url(r'^api/users/(?P<pk>[0-9]+)/$', accounts.views.UserDetail.as_view(), name='user-detail'),
     url(r'^api/', include(router.urls)),    # This is api root
     url(r'^login/', login_view, name="login"),
     url(r'^logout/', logout_view, name="logout"),
@@ -69,5 +65,3 @@ if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# django_rest_framework alternative url settings
-# urlpatterns = format_suffix_patterns(urlpatterns)
