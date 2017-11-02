@@ -17,8 +17,11 @@ from . import passwords
 
 # from accounts.views import login_view
 
+# Project root folder. This is used mainly for referencing webpack compiled files because they live inside proj/build.
+PROJ_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))) 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # proj/src
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
     'comments',
     'accounts',
     #third party
+    'webpack_loader',
     'pagedown',
     'markdown_deux',
     'crispy_forms',
@@ -74,7 +78,7 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'trydjango19.urls'
 
-JS_TEMPLATES = os.path.join(BASE_DIR, "static/dist/templates")
+JS_TEMPLATES = os.path.join(PROJ_DIR, "build/templates")
 
 TEMPLATES = [
     {
@@ -145,9 +149,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    
+    os.path.join(PROJ_DIR, "build"),
+    os.path.join(BASE_DIR, "static")
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/',
+        'STATS_FILE': os.path.join(PROJ_DIR, 'build', 'webpack-stats.json')
+    }
+}
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 

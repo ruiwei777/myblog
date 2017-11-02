@@ -1,3 +1,4 @@
+/* This is the Djanog base css */
 *{
 
 	font-family: 'Montserrat',sans-serif;
@@ -47,37 +48,39 @@ nav.nav-fixed{
 	background: white;
 	color: #282828;
 	border-bottom: 1px solid #dddddd;
-	padding: .1em 0 .1em;
+	height: 4em;
 }
 
-nav.nav-fixed ul li a{
-	color: #282828;
+nav .positioner{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
 }
 
-nav.nav-fixed ul li a:hover{
-	color: dodgerblue;
+nav ul{
+	display: flex;
 }
 
 nav ul li{
-	float:left;
 	list-style: none;
 	text-align: center;
 	margin:0;
 	padding: 0;
+	color: #f3f3f3;
 }
 
 nav ul li a{
-	color: #f3f3f3;
 	font-size: 1em;
-	padding: .5em 0 .5em 1em;
+	color: inherit;
+	padding: .5em 1em;
 	line-height: 1.5em;
 	letter-spacing: 0;
-	text-transform: uppercase;
+	text-transform: capitalize;
 
 }
 
 nav a{
-	color: white;
 	text-decoration: none;
 }
 
@@ -85,12 +88,25 @@ nav a:hover{
 	color: deepskyblue;
 }
 
+nav.nav-fixed ul{
+	padding: 0;
+	margin: 0;
+	align-self: stretch;
+}
 
-nav .positioner{
+nav.nav-fixed ul li{
+	color: #333;
+
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 }
+
+
+nav.nav-fixed ul li:hover{
+	background-image: linear-gradient(0deg, lightcoral, red);
+	color: white;
+}
+
 
 nav .logo > img{
 	width: 50px;
@@ -103,6 +119,9 @@ nav #username{
 	text-transform: capitalize;
 }
 
+nav.nav-fixed a:hover{
+	color: inherit;
+}
 
 
 

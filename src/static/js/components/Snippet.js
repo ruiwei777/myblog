@@ -1,12 +1,8 @@
 import { Field } from "redux-form";
 import React from "react";
 import CodeMirror from "react-codemirror";
-import "codemirror/lib/codemirror.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/markdown/markdown";
-
-
-
 
 export default class Snippet extends React.Component{
 
@@ -23,8 +19,16 @@ export default class Snippet extends React.Component{
     language.input.onChange(newValue)
   }
 
-  removeBlock(){
+  removeBlock = () => {
     this.props.remove()
+  }
+
+  componentDidMount(){
+    // fix the bug that makes CodeMirror mistakenly calculate the gutter width
+    // https://github.com/codemirror/CodeMirror/issues/3527
+    setTimeout(() => {
+      this.cm.getCodeMirror().refresh();
+    }, 100)
   }
 
   render(){
@@ -53,7 +57,7 @@ export default class Snippet extends React.Component{
                 <option value="javascript">javascript</option>
               </Field>
 
-              {i>0 &&<button className="btn btn-danger" onClick={::this.removeBlock}>Remove</button>}
+              {i>0 &&<button className="btn btn-danger" onClick={this.removeBlock}>Remove</button>}
             </div>
             
             
@@ -66,10 +70,9 @@ export default class Snippet extends React.Component{
                 lineNumbers: true}}
               value={text.input.value}
               onChange={::this.handleChange}
-              ref="codemirror">
+              ref={ cm => { this.cm = cm; } }>
             </CodeMirror>
           </div>
-          
         </div>
        
       )

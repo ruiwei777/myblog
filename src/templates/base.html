@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{% static 'images/nodejs_large.png' %}"/>
+    <link rel="icon" href="{% static 'images/nodejs.png' %}"/>
 <title>
-    Ruiwei's Blog
+    Home - Ruiwei
 </title>
 <!-- Latest compiled and minified CSS -->
 <!-- <link rel="stylesheet" href="{% static 'css/vendor/flatly.bootstrap.min.css' %}" /> -->
@@ -23,42 +23,30 @@
 {% endblock head %}
 
 </head>
-<body>
+<body id="body">
 
 <nav>
     <div class="positioner">
-        <a class="logo" href="{% url 'index' %}">
-          <img src="{% static 'images/index/npm.png' %}">
+        <a class="logo" href="#body">
+          <img src="{% static 'images/nodejs.png' %}">
         </a>
 
       <ul class="menu">
+        <li><a href="#skills">Tech Stack</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="{% url 'posts:home' %}">Blog</a></li>
-        
-        <!-- {% if user.is_authenticated %}
-        <li><a href="#" id="username">Hello, {{ user.username }}</a></li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        {% else %}
-        <li><a href="{% url 'login' %}">Login</a></li>
-        <li><a href="{% url 'register' %}}">Register</a></li>
-        {% endif %} -->
     </div>
-    
 </nav>
-	
-  <script src="http://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+
+    <!-- load jQUery before other pages -->
+	<script src="http://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+  
 
 	{% block content %}
 		
 	{% endblock content %}
 
-	
 
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
-
-	<script type="text/javascript src={% static 'js/base.js' %}">
-
-	</script>
-	</body>
+</body>
 </html>

@@ -1,4 +1,9 @@
 // General Settings
+a
+  text-decoration: none
+
+  &:hover
+    text-decoration: underline
 
 .word-break
   /* These are technically the same, but use both */
@@ -31,34 +36,32 @@
 .post-category
   margin: 0 0.1em
   padding: 0.3em 1em
+  border-radius: 2px
   color: #fff
   background: #999
   font-size: 80%
 
 .post-category-design
-  background: #5aba59
+  background: #0ff24e
 
-.post-category-pure
+.post-category-react
   background: #4d85d1
 
 .post-category-js
-  background: #df2d4f
-
-
+  background: #fa3a3a
 
 
 // --General Settings
-
 
 // Post 
 .post
   &:after
     display: block
     content: ''
-    height: 2px
+    height: 1px
     margin-top: 2em
     margin-bottom: 4em
-    background-color: #dddddd
+    background-color: #eee
     max-width: 768px
 
   .post-header
@@ -70,9 +73,13 @@
       margin-left: 1em
 
     & .post-title
+      display: inline-block
       font-size: 2em
       color: #222
-      margin-bottom: 0.2em
+      margin: .8em 0 .4em
+      font-weight: bolder
+      line-height: 1.5
+      text-transform: capitalize
 
     & .post-meta
       color: #999
@@ -95,26 +102,3 @@
 
     p
       margin: 0 0 1em
-
-  // ReadFull Button
-  .view
-    border-bottom: 1px solid #dcb107
-    text-transform: uppercase
-    text-decoration: none
-    color: #444
-    transition: background-color .3s ease-in-out
-    line-height: 2
-    font-size: .8em
-    padding-bottom: 3px
-
-    &:hover
-      background: #f9d236;
-    
-
-
-
-
-
-
-
-

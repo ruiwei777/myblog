@@ -97,7 +97,7 @@ export default class PostList extends React.Component {
             </div>
           </div>
 
-          {this.getCredentialBlock()}
+          {/* {this.getCredentialBlock()} */}
 
           <div className="posts">
             <h1 className="content-subhead">Recent Posts</h1>
