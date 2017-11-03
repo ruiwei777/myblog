@@ -20,12 +20,13 @@ const cleanOptions = {
 module.exports = {
     context: SRC_PATH,
     entry: {
-        posts: ["./static/js/posts.js"] // relative to PROJ/SRC
+        posts: ["./static/react/entry.jsx"] // relative to Proj/src
     },
     resolve: {
         alias: {
-            Root: path.resolve("./src/static/js")
-        }
+            root: path.resolve("./src/static/react")
+        },
+        extensions: ['.js', '.jsx']
     },
     module: {
         rules: [
@@ -40,7 +41,7 @@ module.exports = {
                                 ['env', {
                                     "modules": false,
                                     "targets": {
-                                        // "browsers": ["last 2 versions", "ie >= 11"]
+                                        "browsers": ["last 2 versions", "ie >= 11"]
                                     },
                                     "useBuiltIns": "usage"
                                 }],
