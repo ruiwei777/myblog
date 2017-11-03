@@ -17,7 +17,7 @@ common.module.rules.push(
         exclude: /node_modules/
     },
     {
-        test: /\.s[ac]ss$/,
+        test: /\.scss$/,
         use: [
             { loader: 'style-loader', options: { sourceMap: true } },
             { loader: 'css-loader', options: { sourceMap: true } },

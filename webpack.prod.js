@@ -21,7 +21,7 @@ common.module.rules.push(
         exclude: /node_modules/
     },
     {
-        test: /\.s[ac]ss$/,
+        test: /\.scss$/,
         use: extractSASS.extract({
             use: [
                 { loader: 'css-loader', options: { sourceMap: true, minimize: true } },

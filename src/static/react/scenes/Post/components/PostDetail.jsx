@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { fetchAPost } from "../actions";
 import Win8Spinner from "root/components/Win8Spinner";
 
-import "../styles/post_detail.sass";
+import "../styles/post_detail.scss";
 
 class PostDetail extends React.Component {
     constructor(props) {

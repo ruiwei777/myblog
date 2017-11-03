@@ -12,7 +12,7 @@ if (module.hot) {
 }
 
 
-let app = document.getElementById("app");
+const app = document.getElementById("app");
 
 ReactDOM.render(
   <Provider store={store}>

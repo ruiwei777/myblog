@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import React from "react";
 import removeMd from "remove-markdown"
 
-import "../styles/post_item.sass"
+import "../styles/post_item.scss"
 
 
 /**

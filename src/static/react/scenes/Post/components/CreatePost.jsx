@@ -2,7 +2,7 @@ import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 
-import "../styles/create_post.sass";
+import "../styles/create_post.scss";
 
 import { addPost } from "../actions";
 import Win8Spinner from "root/components/Win8Spinner";
