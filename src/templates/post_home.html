@@ -1,4 +1,5 @@
 {% load render_bundle from webpack_loader %}
+{% load staticfiles %}
 <!doctype html>
 <html lang="en">
 
@@ -6,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ruiwei Liang's Tech Blog">
+    <link rel="shortcut icon" href="{% static 'images/react-logo.png' %}"/>
     <title>Blog &ndash; Rui L</title>
 
 </head>

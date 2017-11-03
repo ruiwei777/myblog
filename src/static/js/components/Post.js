@@ -20,9 +20,7 @@ export default class Post extends React.Component{
         for(let i=0; i<images.length; i++){
           images[i].classList.add("img-responsive")
         }
-    
     // console.log(this.props)
-
   }
 
   processPostBody(body){
