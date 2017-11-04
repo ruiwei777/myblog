@@ -26,7 +26,7 @@ class Post extends React.Component {
         <div className="header">
           <div className="header-wrapper">
             <h1 className="brand-title">Ruiwei's blog</h1>
-            <h2 className="brand-tagline">Django & React is awesome</h2>
+            <h2 className="brand-tagline">dancing with React & Django</h2>
             <nav className="nav">
               <ul className="nav-list">
                 <li className="nav-item"><NavLink exact to="/" activeClassName="active">All Posts</NavLink></li>

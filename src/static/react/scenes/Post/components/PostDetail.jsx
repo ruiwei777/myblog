@@ -20,7 +20,6 @@ class PostDetail extends React.Component {
     const { post } = this.props;
 
     // if not finish fetching, or the post is the previous one, display loading animation
-    console.log(post)
     if (!post || String(post.id) !== this.props.params.postid) {
       return (
       <div className="fetching">

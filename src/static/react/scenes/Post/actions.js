@@ -1,12 +1,12 @@
 import axios from "axios";
-import { baseURL } from "root/services/constants";
+import { API_ROOT } from "root/services/constants";
 import { reset } from "redux-form";
 
 
 export function fetchAPost(id) {
   id = "" + id
   return function (dispatch) {
-    axios.get(baseURL + "api/posts/" + id + "/")
+    axios.get(API_ROOT + "api/posts/" + id + "/")
       .then((response) => {
         dispatch({ type: "FETCH_A_POST_FULFILLED", payload: response.data })
         // console.log(response)
@@ -19,7 +19,7 @@ export function fetchAPost(id) {
 
 export function fetchPosts(page = 1) {
   return function (dispatch) {
-    let url = baseURL + "api/posts/";
+    let url = API_ROOT + "api/posts/";
     url += "?page=" + page;
     axios.get(url)
       .then((response) => {
@@ -42,7 +42,7 @@ export function fetchUser(username, password) {
     return new Promise((resolve, reject) => {
       axios({
         method: "post",
-        url: baseURL + "api-token-auth/",
+        url: API_ROOT + "api-token-auth/",
         data: { username, password }
       })
         .then(response => {
@@ -125,7 +125,7 @@ export function addPost(formData, token) {
 
     let config = {
       method: "post",
-      url: baseURL + "api/posts/",
+      url: API_ROOT + "api/posts/",
       data: fd
     }
 
