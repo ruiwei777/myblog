@@ -9,7 +9,9 @@ import { fetchPosts } from "./actions";
 
 import "./styles/post_home.scss";
 
-
+/**
+ * Layout of the /posts/ page.
+ */
 class Post extends React.Component {
 
   componentWillMount() {
@@ -24,7 +26,7 @@ class Post extends React.Component {
         <div className="header">
           <div className="header-wrapper">
             <h1 className="brand-title">Ruiwei's blog</h1>
-            <h2 className="brand-tagline">A React-Redux SPA</h2>
+            <h2 className="brand-tagline">Django & React is awesome</h2>
             <nav className="nav">
               <ul className="nav-list">
                 <li className="nav-item"><NavLink exact to="/" activeClassName="active">All Posts</NavLink></li>
@@ -40,7 +42,7 @@ class Post extends React.Component {
           {username && token ?
             <div>Welcome back, {username} <button className="btn btn-secondary">Logout</button></div>
             :
-            <div><button className="btn btn-orange">Login</button></div>
+            <div><button className="btn btn-trans-white">Login</button></div>
           }
         </div>
 

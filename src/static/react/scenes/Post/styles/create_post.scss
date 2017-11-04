@@ -80,77 +80,90 @@ input:focus {
   grid-template-columns: 200px 1fr;
   grid-template-areas: "message message" "zone preview";
   margin-bottom: 2em;
+
+  .drop-zone {
+    grid-area: zone;
+    background-color: #eeeeee;
+
+    & > .drop-text {
+      margin: 0;
+      border-width: 2px;
+      border-color: #ccc;
+      border-style: dashed;
+      border-radius: 4px;
+      padding: 1em;
+      width: 100%;
+      height: 100%;
+      transition: all 0.5s;
+    }
+  }
+
+  & .preview-wrapper {
+    grid-area: preview;
+    max-width: 100%;
+    height: auto;
+    border-top: 2px dashed #ccc;
+    border-right: 2px dashed #ccc;
+    border-bottom: 2px dashed #ccc;
+    padding: 1em 0 2em;
+
+    & > .preview-header {
+      text-align: center;
+      font-weight: normal;
+      color: #cccccc;
+      letter-spacing: 2px;
+      margin: 0 0 1em;
+    }
+
+    & > .preview-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      min-height: 4em;
+      margin: 0 auto;
+    }
+  }
+
+  .drop-message {
+    grid-area: message;
+  }
 }
-.dropzone-wrapper .drop-zone {
-  grid-area: zone;
-  background-color: #eeeeee;
-}
-.dropzone-wrapper .drop-zone > .drop-text {
-  margin: 0;
-  border-width: 2px;
-  border-color: #ccc;
-  border-style: dashed;
-  border-radius: 4px;
-  padding: 1em;
-  width: 100%;
-  height: 100%;
-  transition: all 0.5s;
-}
-.dropzone-wrapper .preview-wrapper {
-  grid-area: preview;
-  max-width: 100%;
-  height: auto;
-  border-top: 2px dashed #ccc;
-  border-right: 2px dashed #ccc;
-  border-bottom: 2px dashed #ccc;
-  padding: 1em 0 2em;
-}
-.dropzone-wrapper .preview-wrapper > .preview-header {
-  text-align: center;
-  font-weight: normal;
-  color: #cccccc;
-  letter-spacing: 2px;
-  margin: 0 0 1em;
-}
-.dropzone-wrapper .preview-wrapper > .preview-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  min-height: 4em;
-  margin: 0 auto;
-}
-.dropzone-wrapper .drop-message {
-  grid-area: message;
-}
+ 
 
 .code-blocks {
   margin-bottom: 2em;
-}
-.code-blocks .code-section {
-  margin-bottom: 3em;
-}
-.code-blocks .code-section .code-grid .code-meta {
-  margin: 0 0 0.5em;
-  display: flex;
-  justify-content: space-between;
-}
-.code-blocks .code-section .code-grid .code-meta .code-type {
-  display: inline-block;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+
+  & .code-section {
+    margin-bottom: 3em;
+
+    & .code-grid .code-meta {
+      margin: 0 0 0.5em;
+      display: flex;
+      justify-content: space-between;
+
+      & .code-type {
+        display: inline-block;
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+      }
+    }
+  }
 }
 
 .CodeMirror {
   border: 1px solid deepskyblue;
   transition: border-color 0.3s;
+  
+  &.CodeMirror-focused {
+    border-color: dodgerblue;
+  }
+
+  &.CodeMirror-wrap pre {
+    word-break: break-all;
+  }
 }
-.CodeMirror.CodeMirror-focused {
-  border-color: dodgerblue;
-}
-.CodeMirror.CodeMirror-wrap pre {
-  word-break: break-all;
-}
+
 
 form .btn-group #postSubmit {
   margin-left: 0.5em;

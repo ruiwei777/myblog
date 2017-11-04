@@ -13,14 +13,6 @@ export default class PostItem extends React.Component {
     super();
   }
 
-  componentDidMount() {
-    let images = document.getElementsByTagName("img");
-    for (let i = 0; i < images.length; i++) {
-      images[i].classList.add("img-responsive")
-    }
-    // console.log(this.props)
-  }
-
   processPostBody(body) {
     let processed = removeMd(body);
     const maxLength = 400;
@@ -44,7 +36,7 @@ export default class PostItem extends React.Component {
           </NavLink>
 
           <p className="post-meta">
-            By <a className="post-author" href="#">{post.username} </a> at {post.publish} under <a className="post-category post-category-js" href="#">JavaScript</a>
+            By <a className="post-author" href="#">{post.user.username} </a> at {post.publish} under <a className="post-category post-category-js" href="#">JavaScript</a>
             <a className="post-category post-category-design" href="#">CSS</a>
             <a className="post-category post-category-react" href="#">React</a>
 
@@ -56,9 +48,9 @@ export default class PostItem extends React.Component {
         </div>}
 
         <div className="post-description word-break">
-          <p>
+          <NavLink to={"/" + post.id} className="p">
             {this.processPostBody(post.content)}
-          </p>
+          </NavLink>
         </div>
       </section>
     );

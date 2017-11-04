@@ -2,62 +2,65 @@ import { NavLink } from "react-router-dom";
 import Markdown from "react-markdown";
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { fetchAPost } from "../actions";
 import Win8Spinner from "root/components/Win8Spinner";
+import PostMeta from "./PostMeta";
 
 import "../styles/post_detail.scss";
 
 class PostDetail extends React.Component {
-    constructor(props) {
-        super(props);
+
+  componentWillMount() {
+    this.props.dispatch(fetchAPost(this.props.params.postid))
+  }
+
+  render() {
+    const { post } = this.props;
+
+    // if not finish fetching, or the post is the previous one, display loading animation
+    console.log(post)
+    if (!post || String(post.id) !== this.props.params.postid) {
+      return (
+      <div className="fetching">
+        <Win8Spinner ></Win8Spinner>
+      </div>)
     }
 
-    componentWillMount() {
-        this.props.dispatch(fetchAPost(this.props.params.postid))
-    }
+    let { title, subtitle, content, image } = post;
 
-    render() {
-        const { post } = this.props;
-        if (!post) {
-            return <div className="fetching">
-                <Win8Spinner />
-            </div>
-        }
+    return (
+      <div className="post-detail">
+        <PostMeta date={post.publish} user={post.user} />
 
-        let { title, subtitle, username, content, image } = post;
+        {image && <img className="cover" src={image} />}
 
+        <h1 className="heading">{title}</h1>
+        <h2>{subtitle}</h2>
 
-        return (
-            <div className="post-detail">
-                <div className="header">
-                    <h1>{title}</h1>
-                    <h2>{subtitle}</h2>
-                </div>
+        <div className="content word-break">
+          <Markdown escapeHtml={true} source={content}
+            containerProps={{ id: "markdown-container" }}></Markdown>
+          <NavLink to="/" className="back">back</NavLink>
+        </div>
+      </div>
+    )
+  }
+}
 
-
-
-                <div className="content word-break">
-                    <p>By {username}</p>
-
-                    <div className="cover">
-                        {image && <img src={image} />}
-                    </div>
-
-                    <Markdown escapeHtml={true} source={content}
-                        containerProps={{ id: "markdown-container" }}></Markdown>
-                    <NavLink to="/" className="back">back</NavLink>
-                </div>
-
-
-            </div>
-        )
-    }
-
+PostDetail.propTypes = {
+  user: PropTypes.object,
+  post: PropTypes.object,
+  params: PropTypes.object,
+  dispatch: PropTypes.func
 }
 
 function mapStateToProps(state) {
-    // console.log(state.postReducer)
-    return { post: state.postReducer.currentPost };
+  // console.log(state)
+  return {
+    user: state.userReducer,
+    post: state.postReducer.currentPost
+  };
 }
 export default connect(mapStateToProps)(PostDetail);
