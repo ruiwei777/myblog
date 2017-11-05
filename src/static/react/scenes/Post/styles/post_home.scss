@@ -99,96 +99,6 @@ body{
   border-color: dodgerblue;
 }
 
-/*--------------------
-  Login View
---------------------*/
-.login-view{
-  display: none;
-}
-
-.login-view.active{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position:fixed;
-  top:0;
-  left:0;
-  bottom:0;
-  right:0;
-  background-color: rgba(0,0,0,.6);
-}
-
-.login-window{
-  background: white;
-  text-align: center;
-  border-radius: .5em;
-  padding: 0
-}
-
-.login-window .button-wrapper{
-  text-align:center;
-  padding: 0;
-}
-
-.login-window .button-wrapper:after{
-  display:table;
-  content:'';
-  clear: both;
-}
-
-
-.login-window .button-wrapper .form-close{
-  text-align:center;
-  background: none;
-  font-size: .8em;
-  color: #333333;
-  cursor: pointer;
-  border-radius: 0 .5em 0 0;
-  float: right;
-  box-shadow: none;
-}
-
-.login-window .button-wrapper .form-close:hover{
-  background-color: #dddddd;
-}
-
-.login-window .form-header{
-  font-size: 1em;
-  font-weight: lighter;
-  margin: 0 0 1em;
-}
-
-.login-window .form-wrapper{
-  padding: 0 4em 2em;
-}
-
-.login-window input{
-  width: 100%;
-}
-
-.login-form > input{
-  margin-bottom: 1em;
-}
-
-
-.login-form .btn:nth-child(2){
-  margin-left: 1em;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
-}
-
-.login-window .login-error{
-  color: rgb(255, 51,51);
-  margin-bottom: 1em;
-  font-size: .8em;
-  display: none;
-}
-
-.login-window .login-error.active{
-  display: block;
-}
-
 
 /*-----------------
   Top Login Button nav
@@ -221,19 +131,12 @@ body{
   color: white;
 }
 
-
-
-
 .credential-wrapper .usertext{
   float:right;
   color: #bbbbbb;
   margin: 0;
   height: 100%;
 }
-
-
-
-
 
 
 /*-------------------

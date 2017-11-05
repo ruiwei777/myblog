@@ -44,6 +44,24 @@ $orange: rgb(223, 117, 20);
     background: rgb(66, 184, 221); /* this is a light blue */
 }
 
+/* error message in LoginForm */
+.error{
+  color: #f04444;
+}
+
+/* close icon in Portal */ 
+.close{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+/* font-awesome color */
+i.fa{
+  color: #555;
+}
+
 
 
 .remove-code{

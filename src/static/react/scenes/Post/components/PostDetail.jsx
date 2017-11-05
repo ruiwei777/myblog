@@ -19,7 +19,8 @@ class PostDetail extends React.Component {
   render() {
     const { post } = this.props;
 
-    // if not finish fetching, or the post is the previous one, display loading animation
+    // if not finish fetching, 
+    // or the post is the previous one, display loading animation
     if (!post || String(post.id) !== this.props.params.postid) {
       return (
       <div className="fetching">
@@ -27,7 +28,7 @@ class PostDetail extends React.Component {
       </div>)
     }
 
-    let { title, subtitle, content, image } = post;
+    const { title, subtitle, content, image } = post;
 
     return (
       <div className="post-detail">

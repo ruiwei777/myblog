@@ -4,38 +4,40 @@ export default function userReducer(state={
     token: null,
     fetching: false,
     fetched: false,
-    error: false
+    error: null
   }, action) {
 
     switch (action.type) {
-      case "FETCH_USER_FULFILLED": {
+      case "LOGIN_FULFILLED": {
         return {
           ...state,
           ...action.payload,
           fetching: false,
-          fetched: true
+          fetched: true,
+          error: null
         }
       }
 
-      case "FETCH_USER": {
-        return {...state, fetching: true}
+      case "LOGIN_PENDING": {
+        return {...state, fetching: true, fetched: false, error: null}
       }
 
-      case "FETCH_USER_REJECTED": {
-        return {...state, fetching: false, error: true}
+      case "LOGIN_REJECTED": {
+        return {...state, ...action.payload, fetching: false, fetched: false}
       }
 
-      case "LOGOUT_USER": {
-        return {...state, username: null, token: null, fetched: false}
+      case "LOGIN_RESET": {
+        return {...state, fetching: false, fetched: false, error: null}
+      }
+
+      case "LOGOUT": {
+        return {...state, username: null, token: null, fetched: false, error: null}
       }
 
       case "LOGIN_FROM_COOKIES": {
-        return {...state, username: action.payload.username, token: action.payload.token};
+        return {...state, ...action.payload };
       }
 
-      case "CONFIRM_ERROR": {
-        return {...state, error: false}
-      }
     }
 
     return state;

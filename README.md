@@ -7,11 +7,11 @@ It uses Django, Django-Rest-Framework, React-Redux with thunk and Webpack 3.
 # How to Run
 1. Routine Django set up, including activate virtualenv, install Python dependencies from `requirements.txt`, collect static files, make migrations, etc. 
 
-2. If you want to modify React's code,
+2. For React & Webpack,
 
     `npm install`, then
 
-    `npm run dev` (dev mode, watching) or
+    `npm run dev` (dev mode, webpack-dev-server with HMR and watching) or
 
     `npm run build` (production mode, compile once)
 
