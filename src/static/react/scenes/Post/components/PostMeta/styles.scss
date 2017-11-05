@@ -1,0 +1,46 @@
+.meta-wrapper{
+    display: flex;
+    align-items: center;
+
+    padding: .5em;
+    max-width: 600px;
+
+    padding-bottom: 1em;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2em;
+}
+
+.meta-avatar{
+    margin-right: 1em;
+}
+
+
+.avatar-textonly{
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 2em;
+    border-radius: 50%;
+    background-color: #1f8dd6;
+    color: white;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    
+}
+
+
+.meta-content{
+    .introduction, .date{
+        color: rgba(0,0,0,.54);
+        font-size: .9em;
+    }
+
+    div {
+        margin-bottom: 2px;
+    }
+}

@@ -1,0 +1,43 @@
+.portal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > .content-wrapper{
+        background-color: rgba(255,255,255,.95);
+        max-width: 500px;
+        width: 95%;
+        min-height: 300px;
+        border-radius: 1em;
+        padding: 1em;
+
+        & > .content-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+
+            & > .title{
+                font-size: 1.5em;
+                font-weight: normal;
+                font-family: 'Times New Roman', Times, serif;
+                text-transform: capitalize;
+                margin: 0 auto; /*make it center*/
+                padding-left: 22px; /*compensate for the close button*/
+            }
+
+            & > * {
+                margin: 0;
+            }
+        
+        }
+    }
+}
+

@@ -101,19 +101,21 @@ ENV/
 # Rope project settings
 .ropeproject
 
-### My Settings ###
+### My Settings
 passwords.py
 proj_env/
 local_settings.py
 media_cdn/
 static_cdn/
 webfaction/
-.pydevproject
-.project
 node_modules/
 migrations/
 run
-*.sublime-project
-*.sublime-workspace
 user_token.txt
 post_creation.log
+
+### editor configs
+*.code-workspace
+.vscode
+*.sublime-project
+*.sublime-workspace

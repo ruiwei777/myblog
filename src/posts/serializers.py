@@ -3,20 +3,16 @@ from rest_framework import serializers
 from accounts.serializers import UserSerializer
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
 
-    # user = UserSerializer()
-    id = serializers.ReadOnlyField()
-    slug = serializers.ReadOnlyField()
-    username = serializers.ReadOnlyField(source="user.username")
-    height_field = serializers.ReadOnlyField()
-    width_field = serializers.ReadOnlyField()
     publish = serializers.DateField(format="%d %b %Y", input_formats=["%Y-%m-%d"])
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Post
+        # These commemts are just for reference, they are useless
         # fields = ('user', 'title', 'slug', 'publish') # can customize fields here
-        fields = '__all__'
+        # fields = '__all__'
 
-
-
+        # When using `exclude`, cannot use `fields`
+        exclude = ( 'height_field', 'width_field')

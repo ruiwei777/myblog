@@ -7,19 +7,15 @@ import Win8Spinner from "./ui_components/win8-spinner";
 
 import "../../css/post_detail.sass";
 
-
-
 class PostDetail extends React.Component{
   constructor(props){
     super(props);
   }
 
   componentWillMount(){
-    
     this.props.dispatch(fetchAPost(this.props.params.postid))
   }
-
-
+  
   render(){
     const {post} = this.props;
     if (!post){

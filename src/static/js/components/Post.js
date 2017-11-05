@@ -1,7 +1,8 @@
 import EllipsisText from "react-ellipsis-text";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React from "react";
 import Markdown from "react-markdown"
+import removeMd from "remove-markdown"
 
 import "../../css/post.sass"
 
@@ -14,26 +15,18 @@ export default class Post extends React.Component{
     super();
   }
 
-
   componentDidMount(){
     let images = document.getElementsByTagName("img");
         for(let i=0; i<images.length; i++){
-
           images[i].classList.add("img-responsive")
         }
-    
     // console.log(this.props)
-
   }
 
   processPostBody(body){
-    let processed = body.replace(/\#/g, "");
-    processed = processed.replace(/\*/g, "");
-    processed = processed.replace(/\</g, "");
-    processed = processed.replace(/\=/g, "");
-    processed = processed.replace(/```/g, "");
-    processed = processed.replace(/---/g, "");
-    const maxLength = 200;
+    let processed = removeMd(body);
+    const maxLength = 400;
+    
     if (processed.length > maxLength){
       processed = processed.slice(0, maxLength-1);
       processed += "...";
@@ -50,11 +43,14 @@ export default class Post extends React.Component{
           <header className="post-header">
               <img width="48" height="48" alt="avatar" className="post-avatar" src="/static/images/Code-Monkey.png" />
 
-              <h2 className="post-title">{post.title}</h2>
+              <NavLink to={"/" + post.id} className="post-title">
+                {post.title}
+              </NavLink>
 
               <p className="post-meta">
-                By <a className="post-author" href="#">{post.username} </a> at {post.publish} {/*under <a className="post-category post-category-js" href="#">JavaScript</a>
-                <a className="post-category post-category-design" href="#">CSS</a>*/}
+                By <a className="post-author" href="#">{post.username} </a> at {post.publish} under <a className="post-category post-category-js" href="#">JavaScript</a>
+                <a className="post-category post-category-design" href="#">CSS</a>
+                <a className="post-category post-category-react" href="#">React</a>
                  
               </p>
           </header>
@@ -64,12 +60,9 @@ export default class Post extends React.Component{
             </div> }
 
           <div className="post-description word-break">
-              
               <p>
                 {this.processPostBody(post.content)}
               </p>
-              
-              <Link to={"/" + post.id} className="view">Read Full Article</Link>
           </div>
         </section>
 

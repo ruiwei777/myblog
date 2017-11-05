@@ -1,0 +1,98 @@
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.word-break {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-responsive.reverse {
+  max-height: 150px;
+  width: auto;
+}
+
+.post-category {
+  margin: 0 0.1em;
+  padding: 0.3em 1em;
+  border-radius: 2px;
+  color: #fff;
+  background: #999;
+  font-size: 80%;
+}
+
+.post-category-design {
+  background: #0ff24e;
+}
+
+.post-category-react {
+  background: #4d85d1;
+}
+
+.post-category-js {
+  background: #fa3a3a;
+}
+
+.post:after {
+  display: block;
+  content: "";
+  height: 1px;
+  margin-top: 2em;
+  margin-bottom: 4em;
+  background-color: #eee;
+  max-width: 768px;
+}
+.post .post-header {
+  margin: 0 0 1em;
+}
+.post .post-header .post-avatar {
+  border-radius: 50px;
+  float: right;
+  margin-left: 1em;
+}
+.post .post-header .post-title {
+  display: inline-block;
+  font-size: 2em;
+  color: #222;
+  margin: 0.8em 0 0.4em;
+  font-weight: bolder;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
+.post .post-header .post-meta {
+  color: #999;
+  font-size: 90%;
+  margin: 0;
+}
+.post .post-header .post-meta > .post-author {
+  text-decoration: none;
+  color: #3d92c9;
+}
+.post .post-cover {
+  margin: 0 0 2em;
+}
+.post .post-description {
+  color: #444;
+  line-height: 1.8em;
+  margin: 0 0 3em;
+}
