@@ -24,33 +24,33 @@ class Post extends React.Component {
     this.props.dispatch(fetchPosts())
   }
 
-  onLoginClick(e) {
+  onLoginClick = e => {
     e.preventDefault();
     this.props.dispatch(reset());
     this.props.dispatch(mountPortal());
   }
 
-  onLogoutClick(e) {
+  onLogoutClick = e => {
     e.preventDefault();
     this.props.dispatch(logout());
   }
 
-  submit = (values) => {
+  submit = values => {
     // console.log(values)
     const { username, password } = values;
     this.props.dispatch(login(username, password))
-    .then(() => {
-      this.props.dispatch(unmountPortal());
-    })
-    .catch(err => {
-      // TODO: what else should be done in response to error?
-      // console.log(err.response.data)
-    })
+      .then(() => {
+        this.props.dispatch(unmountPortal());
+      })
+      .catch(err => {
+        // TODO: what else should be done in response to error?
+        // console.log(err.response.data)
+      })
   }
 
   render() {
     const { username, token } = this.props.user;
-    
+
     return (
       <div className="grid-container">
         {this.props.portal.shouldPortalMount &&
@@ -61,7 +61,7 @@ class Post extends React.Component {
 
         <div className="header">
           <div className="header-wrapper">
-            <h1 className="brand-title">Ruiwei's blog</h1>
+            <h1 className="brand-title">Ruiwei&apos;s blog</h1>
             <h2 className="brand-tagline">Dancing with React & Django</h2>
             <nav className="nav">
               <ul className="nav-list">
@@ -77,36 +77,32 @@ class Post extends React.Component {
         <div className="credential-bar">
           {username && token ?
             <div>Welcome back, {username}
-              <button className="btn btn-secondary" onClick={::this.onLogoutClick}>Logout</button>
+              <button className="btn btn-secondary" onClick={this.onLogoutClick}>Logout</button>
             </div>
             :
             <div>
-            <button className="btn btn-trans-white" onClick={::this.onLoginClick}>Login</button>
+            <button className="btn btn-trans-white" onClick={this.onLoginClick}>Login</button>
         </div>
         }
         </div> {/* top user navbar */ }
 
-    <div className="article">
-      <Switch>
-        <Route path="/create" render={({ match, location, history }) => <CreatePost history={history} />} />
-        <Route path="/:postid" render={({ match, location, history }) => <PostDetail params={match.params} />} />
-        <Route exact path="/" render={() => <PostList {...this.props} />} />
-      </Switch>
-    </div> {/* .article */ }
+        <div className="article">
+          <Switch>
+            <Route path="/create" render={({ match, location, history }) => <CreatePost history={history} />} />
+            <Route path="/:postid" render={({ match, location, history }) => <PostDetail params={match.params} />} />
+            <Route exact path="/" render={() => <PostList {...this.props} />} />
+          </Switch>
+        </div> {/* .article */ }
 
-
-    <div className="footer">
-      <nav>
-        <ul>
-          <li>
-            <a href="#">About</a>
-          </li>
-        </ul>
-      </nav>
-    </div> {/* .footer */ }
-
-        
-
+        <div className="footer">
+          <nav>
+            <ul>
+              <li>
+                <a href="#">About</a>
+              </li>
+            </ul>
+          </nav>
+        </div> {/* .footer */ }
       </div >
     )
   }
@@ -128,3 +124,7 @@ function mapStateToProps(state) {
   };
 }
 export default connect(mapStateToProps)(Post);
+
+
+// about escaping HTML entites in eslint
+// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unescaped-entities.md

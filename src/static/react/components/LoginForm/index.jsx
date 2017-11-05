@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from "react-redux";
 
@@ -39,6 +40,14 @@ class LoginForm extends React.Component{
       </form>
     )
   }
+}
+
+LoginForm.propTypes = {
+  user: PropTypes.object,
+  handleSubmit: PropTypes.func,
+  reset: PropTypes.func,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool
 }
 
 function mapStateToProps(state) {
