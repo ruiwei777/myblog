@@ -114,6 +114,8 @@ run
 user_token.txt
 post_creation.log
 
+.eslintrc
+
 ### editor configs
 *.code-workspace
 .vscode
