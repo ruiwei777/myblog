@@ -20,7 +20,7 @@ const cleanOptions = {
 module.exports = {
     context: SRC_PATH,
     entry: {
-        posts: ["./static/react/entry.jsx"] // relative to Proj/src
+        posts: ["./static/react/entry.jsx"] // relative to proj/src
     },
     resolve: {
         alias: {
@@ -33,37 +33,11 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /(node_modules|bower_components)/,
-                use: [
-                    {
-                        loader: "babel-loader",
-                        options: {
-                            presets: [
-                                ['env', {
-                                    "modules": false,
-                                    "targets": {
-                                        "browsers": ["last 2 versions", "ie >= 11"]
-                                    },
-                                    "useBuiltIns": "usage"
-                                }],
-                                'react'
-                            ],
-                            plugins: [
-                                ["transform-object-rest-spread", { "useBuiltIns": true }],
-                                "transform-function-bind",
-                                "transform-class-properties"
-                            ]
-                        }
-                    }
-                ]
+                use: [{ loader: "babel-loader" }]
             },
             {
                 test: /\.html$/,
-                use: [{
-                    loader: "html-loader",
-                    options: {
-                        minimize: true
-                    }
-                }]
+                use: [{ loader: "html-loader", options: { minimize: true } }]
             }
         ]
     },
