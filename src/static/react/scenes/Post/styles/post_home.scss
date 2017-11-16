@@ -191,7 +191,7 @@ body{
 }
 
 .grid-container > .header .brand-title{
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: white;
   font-size: 2em;
 }
@@ -302,23 +302,3 @@ body{
   padding: .8em;
 }
 /* .footer end */
-
-
-/*Animation when fetching post list*/
-.fetching{
-  position: fixed;
-  top:0;
-  left:0;
-  bottom:0;
-  right:0;
-  z-index: 100;
-  background-color: rgba(0,0,0,.7);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.fetching .windows8{
-  z-index: 101;
-}

@@ -44,20 +44,6 @@ input:focus {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 
-.message {
-  margin-bottom: 1.5em;
-  text-align: center;
-  border-radius: 3px;
-  font-size: 0.8em;
-  color: #fff;
-  padding: 0.5em 0;
-}
-.message.success {
-  background-color: #5cb85c;
-}
-.message.error {
-  background-color: #d9534f;
-}
 
 .drop-header:after {
   content: "";

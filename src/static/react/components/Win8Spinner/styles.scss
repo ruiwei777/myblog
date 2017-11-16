@@ -1,3 +1,41 @@
+// customer dimmed background
+/*Animation when fetching post list*/
+.fetching{
+  position: fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  z-index: 100;
+  background-color: rgba(0,0,0,.7);
+
+  transition: all .8s;
+  opacity: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.show{
+    opacity: 1;
+  }
+
+  & .message{
+    margin-bottom: 1.5em;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 0.8em;
+    color: #fff;
+    padding: 0.5em 0;
+  }
+}
+
+.fetching .windows8{
+  z-index: 101;
+}
+
+
+// copy from others, do not change the following
 .windows8 {
     position: relative;
     width: 78px;

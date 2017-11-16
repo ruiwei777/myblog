@@ -19,9 +19,7 @@ export default class PostList extends React.Component {
         return <PostItem post={post} key={i} id={i} />;
       })
     } else {
-      content = <div className="fetching">
-        <Win8Spinner />
-      </div>;
+      content = <Win8Spinner />;
     }
 
     return (

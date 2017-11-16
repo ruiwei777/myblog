@@ -7,9 +7,9 @@ import "../styles/create_post.scss";
 import { addPost } from "../actions";
 import Win8Spinner from "root/components/Win8Spinner";
 
-class CreatePost extends React.Component{
+class CreatePost extends React.Component {
 
-  handleSubmit(formData){
+  handleSubmit(formData) {
     // console.log(formData);
 
     let { username, token } = this.props;
@@ -25,8 +25,8 @@ class CreatePost extends React.Component{
     let requestPromise = null;
     if (loggedIn) requestPromise = this.props.dispatch(addPost(formData, token));
     else if (!loggedIn && confirmed) requestPromise = this.props.dispatch(addPost(formData));
-    
-    if (requestPromise !== null){
+
+    if (requestPromise !== null) {
       requestPromise
         .then(data => {
           // data is a post instance
@@ -36,40 +36,35 @@ class CreatePost extends React.Component{
           console.log(error)
         });
     }
-    
+
   }
 
 
-  render(){
+  render() {
     // console.log(this.props);
-    let {adding, added, rejected} = this.props;
-    
+    let { adding, added, rejected } = this.props;
+
     return (
       <div>
-        {adding && <div className="fetching">
-        <div>
-          <Win8Spinner />
-          <h3 className="message">Creating the post...</h3>
-        </div>
-        
-        </div>}
+        {adding && <Win8Spinner title={"Creating the post..."} />}
+
         {!adding && rejected && <div className="message error">Error: failed to create the post.</div>}
 
-        <PostForm 
+        <PostForm
           onSubmit={::this.handleSubmit}
           initialValues={{
-            blocks:[{
-              text:"",
-              language:"markdown"
-            }]
-          }} />
-        
+          blocks: [{
+            text: "",
+            language: "markdown"
+          }]
+        }} />
+
       </div>
     )
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   // console.log(state)
   return {
     username: state.userReducer.username,

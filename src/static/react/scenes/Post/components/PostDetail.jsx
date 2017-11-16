@@ -22,12 +22,8 @@ class PostDetail extends React.Component {
     // if not finish fetching, 
     // or the post is the previous one, display loading animation
     if (!post || String(post.id) !== this.props.params.postid) {
-      return (
-      <div className="fetching">
-        <Win8Spinner ></Win8Spinner>
-      </div>)
+      return <Win8Spinner />
     }
-
     const { title, subtitle, content, image } = post;
 
     return (

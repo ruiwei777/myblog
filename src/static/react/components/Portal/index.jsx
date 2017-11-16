@@ -11,7 +11,7 @@ import './styles.scss';
  * A portal element, using unstable API in React v15.
  * reference: https://zhuanlan.zhihu.com/p/29880992
  */
-class Portal extends React.Component{
+class Portal extends React.Component {
 
   componentDidMount() {
     const doc = window.document;
@@ -19,6 +19,7 @@ class Portal extends React.Component{
     doc.body.appendChild(this.node);
 
     this.renderPortal(this.props);
+    setTimeout(() => { this.portal.classList.add('show') }, 0)
   }
 
   componentDidUpdate() {
@@ -30,29 +31,32 @@ class Portal extends React.Component{
     window.document.body.removeChild(this.node);
   }
 
-  onCloseClick(e){
+  onCloseClick(e) {
     e.preventDefault();
-    this.props.dispatch(unmountPortal());
+    this.portal.classList.remove('show');
+    setTimeout(() => {
+      this.props.dispatch(unmountPortal());
+    }, 500)
   }
 
   renderPortal(props) {
     unstable_renderSubtreeIntoContainer(
       this, // caller component
-      <div className="portal">
+      <div className="portal" ref={portal => this.portal = portal}>
         <div className="content-wrapper">
           <div className="content-header">
-            <span className="title">{ this.props.title }</span>
+            <span className="title">{this.props.title}</span>
             <button className="close" onClick={::this.onCloseClick}>x</button>
-          </div>
-          {props.children}
-          
         </div>
-      </div>, // JSX to be transferred into the portal
+        {props.children}
+
+      </div>
+      </div >, // JSX to be transferred into the portal
       this.node // portal side's DOM
     );
   }
 
-  render(){
+  render() {
     return null;
   }
 }
@@ -63,6 +67,6 @@ Portal.propTypes = {
 }
 
 function mapStateToProps() {
-  return {  }   // return an empty object, since it only needs the `dispatch` function
+  return {}   // return an empty object, since it only needs the `dispatch` function
 }
 export default connect(mapStateToProps)(Portal);

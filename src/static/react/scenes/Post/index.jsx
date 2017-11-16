@@ -111,7 +111,10 @@ class Post extends React.Component {
 Post.propTypes = {
   dispatch: PropTypes.func,
   posts: PropTypes.array,
-  user: PropTypes.object,
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    token: PropTypes.string
+  }),
   portal: PropTypes.object
 }
 
