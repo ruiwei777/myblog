@@ -1,52 +1,49 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{% static 'images/nodejs.png' %}"/>
-<title>
-    Home - Ruiwei
-</title>
-<!-- Latest compiled and minified CSS -->
-<!-- <link rel="stylesheet" href="{% static 'css/vendor/flatly.bootstrap.min.css' %}" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{% static 'images/nodejs.png' %}" />
+    <title>
+        Home - Ruiwei
+    </title>
 
-<link href="https://fonts.googleapis.com/css?family=Cousine|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
-<link rel="stylesheet" href="{% static 'css/base.css' %}" />
-
-{% block head %}
-
-{% endblock head %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/utils.css' %}" /> {% block head %} {% endblock head %}
 
 </head>
+
 <body id="body">
 
-<nav>
-    <div class="positioner">
+    <nav>
         <a class="logo" href="#body">
-          <img src="{% static 'images/nodejs.png' %}">
+            <img src="{% static 'images/nodejs.png' %}">
         </a>
 
-      <ul class="menu">
-        <li><a href="#skills">Tech Stack</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="{% url 'posts:home' %}">Blog</a></li>
-    </div>
-</nav>
+        <ul class="menu">
+            <li>
+                <a href="#skills">Tech Stack</a>
+            </li>
+            <li>
+                <a href="#project-1">Projects</a>
+            </li>
+            <li>
+                <a href="{% url 'posts:home' %}">Blog</a>
+            </li>
+    </nav>
 
     <!-- load jQUery before other pages -->
-	<script src="http://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
-  
-
-	{% block content %}
-		
-	{% endblock content %}
+    <script src="http://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
+        crossorigin="anonymous"></script> {% block content %} {% endblock content %}
 
 
 
 </body>
+
 </html>

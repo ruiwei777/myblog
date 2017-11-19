@@ -1,277 +1,139 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
-
-
-{% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-{% endblock head %}
-
-
-{% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> {% endblock head %} {% block content %}
 <img class="pre-load" src="{% static 'images/index/earth_horizon-wide.jpg' %}">
 
 <!-- Jumbotron -->
-<div class="my-jumbotron">
+<section id="introduction" class="my-jumbotron">
 
-    <div class="cssload-dots">
-        <div class="cssload-dot"></div>
-        <div class="cssload-dot"></div>
-        <div class="cssload-dot"></div>
-        <div class="cssload-dot"></div>
-        <div class="cssload-dot"></div>
-    </div>
+    <i class="fa fa-spin fa-spinner fa-3x load-animation text-primary"></i>
 
-    <div class="heading-wrapper">
-        
-        <p class="side-heading">Ruiwei's Website</p>
-        <p class="lead">Passionate full-stack developer, coding in Django, Node.js, React and Angular</p>
-        <div class="description-text">
-            <a href="//github.com/ruiwei777" target="_blank" rel="noreferrer">
-                Github
-            </a>
-        </div>
-
-    </div>
-</div>
-
-<div class="block block-1" id="skills">
-    <div class="block-wrapper">
-        <h3 class="heading">Skills</h3>
-        <div class="content">
-            <div class="heading-separator"></div>
-        </div>
-
-        <div class="thumbnails">
-            <div class="thumbnail thumbnail-python">
-                <div class="content">
-                    <div class="icon">
-                        <i class="fa fa-map-pin" aria-hidden="true"></i>
-                    </div>
-                    <div class="title">
-                        Python
-                    </div>
-                    <div class="text">
-                    Python 3, Django, Django-Rest-Framework</div>
-                </div>
+    <div class="container">
+        <div class="row  fill-80-viewport align-items-center">
+            <div class="col col-md-6">
+                <h1>Ruiwei.me</h1>
+                <p class="lead text-white-70">Full-stack developer, coding in Django, Node.js, React and Angular</p>
+                <a class="btn btn-primary" href="//github.com/ruiwei777" target="_blank" rel="noopener noreferrer">
+                    Github
+                </a>
             </div>
-            <div class="thumbnail thumbnail-net">
-                <div class="content">
-                    <div class="icon">
-                        <i class="fa fa-windows" aria-hidden="true"></i>
-                    </div>
-                    <div class="title">
-                        C# .NET
-                    </div>
-                    <div class="text">
-                    ASP.NET, Web Form, .NET 4.5, Azure </div>
-                </div>
-            </div>
-            <div class="thumbnail thumbnail-javascript">
-                <div class="content">
-                    <div class="icon">
-                        <i class="fa fa-vimeo" aria-hidden="true"></i>
-                    </div>
-                    <div class="title">
-                        JavaScript
-                    </div>
-                    <div class="text">
-                    ES 5, 6, Node.js</div>
-                </div>
-            </div>
-            <div class="thumbnail thumbnail-angular">
-                <div class="content">
-                    <div class="icon">
-                        <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                    </div>
-                    <div class="title">
-                        Angular
-                    </div>
-                    <div class="text">
-                    Angular 2/4, TypeScript, RxJS</div>
-                </div>
-            </div>
-            <div class="thumbnail thumbnail-react">
-                <div class="content">
-                    <div class="icon">
-                        <i class="fa fa-life-buoy" aria-hidden="true"></i>
-                    </div>
-                    <div class="title">
-                        React
-                    </div>
-                    <div class="text">
-                    React-Redux, Webpack 3</div>
-                </div>
-            </div>
-            <div class="thumbnail thumbnail-git">
-                <div class="content">
-                    <div class="icon">
-                        <i class="fa fa-git" aria-hidden="true"></i>
-                    </div>
-                    <div class="title">
-                        Git
-                    </div>
-                    <div class="text">
-                    <a target="_blank" rel="noreferrer" href="//github.com/ruiwei777">My GitHub</a></div>
-                </div>
-            </div>
-        </div>
-        
-        
-
         </div>
     </div>
-</div>
+</section>
 
-<div class="block block-separator">
-    <div class="block-wrapper">
-        <h3></h3>
-    </div>
-</div>
-
-<div class="block block-2" id="projects">
-    <div class="block-wrapper">
-        <h3 class="heading">Latest Projects</h3>
-        <div class="content">
-            <div class="heading-separator"></div>
-            <div class="button-wrapper">
-                <ul>
-                
-                    
-                <li><a class="active project-btn" href="#">Safe@Night</a></li>
-                <li><a class="project-btn" href="#">This Website</a></li>                
-            </ul>
+<section id="skills" class="bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-5">
+                <h3 class="text-black-70">Development Skills</h3>
             </div>
-            
         </div>
-
-        <div class="project-gallery">
-            <div class="project active">
-                <img src="{% static 'images/safeatnight_600_400.png' %}" >
-                <div class="project-hover">
-                    <div class="project-hover-wrapper">
-                        <h3>
-                            <a href="//safeatnight.cf" target="_blank" rel="noreferrer">
-                            <i class="fa fa-hand-pointer-o"></i>
-                            Graduate Project
-                            </a>
-                        </h3>
-                        <p>A schedulable SMS alert system implemented with
-                            Celery and Twilio API.
-                        </p>
-                        <p>
-                            Data visualisation of Victoria Crime Rate using D3.js.
-                        </p>
-                    </div>                    
+        <div class="row align-items-start mb-5">
+            <div class="col-12 col-sm-6 col-md-4">
+                <h6 class="text-center text-black-40 text-uppercase">Backend</h6>
+                <div class="text-center my-4 text-primary">
+                    <i class="fa fa-database fa-3x"></i>
                 </div>
+                <ul class="text-left text-black-70">
+                    <li class="py-2">Node.js, MongoDB, Express</li>
+                    <li class="py-2">Python Django, Django-Rest-Framework</li>
+                    <li class="py-2">ASP.NET MVC, Web Form</li>
+                    <li class="py-2">Git, PostgreSQL, OracleSQL</li>
+                </ul>
             </div>
 
-            <div class="project">
-                <img src="{% static 'images/my_blog_600_400.png' %}" >
-                <div class="project-hover">
-                    <div class="project-hover-wrapper">
-                        <h3>
-                            <a href="//liangruiwei.com/posts" target="_blank" rel="noreferrer">
-                            <i class="fa fa-hand-pointer-o"></i>
-                            My Blog
-                            </a>
-                        </h3>
-                        <p>Implemented with React-Reduct and Django-Rest-Framework.
-                        </p>
-                        <p>
-                            Responsive design with vanilla CSS.
-                        </p>
-                    </div>                    
+            <div class="col-12 col-sm-6 col-md-4">
+                <h6 class="text-center text-black-40 text-uppercase">Frontend</h6>
+                <div class="text-center my-4 text-primary">
+                    <i class="fa fa-desktop fa-3x"></i>
                 </div>
+                <ul class="text-left text-black-70">
+                    <li class="py-2">React, Redux-thunk, Webpack</li>
+                    <li class="py-2">Angular, RxJS</li>
+                    <li class="py-2">AngularJS, Bower, Gulp, jQuery</li>
+                    <li class="py-2">Bootstrap, Responsive Web Design</li>
+                </ul>
             </div>
-            
-        </div>
-        
-        
 
+            <div class="col-12 col-sm-6 col-md-4">
+                <h6 class="text-center text-black-40 text-uppercase">OS/Platform</h6>
+                <div class="text-center my-4 text-primary">
+                    <i class="fa fa-cogs fa-3x"></i>
+                </div>
+                <ul class="text-left text-black-70">
+                    <li class="py-2">Google Cloud Platform, Microsoft Azure</li>
+                    <li class="py-2">Linux, Ubuntu</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+<section id="project-1" class="bg-dark">
+    <div class="container">
+        <div class="row align-items-center fill-80-viewport">
+            <div class="col-sm-12 col-md-6 order-md-2">
+                <p class="text-white-40">Django-Rest-Framework & React Redux</p>
+                <h2 class="text-white">My Blog</h2>
+                <p class="lead text-white-70">A multi-user blog; supports rich-text editing and rendering, OAuth authentication.</p>
+                <a class="btn btn-outline-light" href="/posts" target="_blank" rel="noopener noreferrer">Learn more</a>
+            </div>
+
+            <div class="col-sm-12 col-md-6 order-1">
+                <img class="img-fluid rounded" src="{% static 'images/index/blog.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="project-2" class="bg-tint-blue">
+    <div class="container">
+        <div class="row align-items-center fill-80-viewport">
+            <div class="col-sm-12 col-md-6">
+                <p class="text-white-70">AngularJS & Node.js</p>
+                <h2 class="text-white">Loc8r</h2>
+                <p class="lead text-white-70">Zomato-like web application. Share and review your favorite locations with others.</p>
+                <a class="btn btn-outline-light" href="//loc8r-ruiwei.herokuapp.com" target="_blank" rel="noopener noreferrer">Learn more</a>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <img class="img-fluid rounded" src="{% static 'images/index/loc8r.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
-    
+
+
+
 <footer class="positioner">
-    <p>&copy; Ruiwei Liang, Melbourne VIC, Australia</p>
+    <p class="text-black-70 my-2 text-right">&copy; Ruiwei Liang, Melbourne VIC, Australia</p>
 </footer>
 
 
 
 <script>
-// floating nav bar
-var $window = $(window);
-var $nav = $("nav");
-$window.scroll(function(e){
-    var topDistance = $window.scrollTop();
-    if(topDistance > 0){
-        $nav.addClass("nav-fixed");
-    } else{
-        $nav.removeClass("nav-fixed");
-    }
-})
-
-// project buttons
-$projBtns = $(".project-btn");
-$projs = $(".project");
-
-$projBtns.click(function(e){
-    // "this" is the native element
-    e.preventDefault();
-
-    var $currBtn = $(".project-btn.active");
-    $this = $(this);
-    if($this.parents().index() === $currBtn.parents().index()) return;
-
-    $currBtn.removeClass("active");
-    $this.addClass("active");
-
-    var that = this;
-
-    $projBtns.each(function(i, e){
-        if(that === this){
-
-
-
-
-            // set active projects
-            var $targetProj = $projs.eq(i);
-            var $currProj = $(".project.active");
-
-            $currProj.addClass("project-out");
-            $currProj.removeClass("project-in");
-            setTimeout(function(){
-                $currProj.removeClass("active project-out");
-                $targetProj.addClass("active project-in");
-            }, 500)
-            
+    // floating nav bar
+    var $window = $(window);
+    var $nav = $("nav");
+    $window.scroll(function (e) {
+        var topDistance = $window.scrollTop();
+        if (topDistance > 0) {
+            $nav.addClass("nav-fixed");
+        } else {
+            $nav.removeClass("nav-fixed");
         }
-
     })
-})
 
-var image = document.querySelector(".pre-load");
-if(image.complete) stopLoadAnimation();
-else image.addEventListener('load', stopLoadAnimation);
+    // #introduction load adnimation
+    var image = document.querySelector(".pre-load");
+    if (image.complete) stopLoadAnimation();
+    else image.addEventListener('load', stopLoadAnimation);
 
-function stopLoadAnimation(){
-    document.querySelector(".my-jumbotron").classList.add("loaded");
-}
-    
+    function stopLoadAnimation() {
+        document.querySelector(".my-jumbotron").classList.add("loaded");
+    }
 
-</script>
 
-<!-- This svg is used by image loader -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12" ></feGaussianBlur>
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0    0 1 0 0 0   0 0 1 0 0   0 0 0 18 -7" result="goo" ></feColorMatrix>
-            <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
-        </filter>
-    </defs>
-</svg>
-{% endblock content %}
+</script> {% endblock content %}

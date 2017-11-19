@@ -16,69 +16,14 @@ if not settings.DEBUG:
 
     from . import passwords
 
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-    # from django.conf.urls import url
-
-    # from accounts.views import login_view
+    # Project root folder. This is used mainly for referencing webpack compiled files because they live inside proj/build.
+    PROJ_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))) 
 
     # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # proj/src
 
 
     ALLOWED_HOSTS = ['cytosine00.webfactional.com', 'liangruiwei.com', 'www.liangruiwei.com']
-
-
-    # Application definition
-
-    # INSTALLED_APPS = [
-    #     'django.contrib.admin',
-    #     'django.contrib.auth',
-    #     'django.contrib.contenttypes',
-    #     'django.contrib.sessions',
-    #     'django.contrib.messages',
-    #     'django.contrib.staticfiles',
-    #     #myapp
-    #     'posts',
-    #     'comments',
-    #     #third party
-    #     'pagedown',
-    #     'markdown_deux',
-    #     'crispy_forms',
-    # ]
-
-    CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
-    # MIDDLEWARE_CLASSES = [
-    #     'django.middleware.security.SecurityMiddleware',
-    #     'django.contrib.sessions.middleware.SessionMiddleware',
-    #     'django.middleware.common.CommonMiddleware',
-    #     'django.middleware.csrf.CsrfViewMiddleware',
-    #     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    #     'django.contrib.messages.middleware.MessageMiddleware',
-    #     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # ]
-
-    ROOT_URLCONF = 'trydjango19.urls'
-
-    # TEMPLATES = [
-    #     {
-    #         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    #         'DIRS': [os.path.join(BASE_DIR, "templates")],
-    #         'APP_DIRS': True,
-    #         'OPTIONS': {
-    #             'context_processors': [
-    #                 'django.template.context_processors.debug',
-    #                 'django.template.context_processors.request',
-    #                 'django.contrib.auth.context_processors.auth',
-    #                 'django.contrib.messages.context_processors.messages',
-    #             ],
-    #         },
-    #     },
-    # ]
-
-    WSGI_APPLICATION = 'trydjango19.wsgi.application'
-
 
     # Database
     # https://docs.djangoproject.com/en/1.9/ref/settings/#databases

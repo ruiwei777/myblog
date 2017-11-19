@@ -1,20 +1,4 @@
 /* This is the Djanog base css */
-*{
-
-	font-family: 'Montserrat',sans-serif;
-}
-
-html{
-	font-size: 100%;
-}
-
-body{
-	min-height: 100vh;
-	font-size: 100%;
-	margin: 0;
-}
-
-
 
 /*------------------------
 	Custom Navbar
@@ -23,43 +7,33 @@ nav{
 	background-color: rgba(0,0,0,0);
 	color: white;
 	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 
-	position:absolute;
+	position:fixed;
 	left: 0;
 	right:0;
 	top:0;
 	z-index: 102;
 	transition: all 0.2s ease-in-out;
 	color: #f3f3f3;
-	padding: 0;
+	padding: 1em 0;
 }
-
-@media (max-width: 768px){
-	nav{
-		font-size: .7rem;
-		height: auto;
-		padding: 1em 0 1em;
-	}
-}
-
 
 nav.nav-fixed{
 	position: fixed;
-	background: white;
+	background-color: white;
 	color: #282828;
 	border-bottom: 1px solid #dddddd;
-	height: 4em;
-}
-
-nav .positioner{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	height: 100%;
+	padding: 0;
 }
 
 nav ul{
 	display: flex;
+	padding: 0;
+	margin: 0;
+	align-self: stretch;
 }
 
 nav ul li{
@@ -68,6 +42,8 @@ nav ul li{
 	margin:0;
 	padding: 0;
 	color: #f3f3f3;
+	display: flex;
+	align-items: center;
 }
 
 nav ul li a{
@@ -84,21 +60,18 @@ nav a{
 	text-decoration: none;
 }
 
+nav .logo{
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+}
+
 nav a:hover{
 	color: deepskyblue;
 }
 
-nav.nav-fixed ul{
-	padding: 0;
-	margin: 0;
-	align-self: stretch;
-}
-
 nav.nav-fixed ul li{
 	color: #333;
-
-	display: flex;
-	align-items: center;
 }
 
 
@@ -139,11 +112,4 @@ nav.nav-fixed a:hover{
 	}
 }
 
-footer > p {
-	text-align: right;
-}
-
-.clear-fix{
-	clear:both;
-}
 

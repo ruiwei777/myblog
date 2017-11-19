@@ -1,0 +1,75 @@
+/*============ Utility classes. 
+ Use swush for faster ease of development ============*/
+
+ .fill-viewport {
+    min-height: 100vh
+  }
+  .fill-40-viewport {
+    min-height: 40vh
+  }
+  .fill-80-viewport {
+    min-height: 80vh
+  }
+  .fill-90-viewport {
+    min-height: 90vh
+  }
+  .jumbotron-transparent {
+    background-color: transparent
+  }
+  .text-white-70 {
+    color: rgba(255,255,255,0.7)
+  }
+  .text-black-70 {
+    color: rgba(0,0,0,0.7)
+  }
+  .text-black-40 {
+    color: rgba(0,0,0,0.4)
+  }
+  .text-white-40 {
+    color: rgba(255,255,255,0.4)
+  }
+  
+  /*== 1. 
+    1. Borders along x an y
+    2. Borders with colors i.e the shades of white and gray above
+    3. Unordered list with borders all round
+    4. Unordered list with borders along y, as in pricing table here
+    5. Border size class*/
+  
+  .list-border-y li {
+    border-top: 1px solid
+  }
+  .list-border-y li:last-child {
+    border-bottom: 1px solid
+  }
+  .list-border-black-20 li,
+  .list-border-black-20 li:last-child{
+    border-color: rgba(0,0,0,0.2)
+  }
+  
+  
+  
+  
+  @media screen and (min-width: 768px ){
+    /*need to set flex-basis and have it dependent on size too
+    usage tip: if you want the element to NOT be positioned in the
+    center, add this class to a non `.container` div. Container divs in
+    bootstrap are styled to seat in the center of the page. 
+    */
+    .basis-md-50 {
+      flex-basis: 50%
+    }  
+  }
+
+.bg-dark {
+    background-color: #343a40!important;
+}
+
+.bg-white {
+  background-color: white!important;
+}
+
+.bg-tint-blue {
+  background-color: rgba(135,158,175, 1)!important;
+}
+
