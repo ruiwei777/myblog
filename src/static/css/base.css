@@ -1,4 +1,4 @@
-/* This is the Djanog base css */
+/* base.css shared by all server rendering pages */
 
 /*------------------------
 	Custom Navbar
@@ -53,6 +53,7 @@ nav ul li a{
 	line-height: 1.5em;
 	letter-spacing: 0;
 	text-transform: capitalize;
+	text-decoration: none;
 
 }
 

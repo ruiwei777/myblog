@@ -62,7 +62,8 @@
   }
 
 .bg-dark {
-    background-color: #343a40!important;
+    /* background-color: #343a40!important; */
+    background-image: linear-gradient( 270deg, #272c31, #444444);
 }
 
 .bg-white {
@@ -70,6 +71,7 @@
 }
 
 .bg-tint-blue {
-  background-color: rgba(135,158,175, 1)!important;
+  /* background-image: rgba(135,158,175, 1)!important; */
+  background-image: linear-gradient(90deg, rgb(63, 82, 95), rgb(150, 174, 189))
 }
 
