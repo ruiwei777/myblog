@@ -19,12 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from posts import views
 from accounts.views import(
-        login_view,
-        logout_view,
-        register_view,
-        UserViewSet,
-        GroupViewSet
-    )
+    login_view,
+    logout_view,
+    register_view,
+    UserViewSet,
+    GroupViewSet
+)
 
 from rest_framework.authtoken import views as authtoken_views
 from rest_framework import routers
@@ -35,10 +35,10 @@ import accounts
 
 # rest_framework ViewSet
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)  # domain.com/api/users/ , relative to api root
+# domain.com/api/users/ , relative to api root
+router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
 router.register(r'posts', posts.views.PostViewSet)
-
 
 
 urlpatterns = [
@@ -51,7 +51,7 @@ urlpatterns = [
     url(r'^comments/', include('comments.urls', namespace='comments')),
     url(r'^sms/', include('sms.urls', namespace='sms')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^$', views.index, name="index"), 
+    url(r'^$', views.index, name="index"),
 ]
 
 # DRF TokenAuthentication setting
@@ -60,8 +60,8 @@ urlpatterns += [
 ]
 
 
-
 if settings.DEBUG:
-	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

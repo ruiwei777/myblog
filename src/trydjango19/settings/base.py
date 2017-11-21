@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_condition',
     'rest_framework',
-    'compressor',
     'rest_framework.authtoken',
     
 ]
@@ -189,12 +188,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 30,
 }
 
-# django_compressor
-COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
-    'compressor.finders.CompressorFinder',
 )
