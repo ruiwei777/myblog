@@ -45,17 +45,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #myapp
+    # myapp
+    'permissions',
     'posts',
     'comments',
     'accounts',
-    #third party
+    # third party
     'webpack_loader',
-    'pagedown',
-    'markdown_deux',
     'crispy_forms',
+    'rest_condition',
     'rest_framework',
-    'compressor',
     'rest_framework.authtoken',
     
 ]
@@ -168,9 +167,7 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 LOGIN_URL = "login"
 
-MY_TWILIO_ACCOUNT_SID = passwords.MY_TWILIO_ACCOUNT_SID
-MY_TWILIO_AUTH_TOKEN = passwords.MY_TWILIO_AUTH_TOKEN
-
+# Django-Rest-Framework
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -184,15 +181,12 @@ REST_FRAMEWORK = {
             # 'rest_framework.authentication.BasicAuthentication',
             'rest_framework.authentication.TokenAuthentication',
         ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 30,
 }
 
-# django_compressor
-COMPRESS_ENABLED = True
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # other finders..
-    'compressor.finders.CompressorFinder',
 )
