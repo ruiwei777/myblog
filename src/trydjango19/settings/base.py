@@ -45,11 +45,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #myapp
+    # myapp
+    'permissions',
     'posts',
     'comments',
     'accounts',
-    #third party
+    # third party
     'webpack_loader',
     'pagedown',
     'markdown_deux',

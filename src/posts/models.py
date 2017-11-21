@@ -26,67 +26,63 @@ LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
 STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 
-
 def upload_location(instance, filename):
-	id = "temp"
-	if instance.id:
-		id = instance.id
-	return "%s/%s" % (id, filename)
+    id = "temp"
+    if instance.id:
+        id = instance.id
+    return "%s/%s" % (id, filename)
+
 
 class PostManager(models.Manager):
-	def active(self, *args, **kwargs):
-		return super(PostManager, self).filter(draft=False, publish__lte=timezone.now().date())
-
-
+    def active(self, *args, **kwargs):
+        return super(PostManager, self).filter(draft=False, publish__lte=timezone.now().date())
 
 
 class Post(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=12)
-	title = models.CharField(max_length=120)
-	slug = models.SlugField(unique=True, blank=True, null=True)
-	image = models.ImageField(upload_to=upload_location, 
-		null=True, 
-		blank=True,
-		height_field="height_field",
-		width_field="width_field")
-	height_field = models.IntegerField(default=0)
-	width_field = models.IntegerField(default=0)
-	content = models.TextField()
-	draft = models.BooleanField(default=False)
-	publish = models.DateField(auto_now=False, auto_now_add=False)
-	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-	#override ModelManager
-	objects = PostManager()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=12)
+    title = models.CharField(max_length=120)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    image = models.ImageField(upload_to=upload_location,
+                              null=True,
+                              blank=True,
+                              height_field="height_field",
+                              width_field="width_field")
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
+    content = models.TextField()
+    draft = models.BooleanField(default=False)
+    publish = models.DateField(auto_now=False, auto_now_add=False)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    # override ModelManager
+    objects = PostManager()
 
-	class Meta:
-		ordering = ('publish',)
+    class Meta:
+        ordering = ('publish',)
 
-	def __str__(self):
-		return str(self.id) + ": " + self.title
+    def __str__(self):
+        return str(self.id) + ": " + self.title
 
-	def get_absolute_url(self):
-		return reverse("posts:read", kwargs={"slug":self.slug})
+    def get_absolute_url(self):
+        return reverse("posts:read", kwargs={"slug": self.slug})
 
-	def get_update_url(self):
-		return reverse("posts:update", kwargs={"slug": self.slug})
+    def get_update_url(self):
+        return reverse("posts:update", kwargs={"slug": self.slug})
 
-	def get_markdown(self):
-		content = self.content
-		return mark_safe(markdown(content))
+    def get_markdown(self):
+        content = self.content
+        return mark_safe(markdown(content))
 
-	@property
-	def comments(self):
-		"return the post's comments"
-		return Comment.objects.filter_by_instance(self)
+    @property
+    def comments(self):
+        "return the post's comments"
+        return Comment.objects.filter_by_instance(self)
 
-	@property
-	def get_content_type(self):
-	    return ContentType.objects.get_for_model(self.__class__)
-	
-	
-	
-	
+    @property
+    def get_content_type(self):
+        return ContentType.objects.get_for_model(self.__class__)
+
+
 # TRY to create slug using post save with id, might need to delete
 # the following afterwards
 
@@ -94,7 +90,7 @@ class Post(models.Model):
 # 	slug = slugify(instance.title)
 # 	if new_slug is not None:
 # 		slug = new_slug
-		
+
 # 	qs = Post.objects.filter(slug=slug).order_by("-id")
 # 	exists = qs.exists()
 # 	if exists:
@@ -109,48 +105,50 @@ class Post(models.Model):
 # pre_save.connect(pre_save_post_receiver, sender=Post)
 
 def post_save_create_slug(sender, instance, created, **kwargs):
-	"""
-		Create the slug for each instance after saving for the first time.
-	"""
-	if not created:
-		return
+    """
+            Create the slug for each instance after saving for the first time.
+    """
+    if not created:
+        return
 
-	slug = slugify(instance.title)
-	slug += "-" + str(instance.id)
+    slug = slugify(instance.title)
+    slug += "-" + str(instance.id)
 
-	instance.slug = slug
-	instance.save()
+    instance.slug = slug
+    instance.save()
+
 
 post_save.connect(post_save_create_slug, sender=Post)
 
 
-
 def post_save_update_image_url(sender, instance, created, **kwargs):
-	""" 
-			Move the image from "MEDIA_ROOT/temp/" to "MEDIA_ROOT/posts/instance.id/".
-			Make sure to check the "created" flag to avoid infinite loop!
-	"""
+    """ 
+                    Move the image from "MEDIA_ROOT/temp/" to "MEDIA_ROOT/posts/instance.id/".
+                    Make sure to check the "created" flag to avoid infinite loop!
+    """
 
-	if not instance.image or not created:
-		return
+    if not instance.image or not created:
+        return
 
-	ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    ROOT = os.path.dirname(os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))))
 
-	MEDIA_ROOT = settings.MEDIA_ROOT
+    MEDIA_ROOT = settings.MEDIA_ROOT
 
+    new_img_relative_path = "posts/" + \
+        instance.image.name.replace("temp", str(instance.id))
 
-	new_img_relative_path = "posts/" + instance.image.name.replace("temp", str(instance.id))
+    img_abs_path = os.path.join(MEDIA_ROOT, instance.image.name)
+    new_img_abs_path = os.path.join(MEDIA_ROOT, new_img_relative_path)
+    new_img_dir = os.path.join(MEDIA_ROOT, "posts/" + str(instance.id))
 
-	img_abs_path = os.path.join(MEDIA_ROOT, instance.image.name)
-	new_img_abs_path = os.path.join(MEDIA_ROOT, new_img_relative_path)
-	new_img_dir = os.path.join(MEDIA_ROOT, "posts/" + str(instance.id))
+    # os.rename requires the target folder to exist
+    if not os.path.exists(new_img_dir):
+        os.makedirs(new_img_dir)
 
-	# os.rename requires the target folder to exist
-	if not os.path.exists(new_img_dir):
-		os.makedirs(new_img_dir)
+    os.rename(img_abs_path, new_img_abs_path)
+    instance.image = new_img_relative_path
+    instance.save()
 
-	os.rename(img_abs_path, new_img_abs_path)
-	instance.image = new_img_relative_path
-	instance.save()
 
 post_save.connect(post_save_update_image_url, sender=Post)

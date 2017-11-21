@@ -4,7 +4,7 @@ from django.contrib.auth import (
     get_user_model,
     login,
     logout,
-    )
+)
 from django.core.urlresolvers import reverse
 from django.forms import ValidationError
 from django.http import HttpResponseRedirect
@@ -22,6 +22,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from permissions import WriteOnly
+from .permissions import IsOwn
 
 
 # Create your views here.
@@ -69,7 +71,8 @@ def register_view(request):
         user.save()
         messages.success(request, "Register succeeded")
 
-        new_user = authenticate(username=user.username, password=form.cleaned_data.get("password"))
+        new_user = authenticate(username=user.username,
+                                password=form.cleaned_data.get("password"))
         login(request, new_user)
         return HttpResponseRedirect(reverse("index"))
 
@@ -87,7 +90,6 @@ def logout_view(request):
     if next:
         to += next + "/"
 
-
     return redirect(to)
 
 
@@ -97,12 +99,30 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+    permission_classes = (WriteOnly, IsOwn,)
 
     # Overriding
     def list(self, request):
         queryset = User.objects.all()
-        serializer = UserSerializer(queryset, many=True, context={'request': request})
+        # if UserSerializer is a HyperlinkModelSerializer,
+        # context={'request': request} should be provided
+        serializer = UserSerializer(
+            queryset, many=True)
         return Response(serializer.data)
+
+    # Overriding
+    # change serializer to `Create` because `token` needs to be passed
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        # serializer = UserCreateSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        token = Token.objects.get(user=serializer.instance)
+        data = serializer.data
+        data['token'] = token.key
+        return Response(data, status=status.HTTP_201_CREATED,
+                        headers=headers)
 
 
 class GroupViewSet(viewsets.ModelViewSet):
@@ -111,4 +131,3 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-
