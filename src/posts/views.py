@@ -1,20 +1,9 @@
-from urllib.parse import quote_plus
-
 from django.conf import settings
-from django.contrib.contenttypes.models import ContentType
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.core.urlresolvers import reverse
 from django.db.models import Q
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
-from django.contrib import messages
-from django.utils import timezone
 
 from .models import Post
-from .forms import PostForm
-
-from comments.forms import CommentForm
-from comments.models import Comment
 
 #rest_framework: viewsets
 from rest_framework import viewsets

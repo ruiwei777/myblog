@@ -49,7 +49,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^posts/', include('posts.urls', namespace='posts')),
     url(r'^comments/', include('comments.urls', namespace='comments')),
-    url(r'^sms/', include('sms.urls', namespace='sms')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', views.index, name="index"),
 ]

@@ -52,8 +52,6 @@ INSTALLED_APPS = [
     'accounts',
     # third party
     'webpack_loader',
-    'pagedown',
-    'markdown_deux',
     'crispy_forms',
     'rest_condition',
     'rest_framework',
@@ -168,9 +166,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 LOGIN_URL = "login"
-
-MY_TWILIO_ACCOUNT_SID = passwords.MY_TWILIO_ACCOUNT_SID
-MY_TWILIO_AUTH_TOKEN = passwords.MY_TWILIO_AUTH_TOKEN
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,

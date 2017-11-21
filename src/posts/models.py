@@ -10,8 +10,6 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 
-from markdown_deux import markdown
-
 from comments.models import Comment
 import os
 import logging
@@ -68,10 +66,6 @@ class Post(models.Model):
 
     def get_update_url(self):
         return reverse("posts:update", kwargs={"slug": self.slug})
-
-    def get_markdown(self):
-        content = self.content
-        return mark_safe(markdown(content))
 
     @property
     def comments(self):
