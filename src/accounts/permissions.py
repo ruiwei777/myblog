@@ -1,9 +1,11 @@
 from rest_framework import permissions
 
 
-class IsOwn(permissions.BasePermission):
-
+class IsOwnAllowAny(permissions.BasePermission):
+    """
+    A user can CRUD itself
+    """
     def has_permission(self, request, view):
         pk = request.resolver_match.kwargs.get('pk')
-        if str(request.user.id) == pk:
+        if request.user.is_authenticated and str(request.user.id) == pk:
             return True

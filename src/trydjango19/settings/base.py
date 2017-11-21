@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'pagedown',
     'markdown_deux',
     'crispy_forms',
+    'rest_condition',
     'rest_framework',
     'compressor',
     'rest_framework.authtoken',

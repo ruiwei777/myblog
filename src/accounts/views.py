@@ -11,9 +11,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from .forms import UserLoginForm, UserRegistrationForm
-from .serializers import UserSerializer, GroupSerializer
+from .serializers import UserSerializer, UserCreateSerializer, GroupSerializer
 
 from django.contrib.auth.models import User, Group
+
+from rest_condition import Or, And
 
 # rest_framework import
 from rest_framework import status
@@ -23,7 +25,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from permissions import WriteOnly
-from .permissions import IsOwn
+from .permissions import IsOwnAllowAny
 
 
 # Create your views here.
@@ -99,22 +101,18 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = (WriteOnly, IsOwn,)
+    permission_classes = [Or(WriteOnly, IsOwnAllowAny)]
 
     # Overriding
     def list(self, request):
         queryset = User.objects.all()
-        # if UserSerializer is a HyperlinkModelSerializer,
-        # context={'request': request} should be provided
-        serializer = UserSerializer(
-            queryset, many=True)
+        serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
     # Overriding
-    # change serializer to `Create` because `token` needs to be passed
+    # change serializer to `UserCreateSerializer` because of `token`
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        # serializer = UserCreateSerializer(data=request.data)
+        serializer = UserCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
