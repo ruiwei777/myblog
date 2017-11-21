@@ -167,6 +167,7 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
 
 LOGIN_URL = "login"
 
+# Django-Rest-Framework
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -180,6 +181,7 @@ REST_FRAMEWORK = {
             # 'rest_framework.authentication.BasicAuthentication',
             'rest_framework.authentication.TokenAuthentication',
         ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 30,
 }
 
