@@ -5,11 +5,11 @@ from django.http import HttpResponseRedirect, Http404
 
 from .models import Post
 
-#rest_framework: viewsets
+# rest_framework: viewsets
 from rest_framework import viewsets
 from .serializers import PostSerializer
 
-#rest_framework: class-based views
+# rest_framework: class-based views
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -20,14 +20,14 @@ from datetime import datetime
 
 def home(request):
     """
-        The home view for this app: www.domain.com/posts/
+    index page for `posts`: www.domain.com/posts/
     """
     return render(request, "post_home.html", {})
 
 
 def index(request):
     """
-        The home view for the index url: www.domain.com
+    index page for the whole website: www.domain.com
     """
     return render(request, "index.html", {})
 
