@@ -14,13 +14,14 @@ import logging
 import os
 import types
 
+logger = logging.getLogger(__name__)
+
 try:
     from . import passwords
-except Exception as e:
-    print('No passwords.py detected; using default secret.')
-    print(e)
+except ImportError as e:
+    logger.warning('No passwords.py detected, using default secret.')
     passwords = types.SimpleNamespace(MY_SECRET_KEY='please_customise_your_secret_key',
-                                DB_PASSWORD='please_customise_your_db_password')
+                                      DB_PASSWORD='please_customise_your_db_password')
 
 # from django.conf.urls import url
 
@@ -90,6 +91,7 @@ ROOT_URLCONF = 'trydjango19.urls'
 
 JS_TEMPLATES = os.path.join(PROJ_DIR, "build/templates")
 
+# TODO might need to remove JS_TEMPLATES ?
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
