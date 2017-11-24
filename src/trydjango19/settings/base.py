@@ -10,18 +10,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
+import logging
 import os
-from . import passwords
+import types
+
+try:
+    from . import passwords
+except Exception as e:
+    print('No passwords.py detected; using default secret.')
+    print(e)
+    passwords = types.SimpleNamespace(MY_SECRET_KEY='please_customise_your_secret_key',
+                                DB_PASSWORD='please_customise_your_db_password')
 
 # from django.conf.urls import url
 
 # from accounts.views import login_view
 
 # Project root folder. This is used mainly for referencing webpack compiled files because they live inside proj/build.
-PROJ_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))) 
+PROJ_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # proj/src
+BASE_DIR = os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))  # proj/src
 
 
 # Quick-start development settings - unsuitable for production
@@ -56,7 +67,7 @@ INSTALLED_APPS = [
     'rest_condition',
     'rest_framework',
     'rest_framework.authtoken',
-    
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -72,7 +83,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # custom middleware to allow CORS
     'posts.middleware.corsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'trydjango19.urls'
@@ -178,9 +189,9 @@ REST_FRAMEWORK = {
 
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
-            # 'rest_framework.authentication.BasicAuthentication',
-            'rest_framework.authentication.TokenAuthentication',
-        ),
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 30,
 }
