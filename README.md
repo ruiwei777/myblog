@@ -5,20 +5,22 @@ It uses Django, Django-Rest-Framework, React-Redux with thunk and Webpack 3.
 
 
 # How to Run
-1. Routine Django set up, including activate virtualenv, install Python dependencies from `requirements.txt`, collect static files, make migrations, etc. 
+First step is routine Django setup, such as activate virtualenv, `pip install`, make migrations, migrate, etc.
 
-2. For React & Webpack,
+## development
+This project takes the advantages of webpack-dev-server hot-module-reloading, but it comes at a price that all React modules are hightly coupled with webpack-dev-server, so you must run both Django and webpack-dev-server to make React modules to work. Otherwise only server-side rendering pages will work (such as index page). To do that:
 
-    `npm install`, then
+`npm install`, `npm run dev` (webpack-dev-server HMR), `python src/manage.py runserver`
 
-    `npm run dev` (dev mode, webpack-dev-server with HMR and watching) or
+## production
+Routing Django production setup, such as setting `DEBUG` to `False`, config `ALLOWED_HOSTS`, etc. Then `npm run build`, `python src/manage.py collectstatic`; finally restart server like Apache.
 
-    `npm run build` (production mode, compile once)
+
 
 # Notes
-1. Dev mode and production mode have different environmental variables such as `API_ROOT` and webpack plugins.
+1. For js files, development mode and production mode have different constants such as `API_ROOT` and webpack plugins.
 
-2. You need to include a `passwords.py` under `src/trydjango19/settings/`, and assign values to `MY_SECRET_KEY`([Django Secret Key Generator](http://www.miniwebtool.com/django-secret-key-generator/)), `DB_PASSWORD`, `MY_TWILIO_ACCOUNT_SID` and `MY_TWILIO_AUTH_TOKEN` inside it (some dummy values would suffice). Check `src/trydjango19/settings/base.py` for more details. 
+2. `(optional)` To customise your settings and secrets, see `src/trydjango19/settings`'s `__init__.py` and `passwords_default.py`. 
 
 
 
