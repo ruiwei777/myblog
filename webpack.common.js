@@ -1,7 +1,9 @@
 /*This is a sample Webpack 3 configuration.
 Just run webpack and it will produce unminified output with sourcemaps.
 */
+const json = require('./package.json');
 const path = require('path');
+const webpack = require('webpack');
 
 const BundleTracker = require('webpack-bundle-tracker');
 const SRC_PATH = path.resolve('./src');
@@ -20,7 +22,8 @@ const cleanOptions = {
 module.exports = {
     context: SRC_PATH,
     entry: {
-        posts: ["./static/react/entry.jsx"] // relative to proj/src
+        posts: ["./static/react/entry.jsx"], // relative to proj/src
+        vendor: Object.keys(json.dependencies)
     },
     resolve: {
         alias: {
@@ -44,13 +47,21 @@ module.exports = {
     output: {
         path: ASSETS_BUILD_PATH,
         publicPath: ASSETS_PUBLIC_PATH,
-        filename: "js/[name]-[hash:7].js"
+        filename: "js/[name].[chunkhash:8].js"
     },
     plugins: [
         new CleanWebpackPlugin(pathToClean, cleanOptions),
         new BundleTracker(
             { path: __dirname, filename: './build/webpack-stats.json', indent: 4 }
-        )
+        ),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest',
+            filename: 'js/[name].[hash:8].js',
+            minChunks: Infinity
+        })
         /* when combining Django with webpack-dev-server, HtmlWebpackPlugin is not needed */
         // new HtmlWebpackPlugin({
         //     // paths relative to proj/src
