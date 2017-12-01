@@ -17,40 +17,29 @@ from django.conf import settings
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-from posts import views
-from accounts.views import(
-    login_view,
-    logout_view,
-    register_view,
-    UserViewSet,
-    GroupViewSet
-)
+
+from posts import views as post_views
+from accounts import views as account_views
 
 from rest_framework.authtoken import views as authtoken_views
 from rest_framework import routers
-from rest_framework.urlpatterns import format_suffix_patterns
-
-import posts
-import accounts
 
 # rest_framework ViewSet
 router = routers.DefaultRouter()
 # domain.com/api/users/ , relative to api root
-router.register(r'users', UserViewSet)
-router.register(r'groups', GroupViewSet)
-router.register(r'posts', posts.views.PostViewSet)
+router.register(r'users', account_views.UserViewSet)
+router.register(r'groups', account_views.GroupViewSet)
+router.register(r'posts', post_views.PostViewSet)
 
 
 urlpatterns = [
-    url(r'^api/', include(router.urls)),    # This is api root
-    url(r'^login/', login_view, name="login"),
-    url(r'^logout/', logout_view, name="logout"),
-    url(r'^register/', register_view, name="register"),
+    url(r'^accounts.*/', account_views.home),
     url(r'^admin/', admin.site.urls),
-    url(r'^posts/', include('posts.urls', namespace='posts')),
-    url(r'^comments/', include('comments.urls', namespace='comments')),
+    url(r'^api/', include(router.urls)),    # This is api root
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^$', views.index, name="index"),
+    url(r'^comments/', include('comments.urls', namespace='comments')),
+    url(r'^posts/', include('posts.urls', namespace='posts')),
+    url(r'^$', post_views.index, name="index"),
 ]
 
 # DRF TokenAuthentication setting

@@ -22,7 +22,9 @@ const cleanOptions = {
 module.exports = {
     context: SRC_PATH,
     entry: {
-        posts: ["./static/react/entry.jsx"], // relative to proj/src
+        // relative to proj/src
+        accounts: ["./static/react/entries/accounts/index.jsx"], 
+        posts: ["./static/react/entries/posts/index.jsx"], 
         vendor: Object.keys(json.dependencies)
     },
     resolve: {
