@@ -5,7 +5,7 @@ It uses Django, Django-Rest-Framework, React-Redux with thunk and Webpack 3.
 
 
 # How to Run
-First step is routine Django setup, such as activate virtualenv, `pip install`, make migrations, migrate, etc.
+First step is routine Django setup, such as activate virtualenv, `pip install -r requirements.txt`, make migrations, migrate, etc.
 
 ## development
 This project takes the advantages of webpack-dev-server hot-module-reloading, but it comes at a price that all React modules are highly coupled with webpack-dev-server, so you must run **both** Django and webpack-dev-server to make **React modules** to work. Otherwise only server-side rendering pages will work (such as index page). To do that:
@@ -13,7 +13,7 @@ This project takes the advantages of webpack-dev-server hot-module-reloading, bu
 `npm install`, `npm run dev` (webpack-dev-server HMR), `python src/manage.py runserver`
 
 ## production
-Routing Django production setup, such as setting `DEBUG` to `False`, config `ALLOWED_HOSTS`, etc. Then `npm run build`, `python src/manage.py collectstatic`; finally restart server like Apache.
+Routine Django production setup, such as setting `DEBUG` to `False`, config `ALLOWED_HOSTS`, etc. Then `npm run build`, `python src/manage.py collectstatic`; finally restart server like Apache.
 
 # Notes
 1. For js files, development mode and production mode have different constants such as `API_ROOT` and webpack plugins.
