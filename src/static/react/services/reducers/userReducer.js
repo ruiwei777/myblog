@@ -39,6 +39,24 @@ export default function userReducer(state = {
       return { ...state, ...action.payload };
     }
 
+    case "REGISTER_PENDING": {
+      return { ...state, ...action.payload, fetching: true, fetched: false, error: null };
+    }
+
+    case "REGISTER_FULFILLED": {
+      return { ...state, ...action.payload, fetching: false, fetched: true, error: null };
+    }
+
+    // error is something like 
+    // { first_name: ["this field is required"], username: ["A user with that username already exists."] }
+    case "REGISTER_REJECTED": {
+      return { ...state, ...action.payload, fetching: false, fetched: false };
+    }
+
+    case "REGISTER_RESET": {
+      return { ...state, fetching: false, fetched: false, error: null };
+    }
+
   }
 
   return state;

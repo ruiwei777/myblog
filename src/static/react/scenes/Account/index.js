@@ -15,7 +15,7 @@ class Account extends React.Component {
 
     return (
       <div>
-        <Navbar username={username} token={token} />
+        <Navbar />
 
         <Switch>
           <Route path='/login' component={Login}></Route>

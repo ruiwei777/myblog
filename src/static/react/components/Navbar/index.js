@@ -1,20 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { logout, reset } from 'root/services/users/actions';
+import { mountPortal, unmountPortal } from "root/services/portal/actions";
 import './style.scss';
 
-export default class Navbar extends React.Component {
+class Navbar extends React.Component {
+
+  onLoginClick = (e) => {
+    e.preventDefault();
+    this.props.dispatch(reset());
+    this.props.dispatch(mountPortal());
+  }
+
+  onLogoutClick = () => {
+    this.props.dispatch(logout());
+  }
+
   render() {
-    const { className, username, token, onLogoutClick, onLoginClick } = this.props;
+    const { className, user, token, onLoginClick } = this.props;
 
     return (
       <div className={className ? className : 'credential-bar'}>
-        {username && token ?
-          <div>Welcome back, {username}
-            <button className="btn btn-secondary" onClick={onLogoutClick}>Logout</button>
+        {user && token ?
+          <div>Welcome back, {user.username}
+            <button className="btn btn-info" onClick={this.onLogoutClick}>Logout</button>
           </div>
           :
           <div>
-            <button className="btn btn-trans-white btn-outline-light" onClick={onLoginClick}>Login</button>
-
+            <button className="btn btn-outline-light" onClick={this.onLoginClick}>Login</button>
           </div>
         }
       </div>
@@ -22,3 +36,13 @@ export default class Navbar extends React.Component {
 
   }
 }
+
+function mapStateToProps(state) {
+  // console.log(state)
+  return {
+    user: state.userReducer.user,
+    token: state.userReducer.token
+  }
+}
+
+export default connect(mapStateToProps)(Navbar)

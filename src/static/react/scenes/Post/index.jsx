@@ -25,17 +25,6 @@ class Post extends React.Component {
     this.props.dispatch(fetchPosts())
   }
 
-  onLoginClick = e => {
-    e.preventDefault();
-    this.props.dispatch(reset());
-    this.props.dispatch(mountPortal());
-  }
-
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.dispatch(logout());
-  }
-
   submit = values => {
     // console.log(values)
     const { username, password } = values;
@@ -51,10 +40,11 @@ class Post extends React.Component {
 
   render() {
     const { username, token } = this.props.user;
+    const { shouldPortalMount } = this.props.portal;
 
     return (
       <div className="grid-container">
-        {this.props.portal.shouldPortalMount &&
+        {shouldPortalMount &&
           <Portal title={'Login'}>
             <LoginForm onSubmit={this.submit} />
           </Portal>
@@ -75,7 +65,7 @@ class Post extends React.Component {
           </div>
         </div> {/* .header */}
 
-        <Navbar className={"credential-bar"} onLoginClick={this.onLoginClick} onLogoutClick={this.onLogoutClick}  />
+        <Navbar className={"credential-bar"} />
 
         <div className="article">
           <Switch>

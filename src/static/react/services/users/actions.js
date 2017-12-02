@@ -86,9 +86,9 @@ export function register(userData) {
     .catch(error => {
       dispatch({
         type: 'REGISTER_REJECTED',
-        payload: error
+        payload: error.response.data
       });
-      return Promise.reject(error.response);
+      return Promise.reject(error.response.data);
     });
   }
 }

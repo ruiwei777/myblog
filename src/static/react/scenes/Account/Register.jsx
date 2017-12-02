@@ -9,7 +9,7 @@ class Register extends React.Component {
     // console.log(values);
     this.props.dispatch(register(values))
       .then((data) => {
-        console.log(data)
+        // console.log(data)
       })
       .catch(response => {
         console.log(response)
