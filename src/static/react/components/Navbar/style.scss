@@ -1,0 +1,16 @@
+/* top credential bar */
+.credential-bar{
+    background-color: #1f8dd6;
+    height: 50px;
+    padding: .5em 4em;
+    color: white;
+  
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .credential-bar .btn{
+    margin-left: 1em;
+    font-size: .8em;
+  }

@@ -23,9 +23,9 @@ module.exports = {
     context: SRC_PATH,
     entry: {
         // relative to proj/src
+        vendor: Object.keys(json.dependencies),
         accounts: ["./static/react/entries/accounts/index.jsx"], 
         posts: ["./static/react/entries/posts/index.jsx"], 
-        vendor: Object.keys(json.dependencies)
     },
     resolve: {
         alias: {

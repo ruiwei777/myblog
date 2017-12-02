@@ -45,15 +45,19 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     # Overriding
-    # change serializer to `UserCreateSerializer` because of `token`
+    # use `UserCreateSerializer` because needs to response with `token`
     def create(self, request, *args, **kwargs):
         serializer = UserCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
+
+        # prepare response data
         headers = self.get_success_headers(serializer.data)
         token = Token.objects.get(user=serializer.instance)
-        data = serializer.data
+        user_data = UserSerializer(instance=serializer.instance).data
+        data = {'user': user_data, 'token': token.key}
         data['token'] = token.key
+
         return Response(data, status=status.HTTP_201_CREATED,
                         headers=headers)
 

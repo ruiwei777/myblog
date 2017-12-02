@@ -6,6 +6,7 @@ import { NavLink, Switch, Route } from "react-router-dom";
 import PostList from "./components/PostList";
 import PostDetail from "./components/PostDetail";
 import CreatePost from "./components/CreatePost";
+import Navbar from "root/components/Navbar";
 import Portal from "root/components/Portal";
 import LoginForm from "root/components/LoginForm";
 
@@ -74,17 +75,7 @@ class Post extends React.Component {
           </div>
         </div> {/* .header */}
 
-        <div className="credential-bar">
-          {username && token ?
-            <div>Welcome back, {username}
-              <button className="btn btn-secondary" onClick={this.onLogoutClick}>Logout</button>
-            </div>
-            :
-            <div>
-            <button className="btn btn-trans-white" onClick={this.onLoginClick}>Login</button>
-        </div>
-        }
-        </div> {/* top user navbar */ }
+        <Navbar className={"credential-bar"} onLoginClick={this.onLoginClick} onLogoutClick={this.onLogoutClick}  />
 
         <div className="article">
           <Switch>
@@ -92,7 +83,7 @@ class Post extends React.Component {
             <Route path="/:postid" render={({ match, location, history }) => <PostDetail params={match.params} />} />
             <Route exact path="/" render={() => <PostList {...this.props} />} />
           </Switch>
-        </div> {/* .article */ }
+        </div> {/* .article */}
 
         <div className="footer">
           <nav>
@@ -102,7 +93,7 @@ class Post extends React.Component {
               </li>
             </ul>
           </nav>
-        </div> {/* .footer */ }
+        </div> {/* .footer */}
       </div >
     )
   }

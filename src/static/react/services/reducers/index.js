@@ -5,11 +5,22 @@ import postReducer from 'root/scenes/Post/reducer';
 import userReducer from './userReducer';
 import portalReducer from './portalReducer';
 
-const reducer = combineReducers({
+// don't forget to mount formReducer into the store
+// if that app requires redux-form
+
+
+export const postsReducer = combineReducers({
   postReducer,
   userReducer,
   portalReducer,
   form: formReducer
 });
 
-export default reducer;
+export const accountsReducer = combineReducers({
+  userReducer,
+  portalReducer,
+  form: formReducer
+});
+
+// export other apps' reducers here...
+

@@ -33,7 +33,7 @@ router.register(r'posts', post_views.PostViewSet)
 
 
 urlpatterns = [
-    url(r'^accounts.*/', account_views.home),
+    url(r'^accounts.*', account_views.home),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),    # This is api root
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

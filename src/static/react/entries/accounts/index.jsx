@@ -1,5 +1,5 @@
 /**
- * Entry point of the whole React app.
+ * Entry point of /accounts/
  */
 import React from 'react';
 import ReactDOM from 'react-dom';

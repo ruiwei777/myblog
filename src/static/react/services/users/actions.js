@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_ROOT } from "root/services/constants";
+import { reset as resetForm } from 'redux-form';
 
 
 export function login(username, password) {
@@ -59,6 +60,36 @@ export function logout() {
     dispatch({
       type: 'LOGOUT'
     })
+  }
+}
+
+/**
+ * 
+ * @param {{username: string, password: string, email: string, first_name: string, last_name: string}} user - 
+ */
+export function register(userData) {
+  return dispatch => {
+    dispatch({
+      type: 'REGISTER_PENDING'
+    });
+
+    const url = API_ROOT + 'api/users/';
+    return axios.post(url, userData)
+    .then(response => {
+      dispatch({
+        type: 'REGISTER_FULFILLED',
+        payload: response.data
+      });
+      dispatch(resetForm('register'));
+      return response.data
+    })
+    .catch(error => {
+      dispatch({
+        type: 'REGISTER_REJECTED',
+        payload: error
+      });
+      return Promise.reject(error.response);
+    });
   }
 }
 
