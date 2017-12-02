@@ -18,38 +18,31 @@ export function login(username, password) {
         dispatch({
           type: 'LOGIN_FULFILLED',
           payload: response.data
-        })
+        });
+        return response.data;
       }).catch(error => {
         dispatch({
           type: 'LOGIN_REJECTED',
           payload: error.response.data
-        })
+        });
         // when testing loading animation, uncomment it, then enter wrong credentials
         // dispatch({ type: 'LOGIN_PENDING' })
         return Promise.reject(error.response.data)
-      })
+      });
   }
 }
 
 
-export function loginFromCookies(username, token) {
-  return function (dispatch) {
-    dispatch({
-      type: 'LOGIN_FROM_COOKIES',
-      payload: {
-        username,
-        token
-      }
-    });
+export function loginFromCookie() {
+  return dispatch => {
+    dispatch({ type: 'LOGIN_FROM_COOKIE' });
   };
 }
 
 
 export function logout() {
-  return function (dispatch) {
-    dispatch({
-      type: 'LOGOUT'
-    })
+  return dispatch => {
+    dispatch({ type: 'LOGOUT' });
   }
 }
 
@@ -59,9 +52,7 @@ export function logout() {
  */
 export function register(userData) {
   return dispatch => {
-    dispatch({
-      type: 'REGISTER_PENDING'
-    });
+    dispatch({ type: 'REGISTER_PENDING' });
 
     const url = API_ROOT + 'api/users/';
     return axios.post(url, userData)
@@ -80,6 +71,19 @@ export function register(userData) {
         });
         return Promise.reject(error.response.data);
       });
+  }
+}
+
+/**
+ * 
+ * @param {{user: User, token: string}} data -
+ */
+export function saveUserIntoCookie(data) {
+  return dispatch => {
+    dispatch({
+      type: 'SAVE_USER_TO_COOKIE',
+      payload: data
+    })
   }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import { logout, reset } from 'root/services/users/actions';
 import { mountPortal, unmountPortal } from "root/services/portal/actions";
@@ -23,7 +24,7 @@ class Navbar extends React.Component {
     return (
       <div className={className ? className : 'credential-bar'}>
         {user && token ?
-          <div>Welcome back, {user.username}
+          <div>Welcome back, <a href='/accounts/profile'>{user.username}</a>
             <button className="btn btn-info" onClick={this.onLogoutClick}>Logout</button>
           </div>
           :

@@ -11,7 +11,7 @@ import Portal from "root/components/Portal";
 import LoginForm from "root/components/LoginForm";
 
 import { fetchPosts } from "./actions";
-import { login, logout, reset } from 'root/services/users/actions';
+import { login, loginFromCookie, logout, reset, saveUserIntoCookie } from 'root/services/users/actions';
 import { mountPortal, unmountPortal } from "root/services/portal/actions";
 
 import "./styles/post_home.scss";
@@ -22,15 +22,17 @@ import "./styles/post_home.scss";
 class Post extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchPosts())
+    this.props.dispatch(fetchPosts());
+    this.props.dispatch(loginFromCookie());
   }
 
   submit = values => {
     // console.log(values)
     const { username, password } = values;
     this.props.dispatch(login(username, password))
-      .then(() => {
+      .then((data) => {
         this.props.dispatch(unmountPortal());
+        this.props.dispatch(saveUserIntoCookie(data));
       })
       .catch(err => {
         // TODO: what else should be done in response to error?

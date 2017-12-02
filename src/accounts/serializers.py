@@ -7,6 +7,8 @@ class UserSerializer(serializers.ModelSerializer):
     Generic UserSerializer for the update, partial_update, list and retrieve.
     Exclude `password`, we have a `UserPasswordSerializer` for changing password;
     and a `UserCreateSerializer` for create user with password.
+    Usage: user_data = userSerializer(instance=user).data,
+    then add user_data into response
 
     email and username are read_only,
     we can use another Serializer to allow changing email in the future

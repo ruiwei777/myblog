@@ -26,6 +26,8 @@ def home(request):
 
 
 class UserLoginView(ObtainAuthToken):
+    # Overriding, add the user object into response
+    # use this for POST /api-token-auth
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})

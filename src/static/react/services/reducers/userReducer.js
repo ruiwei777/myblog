@@ -1,3 +1,4 @@
+import cookie from 'react-cookies';
 
 export default function userReducer(state = {
   user: null,
@@ -32,11 +33,17 @@ export default function userReducer(state = {
     }
 
     case "LOGOUT": {
-      return { ...state, username: null, token: null, fetched: false, error: null }
+      const config = { path: '/' };
+      cookie.remove('user', config);
+      cookie.remove('token', config);
+      return { ...state, user: null, token: null, fetched: false, error: null }
     }
 
-    case "LOGIN_FROM_COOKIES": {
-      return { ...state, ...action.payload };
+    case "LOGIN_FROM_COOKIE": {
+      const user = cookie.load('user');
+      const token = cookie.load('token');
+
+      return user && token ? { ...state, user, token } : { ...state };
     }
 
     case "REGISTER_PENDING": {
@@ -57,6 +64,14 @@ export default function userReducer(state = {
       return { ...state, fetching: false, fetched: false, error: null };
     }
 
+    case "SAVE_USER_TO_COOKIE": {
+      const oneDay = 60 * 60 * 24;
+      const config = { maxAge: oneDay, path: '/' }
+      cookie.save('user', action.payload.user, config);
+      cookie.save('token', action.payload.token, config);
+
+      return { ...state }
+    }
   }
 
   return state;
