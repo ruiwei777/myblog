@@ -1,9 +1,3 @@
-from django.contrib.auth import (
-    authenticate,
-    get_user_model,
-    login,
-    logout,
-)
 from django.shortcuts import render
 
 from .serializers import UserSerializer, UserCreateSerializer, GroupSerializer
@@ -16,6 +10,7 @@ from rest_condition import Or, And
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,6 +23,20 @@ def home(request):
     index page for `posts`: www.domain.com/accounts/
     """
     return render(request, "account_home.html", {})
+
+
+class UserLoginView(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        user_data = UserSerializer(instance=user).data
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user': user_data
+        })
 
 
 class UserViewSet(viewsets.ModelViewSet):

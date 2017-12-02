@@ -37,6 +37,7 @@ class LoginForm extends React.Component{
             Reset 
           </button>
         </div>
+        <div><small>Not have an account? <a href="/accounts/register">register</a></small></div>
       </form>
     )
   }

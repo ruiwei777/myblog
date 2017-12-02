@@ -21,7 +21,6 @@ from django.contrib import admin
 from posts import views as post_views
 from accounts import views as account_views
 
-from rest_framework.authtoken import views as authtoken_views
 from rest_framework import routers
 
 # rest_framework ViewSet
@@ -44,7 +43,7 @@ urlpatterns = [
 
 # DRF TokenAuthentication setting
 urlpatterns += [
-    url(r'^api-token-auth/', authtoken_views.obtain_auth_token)
+    url(r'^api-token-auth/', account_views.UserLoginView.as_view())
 ]
 
 

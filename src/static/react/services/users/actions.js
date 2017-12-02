@@ -17,27 +17,17 @@ export function login(username, password) {
       .then(response => {
         dispatch({
           type: 'LOGIN_FULFILLED',
-          payload: {
-            username,
-            token: response.data.token,
-          }
+          payload: response.data
         })
-
-
       }).catch(error => {
         dispatch({
           type: 'LOGIN_REJECTED',
-          payload: { error }
+          payload: error.response.data
         })
-
         // when testing loading animation, uncomment it, then enter wrong credentials
-        // dispatch({
-        //   type: 'LOGIN_PENDING',
-        // });
-
-        return Promise.reject(error)
+        // dispatch({ type: 'LOGIN_PENDING' })
+        return Promise.reject(error.response.data)
       })
-
   }
 }
 
@@ -75,21 +65,21 @@ export function register(userData) {
 
     const url = API_ROOT + 'api/users/';
     return axios.post(url, userData)
-    .then(response => {
-      dispatch({
-        type: 'REGISTER_FULFILLED',
-        payload: response.data
+      .then(response => {
+        dispatch({
+          type: 'REGISTER_FULFILLED',
+          payload: response.data
+        });
+        dispatch(resetForm('register'));
+        return response.data
+      })
+      .catch(error => {
+        dispatch({
+          type: 'REGISTER_REJECTED',
+          payload: error.response.data
+        });
+        return Promise.reject(error.response.data);
       });
-      dispatch(resetForm('register'));
-      return response.data
-    })
-    .catch(error => {
-      dispatch({
-        type: 'REGISTER_REJECTED',
-        payload: error.response.data
-      });
-      return Promise.reject(error.response.data);
-    });
   }
 }
 
