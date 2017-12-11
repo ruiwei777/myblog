@@ -243,6 +243,7 @@ body{
 .grid-container > .article{
   grid-area: article;
   padding: 0 2em 0;
+  position: relative;
 }
 
 @media(max-width: 768px){

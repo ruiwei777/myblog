@@ -61,7 +61,6 @@ class Post extends React.Component {
                 <li className="nav-item"><NavLink exact to="/" activeClassName="active">All Posts</NavLink></li>
                 <li className="nav-item"><NavLink to="/create/" activeClassName="active">Create</NavLink></li>
                 <li className="nav-item"><a target="_blank" rel="noopener noreferrer" href="//github.com/ruiwei777">GitHub</a></li>
-                <li className="nav-item"><a href="/">Home</a></li>
               </ul>
             </nav>
           </div>
@@ -69,7 +68,7 @@ class Post extends React.Component {
 
         <Navbar className={"credential-bar"} />
 
-        <div className="article">
+        <div className="article fill-80-viewport">
           <Switch>
             <Route path="/create" render={({ match, location, history }) => <CreatePost history={history} />} />
             <Route path="/:postid" render={({ match, location, history }) => <PostDetail params={match.params} />} />

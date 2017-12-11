@@ -1,6 +1,8 @@
 import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
+import LoginForm from "root/components/LoginForm";
+import { login } from "root/services/users/actions";
 
 import "../styles/create_post.scss";
 
@@ -9,55 +11,71 @@ import Win8Spinner from "root/components/Win8Spinner";
 
 class CreatePost extends React.Component {
 
-  handleSubmit(formData) {
+  handleSubmit = (formData) => {
     // console.log(formData);
+    const { token } = this.props.user;
+    this.props.dispatch(addPost(formData, token))
+      .then(data => {
+        // data is a post instance
+        // console.log(data.id);
+        this.props.history.push("/" + data.id);
+      }).catch(error => {
+        console.log(error)
+      });
+  }
 
-    let { username, token } = this.props;
-    let loggedIn = username && token;
+  onLoginClick = (e) => {
+    e.preventDefault();
+    this.props.dispatch(mountPortal);
+  }
 
-    // if not loggined in , prompt to confirm
-    let confirmed = false;
-    if (!loggedIn) {
-      let message = "Your IP address will be logged if creating as a non-staff user. Are you sure to proceed?";
-      confirmed = window.confirm(message);
-    }
+  login = (data) => {
+    const { username, password } = data;
+    this.props.dispatch(login(username, password))
+    .then(() => {
 
-    let requestPromise = null;
-    if (loggedIn) requestPromise = this.props.dispatch(addPost(formData, token));
-    else if (!loggedIn && confirmed) requestPromise = this.props.dispatch(addPost(formData));
-
-    if (requestPromise !== null) {
-      requestPromise
-        .then(data => {
-          // data is a post instance
-          // console.log(data.id);
-          this.props.history.push("/" + data.id);
-        }).catch(error => {
-          console.log(error)
-        });
-    }
-
+    })
+    .catch(err => {
+      console.log(this.props.user);
+    })
+    ;
   }
 
 
   render() {
     // console.log(this.props);
-    let { adding, added, rejected } = this.props;
+    const { adding, added, rejected } = this.props;
+    const { user, token } = this.props.user;
+    if (!user || !token) {
+
+    }
 
     return (
-      <div>
+      <div className="mt-5">
         {adding && <Win8Spinner title={"Creating the post..."} />}
 
         {!adding && rejected && <div className="message error">Error: failed to create the post.</div>}
 
+
+
+        {(!user || !token) &&
+          <div className="prompt-container">
+            <div className="mt-10">
+              <p className="text-center">You must login first before creating a post</p>
+              <div className="form-wrapper">
+                <LoginForm onSubmit={this.login} />
+              </div>
+            </div>
+          </div>}
+
         <PostForm
-          onSubmit={::this.handleSubmit}
+          onSubmit={this.handleSubmit}
           initialValues={{
-          blocks: [{
-            text: "",
-            language: "markdown"
-          }]
-        }} />
+            blocks: [{
+              text: "",
+              language: "markdown"
+            }]
+          }} />
 
       </div>
     )
@@ -67,8 +85,7 @@ class CreatePost extends React.Component {
 function mapStateToProps(state) {
   // console.log(state)
   return {
-    username: state.userReducer.username,
-    token: state.userReducer.token,
+    user: state.userReducer,
     adding: state.postReducer.adding,
     added: state.postReducer.added,
     rejected: state.postReducer.rejected

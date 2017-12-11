@@ -8,6 +8,7 @@ class Profile extends React.Component {
     const { user } = this.props;
 
     if (!user) {
+      console.log("Profile", this.props);
       return (
         <Redirect to={{
           pathname: '/register',

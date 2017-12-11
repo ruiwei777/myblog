@@ -15,11 +15,13 @@ class Register extends React.Component {
         this.props.dispatch(saveUserIntoCookie(data))
       })
       .catch(response => {
+        // TODO: should render error message here
         console.log(response)
       })
   }
 
   render() {
+    console.log("Register", this.props)
     // if already logged in, redirect to /accounts/profile
     const { user } = this.props;
 
