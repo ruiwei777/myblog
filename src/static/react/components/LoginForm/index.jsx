@@ -13,7 +13,7 @@ class LoginForm extends React.Component{
     const { error, fetching } = this.props.user;
 
     return(
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form className={"login-form"} onSubmit={handleSubmit}>
         { error && <p className="error">Username or password not match, please try again.</p> }
         { fetching && <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i> }
         <label>username</label>
@@ -37,7 +37,7 @@ class LoginForm extends React.Component{
             Reset 
           </button>
         </div>
-        <div><small>Not have an account? <a href="/accounts/register">register</a></small></div>
+        <div className="text-black-80 mt-2"><small>Not have an account? <a href="/accounts/register">register</a></small></div>
       </form>
     )
   }

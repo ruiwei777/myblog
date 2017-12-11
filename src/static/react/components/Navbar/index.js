@@ -14,7 +14,8 @@ class Navbar extends React.Component {
     this.props.dispatch(mountPortal());
   }
 
-  onLogoutClick = () => {
+  onLogoutClick = (e) => {
+    e.preventDefault();
     this.props.dispatch(logout());
   }
 
@@ -23,13 +24,20 @@ class Navbar extends React.Component {
 
     return (
       <div className={className ? className : 'credential-bar'}>
+        <a href="/" className="mr-auto height-50px"><img src="/static/images/react-logo.png" className="img-fluid-reverse" /></a>
+        <a href="/">Home</a>
+        <a href="/posts">Blog</a>
         {user && token ?
-          <div>Welcome back, <a href='/accounts/profile'>{user.username}</a>
-            <button className="btn btn-info" onClick={this.onLogoutClick}>Logout</button>
+          <div><a href='/accounts/profile' className="username">{user.username}</a>
+            <a href='/' className="logout" onClick={this.onLogoutClick}>Logout</a>
           </div>
           :
           <div>
-            <button className="btn btn-outline-light" onClick={this.onLoginClick}>Login</button>
+            <a href="/" className="login" onClick={this.onLoginClick}>Login</a>
+            <span className="register">
+              or &nbsp;
+            <a href="/accounts/register">register</a>
+            </span>
           </div>
         }
       </div>

@@ -7,6 +7,7 @@
     background-color: rgba(0,0,0, .5);
     transition: all .5s;
     opacity: 0;
+    z-index: 10;
 
     display: flex;
     justify-content: center;
