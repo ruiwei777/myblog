@@ -11,6 +11,12 @@ export default function userReducer(state = {
 
   switch (action.type) {
     case "LOGIN_FULFILLED": {
+      // automatically save user into cookies
+      const oneDay = 60 * 60 * 24;
+      const config = { maxAge: oneDay, path: '/' }
+      cookie.save('user', action.payload.user, config);
+      cookie.save('token', action.payload.token, config);
+
       return {
         ...state,
         ...action.payload,

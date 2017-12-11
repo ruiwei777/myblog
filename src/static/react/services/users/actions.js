@@ -21,9 +21,12 @@ export function login(username, password) {
         });
         return response.data;
       }).catch(error => {
+        console.log(error.response.data)
         dispatch({
           type: 'LOGIN_REJECTED',
-          payload: error.response.data
+          payload: {
+            error: error.response.data
+          }
         });
         // when testing loading animation, uncomment it, then enter wrong credentials
         // dispatch({ type: 'LOGIN_PENDING' })
