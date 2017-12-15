@@ -23,7 +23,8 @@ module.exports = {
     context: SRC_PATH,
     entry: {
         // relative to proj/src
-        vendor: Object.keys(json.dependencies),
+        // vendor: Object.keys(json.dependencies),
+        vendor: ['react','react-dom','redux', 'react-redux', 'react-router-dom'],
         accounts: ["./static/react/entries/accounts/index.jsx"], 
         posts: ["./static/react/entries/posts/index.jsx"], 
     },
