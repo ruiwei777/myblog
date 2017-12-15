@@ -1,16 +1,5 @@
-from django.contrib import messages
-from django.contrib.auth import (
-    authenticate,
-    get_user_model,
-    login,
-    logout,
-)
-from django.core.urlresolvers import reverse
-from django.forms import ValidationError
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
-from .forms import UserLoginForm, UserRegistrationForm
 from .serializers import UserSerializer, UserCreateSerializer, GroupSerializer
 
 from django.contrib.auth.models import User, Group
@@ -21,6 +10,7 @@ from rest_condition import Or, And
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,71 +18,27 @@ from permissions import WriteOnly
 from .permissions import IsOwnAllowAny
 
 
-# Create your views here.
-
-def login_view(request):
-
-    title = "Login"
-    data = request.POST.copy()
-    print(data)
-    form = UserLoginForm(request.POST or None)
-    print(form)
-    if form.is_valid():
-        username = form.cleaned_data.get("username")
-        password = form.cleaned_data.get("password")
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                url = request.GET.get("next")
-                if url:
-                    return HttpResponseRedirect(url)
-                else:
-                    return HttpResponseRedirect(reverse("index"))
-            else:
-                pass
-        else:
-            pass
-    else:
-        print("Error")
-
-    context = {
-        "form": form,
-        "title": title,
-    }
-    return render(request, "login_form.html", context)
+def home(request):
+    """
+    index page for `posts`: www.domain.com/accounts/
+    """
+    return render(request, "account_home.html", {})
 
 
-def register_view(request):
-    title = "Register"
-
-    form = UserRegistrationForm(request.POST or None)
-    if form.is_valid():
-        user = form.save(commit=False)
-        user.set_password(form.cleaned_data.get("password"))
-        user.save()
-        messages.success(request, "Register succeeded")
-
-        new_user = authenticate(username=user.username,
-                                password=form.cleaned_data.get("password"))
-        login(request, new_user)
-        return HttpResponseRedirect(reverse("index"))
-
-    context = {
-        "title": title,
-        "form": form
-    }
-    return render(request, "login_form.html", context)
-
-
-def logout_view(request):
-    logout(request)
-    to = "/"
-    next = request.GET.get("next")
-    if next:
-        to += next + "/"
-
-    return redirect(to)
+class UserLoginView(ObtainAuthToken):
+    # Overriding, add the user object into response
+    # use this for POST /api-token-auth
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        user_data = UserSerializer(instance=user).data
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user': user_data
+        })
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -110,15 +56,19 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     # Overriding
-    # change serializer to `UserCreateSerializer` because of `token`
+    # use `UserCreateSerializer` because needs to response with `token`
     def create(self, request, *args, **kwargs):
         serializer = UserCreateSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
+
+        # prepare response data
         headers = self.get_success_headers(serializer.data)
         token = Token.objects.get(user=serializer.instance)
-        data = serializer.data
+        user_data = UserSerializer(instance=serializer.instance).data
+        data = {'user': user_data, 'token': token.key}
         data['token'] = token.key
+
         return Response(data, status=status.HTTP_201_CREATED,
                         headers=headers)
 

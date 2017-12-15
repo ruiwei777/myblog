@@ -3,7 +3,7 @@ import { unstable_renderSubtreeIntoContainer, unmountComponentAtNode } from 'rea
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 
-import { unmountPortal } from 'root/services/portal/actions';
+import { unmountPortal } from 'root/actions/portalActions';
 
 import './styles.scss';
 

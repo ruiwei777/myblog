@@ -205,23 +205,7 @@ body{
   grid-area: credential-bar;
 }
 
-/* top credential bar */
-.credential-bar{
-  background-color: #1f8dd6;
-  height: 50px;
-  padding: .5em 4em;
-  color: white;
-  margin-bottom: 2em;
 
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.credential-bar .btn{
-  margin-left: 1em;
-  font-size: .8em;
-}
 
 
 /* navlinks in sidebar */
@@ -258,7 +242,8 @@ body{
 
 .grid-container > .article{
   grid-area: article;
-  padding: 0 2em 0;
+  padding: 1em 2em 2em;
+  position: relative;
 }
 
 @media(max-width: 768px){

@@ -6,12 +6,13 @@ import { NavLink, Switch, Route } from "react-router-dom";
 import PostList from "./components/PostList";
 import PostDetail from "./components/PostDetail";
 import CreatePost from "./components/CreatePost";
+import Navbar from "root/components/Navbar";
 import Portal from "root/components/Portal";
 import LoginForm from "root/components/LoginForm";
 
-import { fetchPosts } from "./actions";
-import { login, logout, reset } from 'root/services/users/actions';
-import { mountPortal, unmountPortal } from "root/services/portal/actions";
+import { fetchPosts } from "root/actions/postActions";
+import { login, loginFromCookie, logout, reset, saveUserIntoCookie } from 'root/actions/userActions';
+import { mountPortal, unmountPortal } from "root/actions/portalActions";
 
 import "./styles/post_home.scss";
 
@@ -21,26 +22,17 @@ import "./styles/post_home.scss";
 class Post extends React.Component {
 
   componentWillMount() {
-    this.props.dispatch(fetchPosts())
-  }
-
-  onLoginClick = e => {
-    e.preventDefault();
-    this.props.dispatch(reset());
-    this.props.dispatch(mountPortal());
-  }
-
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.dispatch(logout());
+    this.props.dispatch(fetchPosts());
+    this.props.dispatch(loginFromCookie());
   }
 
   submit = values => {
     // console.log(values)
     const { username, password } = values;
     this.props.dispatch(login(username, password))
-      .then(() => {
+      .then((data) => {
         this.props.dispatch(unmountPortal());
+        this.props.dispatch(saveUserIntoCookie(data));
       })
       .catch(err => {
         // TODO: what else should be done in response to error?
@@ -50,10 +42,11 @@ class Post extends React.Component {
 
   render() {
     const { username, token } = this.props.user;
+    const { shouldPortalMount } = this.props.portal;
 
     return (
       <div className="grid-container">
-        {this.props.portal.shouldPortalMount &&
+        {shouldPortalMount &&
           <Portal title={'Login'}>
             <LoginForm onSubmit={this.submit} />
           </Portal>
@@ -68,31 +61,20 @@ class Post extends React.Component {
                 <li className="nav-item"><NavLink exact to="/" activeClassName="active">All Posts</NavLink></li>
                 <li className="nav-item"><NavLink to="/create/" activeClassName="active">Create</NavLink></li>
                 <li className="nav-item"><a target="_blank" rel="noopener noreferrer" href="//github.com/ruiwei777">GitHub</a></li>
-                <li className="nav-item"><a href="/">Home</a></li>
               </ul>
             </nav>
           </div>
         </div> {/* .header */}
 
-        <div className="credential-bar">
-          {username && token ?
-            <div>Welcome back, {username}
-              <button className="btn btn-secondary" onClick={this.onLogoutClick}>Logout</button>
-            </div>
-            :
-            <div>
-            <button className="btn btn-trans-white" onClick={this.onLoginClick}>Login</button>
-        </div>
-        }
-        </div> {/* top user navbar */ }
+        <Navbar className={"credential-bar"} />
 
-        <div className="article">
+        <div className="article fill-80-viewport">
           <Switch>
             <Route path="/create" render={({ match, location, history }) => <CreatePost history={history} />} />
             <Route path="/:postid" render={({ match, location, history }) => <PostDetail params={match.params} />} />
             <Route exact path="/" render={() => <PostList {...this.props} />} />
           </Switch>
-        </div> {/* .article */ }
+        </div> {/* .article */}
 
         <div className="footer">
           <nav>
@@ -102,7 +84,7 @@ class Post extends React.Component {
               </li>
             </ul>
           </nav>
-        </div> {/* .footer */ }
+        </div> {/* .footer */}
       </div >
     )
   }
