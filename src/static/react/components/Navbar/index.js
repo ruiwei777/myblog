@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { logout, reset } from 'root/services/users/actions';
-import { mountPortal, unmountPortal } from "root/services/portal/actions";
+import { logout, reset } from 'root/actions/userActions';
+import { mountPortal, unmountPortal } from "root/actions/portalActions";
 import './style.scss';
 
 class Navbar extends React.Component {
@@ -29,14 +29,13 @@ class Navbar extends React.Component {
         <a href="/posts">Blog</a>
         {user && token ?
           <div><a href='/accounts/profile' className="username">{user.username}</a>
-            <a href='/' className="logout" onClick={this.onLogoutClick}>Logout</a>
+            <a href='/' className="logout fa fa-sign-out" onClick={this.onLogoutClick}>&nbsp;Logout</a>
           </div>
           :
           <div>
-            <a href="/" className="login" onClick={this.onLoginClick}>Login</a>
+            <a href="/" className="login fa fa-sign-in" onClick={this.onLoginClick}>&nbsp;Login</a>
             <span className="register">
-              or &nbsp;
-            <a href="/accounts/register">register</a>
+              <a href="/accounts/register">register</a>
             </span>
           </div>
         }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import RegisterForm from './RegisterForm';
 
-import { register, saveUserIntoCookie } from 'root/services/users/actions';
+import { register } from 'root/actions/userActions';
 
 class Register extends React.Component {
   submit = values => {
@@ -12,7 +12,6 @@ class Register extends React.Component {
     this.props.dispatch(register(values))
       .then((data) => {
         // console.log(data)
-        this.props.dispatch(saveUserIntoCookie(data))
       })
       .catch(response => {
         // TODO: should render error message here

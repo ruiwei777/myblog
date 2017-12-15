@@ -2,11 +2,11 @@ import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 import LoginForm from "root/components/LoginForm";
-import { login } from "root/services/users/actions";
+import { login } from "root/actions/userActions";
 
 import "../styles/create_post.scss";
 
-import { addPost } from "../actions";
+import { addPost } from "root/actions/postActions";
 import Win8Spinner from "root/components/Win8Spinner";
 
 class CreatePost extends React.Component {

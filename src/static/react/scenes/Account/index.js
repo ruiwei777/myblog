@@ -10,8 +10,8 @@ import Portal from 'root/components/Portal';
 import Profile from './Profile';
 import Register from './Register';
 
-import { login, loginFromCookie, saveUserIntoCookie } from 'root/services/users/actions';
-import { unmountPortal } from 'root/services/portal/actions';
+import { login, loginFromCookie } from 'root/actions/userActions';
+import { unmountPortal } from 'root/actions/portalActions';
 
 
 
@@ -25,7 +25,6 @@ class Account extends React.Component {
     this.props.dispatch(login(username, password))
       .then((data) => {
         this.props.dispatch(unmountPortal());
-        this.props.dispatch(saveUserIntoCookie(data));
       })
       .catch(err => {
         console.log(err)

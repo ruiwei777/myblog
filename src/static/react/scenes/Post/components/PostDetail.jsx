@@ -4,7 +4,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { fetchAPost } from "../actions";
+import { fetchAPost } from "root/actions/postActions";
 import Win8Spinner from "root/components/Win8Spinner";
 import PostMeta from "./PostMeta";
 

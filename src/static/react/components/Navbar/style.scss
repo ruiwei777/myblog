@@ -8,9 +8,6 @@
   justify-content: flex-end;
   align-items: center;
 
-  &>*{
-  }
-
   .btn{
     margin-left: 1em;
     font-size: .8em;
@@ -31,11 +28,6 @@
   .logout{
     margin-left: 2rem;
     font-size: .8em;
-    text-decoration: underline;
-  }
-
-  .login{
-    text-decoration: underline;
   }
 
   .register{

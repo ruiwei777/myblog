@@ -10,9 +10,9 @@ import Navbar from "root/components/Navbar";
 import Portal from "root/components/Portal";
 import LoginForm from "root/components/LoginForm";
 
-import { fetchPosts } from "./actions";
-import { login, loginFromCookie, logout, reset, saveUserIntoCookie } from 'root/services/users/actions';
-import { mountPortal, unmountPortal } from "root/services/portal/actions";
+import { fetchPosts } from "root/actions/postActions";
+import { login, loginFromCookie, logout, reset, saveUserIntoCookie } from 'root/actions/userActions';
+import { mountPortal, unmountPortal } from "root/actions/portalActions";
 
 import "./styles/post_home.scss";
 
