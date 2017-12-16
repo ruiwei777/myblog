@@ -106,6 +106,7 @@ VENV/
 passwords.py
 proj_env/
 local_settings.py
+production_settings.py
 media_cdn/
 static_cdn/
 webfaction/
