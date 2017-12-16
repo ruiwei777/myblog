@@ -20,7 +20,7 @@ class Register extends React.Component {
   }
 
   render() {
-    console.log("Register", this.props)
+    // console.log("Register", this.props)
     // if already logged in, redirect to /accounts/profile
     const { user } = this.props;
 
@@ -33,9 +33,11 @@ class Register extends React.Component {
     return (
       <div className='container'>
         <div className='row justify-content-center align-items-center fill-80-viewport'>
-          <div className='col-sm-6 mx-auto'>
-            <h2 className='text-center'>Register</h2>
-            <RegisterForm onSubmit={this.submit} />
+          <div className='col-sm-8 mx-auto'>
+            <div className="block-info">
+              <h2 className='text-center mb-3'>Register</h2>
+              <RegisterForm onSubmit={this.submit} />
+            </div>
           </div>
         </div>
       </div>
