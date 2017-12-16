@@ -5,12 +5,7 @@
 body{
   margin: 0;
   font-family: sans-serif;
-}
-
-@media(max-width: 768px){
-  body{
-    font-size: .8em;
-  }
+  word-break: break-all;
 }
 
 .p{
@@ -244,12 +239,6 @@ body{
   grid-area: article;
   padding: 1em 2em 2em;
   position: relative;
-}
-
-@media(max-width: 768px){
-  .grid-container > .article{
-    max-width: 95%;
-  }
 }
 
 .posts .content-subhead{
