@@ -13,6 +13,8 @@ import Register from './Register';
 import { login, loginFromCookie } from 'root/actions/userActions';
 import { unmountPortal } from 'root/actions/portalActions';
 
+import './account.scss';
+
 
 
 class Account extends React.Component {
