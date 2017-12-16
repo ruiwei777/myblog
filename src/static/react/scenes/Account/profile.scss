@@ -1,0 +1,16 @@
+
+.profile-group{
+    display: flex;
+    margin-bottom: .5em;
+
+    & > .profile-title{
+        flex-basis: 200px;
+        font-size: .8em;
+        font-weight: bold;
+    }
+
+    & > .profile-content{
+        flex-grow: 1;
+    }
+
+}
