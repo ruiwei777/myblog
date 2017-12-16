@@ -10,6 +10,7 @@
         "react"
     ],
     "plugins": [
+        "transform-commonjs-es2015-modules",
         [ "transform-object-rest-spread", { "useBuiltIns": true } ],
         "transform-function-bind",
         "transform-class-properties"

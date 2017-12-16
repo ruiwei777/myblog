@@ -24,7 +24,7 @@ class Navbar extends React.Component {
 
     return (
       <div className={className ? className : 'credential-bar'}>
-        <a href="/" className="mr-auto height-50px"><img src="/static/images/react-logo.png" className="img-fluid-reverse" /></a>
+        <a href="/" className="mr-auto logo"><img src="/static/images/react-logo.png" className="img-fluid-reverse" /></a>
         <a href="/">Home</a>
         <a href="/posts">Blog</a>
         {user && token ?
