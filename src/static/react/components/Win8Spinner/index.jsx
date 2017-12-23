@@ -3,15 +3,10 @@ import './styles.scss';
 
 
 export default class Win8Spinner extends React.Component {
-  componentDidMount() {
-    setTimeout(() => {
-      this.fetching.classList.add("show");
-    }, 0)
-  }
 
   render() {
     return (
-      <div className="fetching" ref={fetching => this.fetching = fetching}>
+      <div className="fetching">
         <div>
           <div className="windows8">
             <div className="wBall" id="wBall_1">
