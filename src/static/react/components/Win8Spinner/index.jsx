@@ -6,7 +6,7 @@ export default class Win8Spinner extends React.Component {
 
   render() {
     return (
-      <div className="fetching">
+      <div className="fetching fade-in">
         <div>
           <div className="windows8">
             <div className="wBall" id="wBall_1">

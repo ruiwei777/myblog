@@ -9,8 +9,6 @@
   z-index: 100;
   background-color: rgba(0,0,0,.7);
 
-  animation: .3s ease-in-out 0s 1 normal forwards fade-in;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,15 +27,7 @@
   z-index: 101;
 }
 
-@keyframes fade-in{
-  from{
-    opacity: 0;
-  }
 
-  to{
-    opacity: 1;
-  }
-}
 
 
 // copy from others, do not change the following
