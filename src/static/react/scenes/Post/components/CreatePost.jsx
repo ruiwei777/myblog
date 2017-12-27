@@ -59,7 +59,7 @@ class CreatePost extends React.Component {
 
 
         {(!user || !token) &&
-          <div className="prompt-container">
+          <div className="prompt-container fade-in">
             <div className="mt-10">
               <p className="text-center">You must login first before creating a post</p>
               <div className="form-wrapper">

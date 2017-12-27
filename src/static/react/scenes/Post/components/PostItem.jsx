@@ -27,7 +27,7 @@ export default class PostItem extends React.Component {
   render() {
     let { post } = this.props;
     return (
-      <section className="post">
+      <section className="post word-break">
         <header className="post-header">
           <img width="48" height="48" alt="avatar" className="post-avatar" src="/static/images/Code-Monkey.png" />
 
@@ -47,7 +47,7 @@ export default class PostItem extends React.Component {
           <img src={post.image} className="img-responsive reverse" />
         </div>}
 
-        <div className="post-description word-break">
+        <div className="post-description">
           <NavLink to={"/" + post.id} className="p">
             {this.processPostBody(post.content)}
           </NavLink>

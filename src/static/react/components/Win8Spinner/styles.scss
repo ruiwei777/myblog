@@ -9,16 +9,9 @@
   z-index: 100;
   background-color: rgba(0,0,0,.7);
 
-  transition: all .8s;
-  opacity: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &.show{
-    opacity: 1;
-  }
 
   & .message{
     margin-bottom: 1.5em;
@@ -33,6 +26,8 @@
 .fetching .windows8{
   z-index: 101;
 }
+
+
 
 
 // copy from others, do not change the following

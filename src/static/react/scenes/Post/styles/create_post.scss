@@ -62,9 +62,29 @@ input:focus {
     background-color: rgba(255,255,255,.95);
     padding: 1em 3em .5em;
     border-radius: 3px;
+
+    position: relative;
+    top: 100px;
+    opacity: 0;
+    animation: .4s cubic-bezier(0.14, 0.25, 0.62, 1.55) .3s 1 normal forwards  slide-in;
+
+
+    
   }
 }
 
+
+@keyframes slide-in {
+  from{
+    top: 100px;
+    opacity: 0;
+  }
+
+  to{
+    top: 0;
+    opacity: 1;
+  }
+}
 
 
 

@@ -21,7 +21,7 @@ export default class PostList extends React.Component {
     } else {
       content = <Win8Spinner />;
     }
-
+    
     return (
       <div className="posts">
         <h1 className="content-subhead">Recent Posts</h1>
