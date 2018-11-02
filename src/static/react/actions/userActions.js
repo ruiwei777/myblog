@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_ROOT } from "root/services/constants";
 import { reset as resetForm } from 'redux-form';
 
 
@@ -11,7 +10,7 @@ export function login(username, password) {
 
     return axios({
       method: "post",
-      url: API_ROOT + "api-token-auth/",
+      url: "/api-token-auth/",
       data: { username, password }
     })
       .then(response => {
@@ -57,7 +56,7 @@ export function register(userData) {
   return dispatch => {
     dispatch({ type: 'REGISTER_PENDING' });
 
-    const url = API_ROOT + 'api/users/';
+    const url = '/api/users/';
     return axios.post(url, userData)
       .then(response => {
         dispatch({
