@@ -3,20 +3,48 @@ This is my [personal website](http://18.217.100.253/) with an SPA blog.
 
 It uses Django, Django-Rest-Framework, React-Redux with thunk and Webpack 3. 
 
+## How to run
+Django setup
+1. activate virtualenv
+2. `pip install -r requirements.txt`
+3. cd into `trydjango19/settings`, 
 
-# How to Run
-First step is usual Django setup, such as activate virtualenv, `pip install -r requirements.txt`, make migrations, migrate, etc.
+`cp local_settings_default.py local_settings.py`
 
-## development
-This project takes the advantages of webpack-dev-server hot-module-reloading, but it comes at a price that all React modules are highly coupled with webpack-dev-server, so you must run **both** Django and webpack-dev-server to make **React modules** to work. Otherwise only server-side rendering pages will work (such as index page). To do that:
+4. database setup (see below)
+5. `python src/manage.py migrate`
 
-`npm install`, `npm run dev`, `python src/manage.py runserver`
+Webpack setup _Make sure Node.js 8.9.1+ is installed._
+
+6. `npm install`
+7. `npm run dev` (for production, `npm run build`)
+
+Finally, after activating virtualenv
+
+8. `python src/manage.py runserver`
+
+
+## Database setup
+1. install mysql 5.7
+2. `mysql -uroot -p` to log into mysql as root, run
+
+`CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';`
+
+`CREATE DATABASE schemaname;`
+
+`GRANT ALL ON schemaname.* TO 'username'@'localhost';`
+
+Customize the above *username*, *password*, *schemaname*, and put corresponding values into `local_settings.py`
 
 ## production
-Routine Django production setup, such as setting `DEBUG` to `False`, config `ALLOWED_HOSTS`, etc. Then `npm run build`, `python src/manage.py collectstatic`; finally restart server like Apache.
+Customize everything in `settings/local_settings.py`, especially set `DEBUG` to `False`. Then
 
-# Notes
-1. `(optional)` To customise your settings and secrets, see `__init__.py` and `passwords_default.py` in `src/trydjango19/settings`. 
+`npm run build`
+
+`python src/manage.py collectstatic`
+
+Finally restart server like Apache.
+
 
 # License
 MIT
