@@ -31,15 +31,10 @@ def upload_location(instance, filename):
     return "%s/%s" % (id, filename)
 
 
-class PostManager(models.Manager):
-    def active(self, *args, **kwargs):
-        return super(PostManager, self).filter(draft=False, publish__lte=timezone.now().date())
-
-
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=12)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     title = models.CharField(max_length=120)
-    slug = models.SlugField(unique=True, blank=True, null=True)
+    slug = models.SlugField(allow_unicode=True)  # default max_length=50
     image = models.ImageField(upload_to=upload_location,
                               null=True,
                               blank=True,
@@ -52,8 +47,6 @@ class Post(models.Model):
     publish = models.DateField(auto_now=False, auto_now_add=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-    # override ModelManager
-    objects = PostManager()
 
     class Meta:
         ordering = ('publish',)
@@ -72,53 +65,15 @@ class Post(models.Model):
         "return the post's comments"
         return Comment.objects.filter_by_instance(self)
 
-    @property
-    def get_content_type(self):
-        return ContentType.objects.get_for_model(self.__class__)
-
-
-# TRY to create slug using post save with id, might need to delete
-# the following afterwards
-
-# def create_slug(instance, new_slug=None):
-# 	slug = slugify(instance.title)
-# 	if new_slug is not None:
-# 		slug = new_slug
-
-# 	qs = Post.objects.filter(slug=slug).order_by("-id")
-# 	exists = qs.exists()
-# 	if exists:
-# 		new_slug = "%s-%s" % (slug, qs.first().id)
-# 		slug = create_slug(instance, new_slug=new_slug)
-# 	return slug
-
-
-# def pre_save_post_receiver(sender, instance, raw, **kwargs):
-# 	slug = create_slug(instance)
-# 	instance.slug = slug
-# pre_save.connect(pre_save_post_receiver, sender=Post)
-
-def post_save_create_slug(sender, instance, created, **kwargs):
-    """
-            Create the slug for each instance after saving for the first time.
-    """
-    if not created:
-        return
-
-    slug = slugify(instance.title)
-    slug += "-" + str(instance.id)
-
-    instance.slug = slug
-    instance.save()
-
-
-post_save.connect(post_save_create_slug, sender=Post)
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 def post_save_update_image_url(sender, instance, created, **kwargs):
     """ 
-                    Move the image from "MEDIA_ROOT/temp/" to "MEDIA_ROOT/posts/instance.id/".
-                    Make sure to check the "created" flag to avoid infinite loop!
+    Move the image from "MEDIA_ROOT/temp/" to "MEDIA_ROOT/posts/instance.id/".
+    Make sure to check the "created" flag to avoid infinite loop!
     """
 
     if not instance.image or not created:
@@ -129,8 +84,7 @@ def post_save_update_image_url(sender, instance, created, **kwargs):
 
     MEDIA_ROOT = settings.MEDIA_ROOT
 
-    new_img_relative_path = "posts/" + \
-        instance.image.name.replace("temp", str(instance.id))
+    new_img_relative_path = "posts/" + instance.image.name.replace("temp", str(instance.id))
 
     img_abs_path = os.path.join(MEDIA_ROOT, instance.image.name)
     new_img_abs_path = os.path.join(MEDIA_ROOT, new_img_relative_path)

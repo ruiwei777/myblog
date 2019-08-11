@@ -48,3 +48,7 @@ Finally restart server like Apache.
 
 # License
 MIT
+
+# TODO
+1. move the `react folder outside`.
+2. Update React to v16.
