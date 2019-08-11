@@ -1,18 +1,23 @@
 {
-    "presets": [
-        ["env", {
-            "modules": false,
-            "targets": {
-                "browsers": ["last 2 versions", "ie >= 11"]
-            },
-            "useBuiltIns": "usage"
-        }],
-        "react"
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "ie >= 11"
+          ]
+        },
+        "useBuiltIns": "usage"
+      }
     ],
-    "plugins": [
-        "transform-commonjs-es2015-modules",
-        [ "transform-object-rest-spread", { "useBuiltIns": true } ],
-        "transform-function-bind",
-        "transform-class-properties"
-    ]
-  }
+    "react"
+  ],
+  "plugins": [
+    "transform-function-bind",
+    "transform-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
+}

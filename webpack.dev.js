@@ -7,24 +7,24 @@ const path = require('path');
 common.devtool = 'inline-source-map';
 
 common.module.rules.push(
-    // compile .css and .sass intoto javascript
-    {
-        test: /\.css$/,
-        use: [
-            { loader: 'style-loader', options: { sourceMap: true } },
-            { loader: 'css-loader', options: { sourceMap: true } }
-        ],
-        exclude: /node_modules/
-    },
-    {
-        test: /\.scss$/,
-        use: [
-            { loader: 'style-loader', options: { sourceMap: true } },
-            { loader: 'css-loader', options: { sourceMap: true } },
-            { loader: 'sass-loader', options: { sourceMap: true } }
-        ],
-        exclude: /node_modules/
-    }
+  // compile .css and .sass intoto javascript
+  {
+    test: /\.css$/,
+    use: [
+      { loader: 'style-loader', options: { sourceMap: true } },
+      { loader: 'css-loader', options: { sourceMap: true } }
+    ],
+    exclude: /node_modules/
+  },
+  {
+    test: /\.scss$/,
+    use: [
+      { loader: 'style-loader', options: { sourceMap: true } },
+      { loader: 'css-loader', options: { sourceMap: true } },
+      { loader: 'sass-loader', options: { sourceMap: true } }
+    ],
+    exclude: /node_modules/
+  }
 )
 
 console.log("Development mode...");
