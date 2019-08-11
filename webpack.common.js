@@ -17,15 +17,13 @@ const cleanOptions = {
 /* when using django-webpack-loader, HtmlWebpackPlugin is not needed */
 
 module.exports = {
-  context: path.resolve('./src'),
   entry: {
-    // relative to proj/src
-    accounts: "./static/react/entries/accounts/index.jsx",
-    posts: "./static/react/entries/posts/index.jsx",
+    accounts: "./react/entries/accounts/index.jsx",
+    posts: "./react/entries/posts/index.jsx",
   },
   resolve: {
     alias: {
-      root: path.resolve("./src/static/react")
+      root: path.resolve("./react")
     },
     extensions: ['.js', '.jsx']
   },
@@ -34,13 +32,9 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, "src/static/react"),
+          path.resolve(__dirname, "react"),
         ],
-        use: [
-          {
-            loader: "babel-loader",
-          }
-        ]
+        use: [{ loader: "babel-loader", }]
       },
       {
         test: /\.html$/,
