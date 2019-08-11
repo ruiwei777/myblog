@@ -4,6 +4,7 @@ const webpack = require('webpack');
 
 
 module.exports = merge(common, {
+  mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     public: 'http://localhost:8050/',
