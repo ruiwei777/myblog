@@ -2,17 +2,8 @@
  * Webpack 3 config for both dev and prod.
  */
 const path = require('path');
-
 const BundleTracker = require('webpack-bundle-tracker');
-
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const pathToClean = ["build"];
-const cleanOptions = {
-  root: __dirname,  // must be full path
-  verbose: true,
-  watch: false  // do not clean on watch
-};
 
 /* when using django-webpack-loader, HtmlWebpackPlugin is not needed */
 
@@ -70,10 +61,14 @@ module.exports = {
     path: path.resolve('./build'),
     publicPath: '/static/',
     filename: '[name]-[hash].js',
-    chunkFilename: '[name]-[hash].js', 
+    chunkFilename: '[name]-[hash].js',
   },
   plugins: [
-    new CleanWebpackPlugin(pathToClean, cleanOptions),
+    new CleanWebpackPlugin(["build"], {
+      root: __dirname,
+      verbose: true,
+      watch: false  // do not clean on watch
+    }),
     new BundleTracker(
       { path: __dirname, filename: './build/webpack-stats.json', indent: 4 }
     ),
