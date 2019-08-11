@@ -1,20 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 
+// @ts-ignore
 import { logout, reset } from 'root/actions/userActions';
+// @ts-ignore
 import { mountPortal, unmountPortal } from "root/actions/portalActions";
 import './style.scss';
 
-class Navbar extends React.Component {
+interface NavbarProps {
+  dispatch: Function;
+  className: string;
+  user: any;
+  token: string;
+  onLoginClick: any;
+}
 
-  onLoginClick = (e) => {
+class Navbar extends React.Component<NavbarProps, {}> {
+
+  onLoginClick = (e: any) => {
     e.preventDefault();
     this.props.dispatch(reset());
     this.props.dispatch(mountPortal());
   }
 
-  onLogoutClick = (e) => {
+  onLogoutClick = (e: any) => {
     e.preventDefault();
     this.props.dispatch(logout());
   }
@@ -45,7 +54,7 @@ class Navbar extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   // console.log(state)
   return {
     user: state.userReducer.user,

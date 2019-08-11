@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Switch, Route } from "react-router-dom";
 
@@ -7,50 +6,53 @@ import PostList from "./components/PostList";
 import PostDetail from "./components/PostDetail";
 import CreatePost from "./components/CreatePost";
 import Navbar from "root/components/Navbar";
-import Portal from "root/components/Portal";
 import LoginForm from "root/components/LoginForm";
 
+// @ts-ignore
 import { fetchPosts } from "root/actions/postActions";
+// @ts-ignore
 import { login, loginFromCookie, logout, reset, saveUserIntoCookie } from 'root/actions/userActions';
+// @ts-ignore
 import { mountPortal, unmountPortal } from "root/actions/portalActions";
 
 import "./styles/post_home.scss";
 
+
+interface PostProps {
+  dispatch: Function;
+  user: any;
+  loading: boolean;
+  posts: any[];
+}
+
 /**
  * Layout of the /posts/ page.
  */
-class Post extends React.Component {
+class Post extends Component<PostProps, {}> {
 
   componentWillMount() {
     this.props.dispatch(fetchPosts());
     this.props.dispatch(loginFromCookie());
   }
 
-  submit = values => {
+  submit = (values: any) => {
     // console.log(values)
     const { username, password } = values;
     this.props.dispatch(login(username, password))
-      .then((data) => {
+      .then((data: any) => {
         this.props.dispatch(unmountPortal());
         this.props.dispatch(saveUserIntoCookie(data));
       })
-      .catch(err => {
-        // TODO: what else should be done in response to error?
-        // console.log(err.response.data)
+      .catch((err: any) => {
+        console.error(err.response.data)
       })
   }
 
   render() {
-    const { username, token } = this.props.user;
-    const { shouldPortalMount } = this.props.portal;
+    const { user, loading, posts } = this.props;
 
     return (
       <div className="grid-container">
-        {shouldPortalMount &&
-          <Portal title={'Login'}>
-            <LoginForm onSubmit={this.submit} />
-          </Portal>
-        }
 
         <div className="header">
           <div className="header-wrapper">
@@ -72,7 +74,7 @@ class Post extends React.Component {
           <Switch>
             <Route path="/create" render={({ match, location, history }) => <CreatePost history={history} />} />
             <Route path="/:postid" render={({ match, location, history }) => <PostDetail params={match.params} />} />
-            <Route exact path="/" render={() => <PostList {...this.props} />} />
+            <Route exact path="/" render={() => <PostList userState={user} loading={loading} posts={posts} />} />
           </Switch>
         </div> {/* .article */}
 
@@ -90,17 +92,8 @@ class Post extends React.Component {
   }
 }
 
-Post.propTypes = {
-  dispatch: PropTypes.func,
-  posts: PropTypes.array,
-  user: PropTypes.shape({
-    username: PropTypes.string,
-    token: PropTypes.string
-  }),
-  portal: PropTypes.object
-}
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   // console.log(state)
   return {
     loading: state.postReducer.fetching,

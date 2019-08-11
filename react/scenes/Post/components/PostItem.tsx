@@ -1,19 +1,20 @@
 import { NavLink } from "react-router-dom";
-import React from "react";
+import React, {Component} from "react";
 import removeMd from "remove-markdown"
 
 import "../styles/post_item.scss"
+
+interface PostItemProps {
+  post: any;
+}
 
 
 /**
   A single Post Component inside a PostList
 */
-export default class PostItem extends React.Component {
-  constructor() {
-    super();
-  }
+export default class PostItem extends Component<PostItemProps, {}> {
 
-  processPostBody(body) {
+  processPostBody(body: string) {
     let processed = removeMd(body);
     const maxLength = 400;
 

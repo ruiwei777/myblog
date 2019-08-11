@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './styles.scss';
 
+interface Win8SpinnerProps {
+  title?: string;
+}
 
-export default class Win8Spinner extends React.Component {
+
+export default class Win8Spinner extends Component<Win8SpinnerProps, {}> {
 
   render() {
     return (

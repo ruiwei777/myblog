@@ -1,12 +1,9 @@
 import React from 'react';
-import cookie from 'react-cookies';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import Login from './Login';
-import LoginForm from 'root/components/LoginForm';
 import Navbar from 'root/components/Navbar';
-import Portal from 'root/components/Portal';
 import Profile from './Profile';
 import Register from './Register';
 
@@ -34,16 +31,9 @@ class Account extends React.Component {
   }
 
   render() {
-    const { username, token } = this.props.user;
-    const { shouldPortalMount } = this.props.portal;
 
     return (
       <div>
-        {shouldPortalMount &&
-          <Portal title={'Login'}>
-            <LoginForm onSubmit={this.submit} />
-          </Portal>
-        }
         <Navbar />
 
         <Switch>

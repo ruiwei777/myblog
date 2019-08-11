@@ -1,16 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { connect } from "react-redux";
 
 import './styles.scss';
 
+interface LoginFormProps {
+  handleSubmit: any;
+  pristine: boolean;
+  reset: boolean;
+  submitting: boolean;
+  user: any;
+}
 
-class LoginForm extends React.Component{
-
-  render(){
-    const { handleSubmit, pristine, reset, submitting } = this.props;
-    const { error, fetching } = this.props.user;
+let LoginForm: React.FC<InjectedFormProps<any> & LoginFormProps> = (props: any) => {
+  const { handleSubmit, pristine, reset, submitting } = props;
+    const { error, fetching } = props.user;
 
     return(
       <form className={"login-form"} onSubmit={handleSubmit}>
@@ -40,19 +44,9 @@ class LoginForm extends React.Component{
         <div className="text-black-80 mt-2"><small>Not have an account? <a href="/accounts/register">register</a></small></div>
       </form>
     )
-  }
 }
 
-LoginForm.propTypes = {
-  user: PropTypes.object,
-  handleSubmit: PropTypes.func,
-  reset: PropTypes.func,
-  pristine: PropTypes.bool,
-  submitting: PropTypes.bool
-}
-
-function mapStateToProps(state) {
-  // console.log(state)
+function mapStateToProps(state: any) {
   return {
     user: state.userReducer,
   }

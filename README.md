@@ -50,5 +50,6 @@ Finally restart server like Apache.
 MIT
 
 # TODO
-1. move the `react folder outside`.
-2. Update React to v16.
+1. migrate all js to ts
+2. disallow implicit in tsconfig
+3. Update React to v16.

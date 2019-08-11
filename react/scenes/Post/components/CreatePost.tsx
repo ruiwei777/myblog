@@ -2,40 +2,44 @@ import React from "react";
 import PostForm from "./PostForm";
 import { connect } from "react-redux";
 import LoginForm from "root/components/LoginForm";
+// @ts-ignore
 import { login } from "root/actions/userActions";
 
 import "../styles/create_post.scss";
 
+// @ts-ignore
 import { addPost } from "root/actions/postActions";
 import Win8Spinner from "root/components/Win8Spinner";
 
-class CreatePost extends React.Component {
+interface CreatePostProps{
+  user: any;
+  dispatch: Function;
+  history: any;
+  adding: boolean;
+  added: boolean;
+  rejected: boolean;
+}
 
-  handleSubmit = (formData) => {
+class CreatePost extends React.Component<CreatePostProps, {}> {
+
+  handleSubmit = (formData: any) => {
     // console.log(formData);
     const { token } = this.props.user;
     this.props.dispatch(addPost(formData, token))
-      .then(data => {
-        // data is a post instance
-        // console.log(data.id);
+      .then((data: any) => {
         this.props.history.push("/" + data.id);
-      }).catch(error => {
+      }).catch((error: any) => {
         console.log(error)
       });
   }
 
-  onLoginClick = (e) => {
-    e.preventDefault();
-    this.props.dispatch(mountPortal);
-  }
-
-  login = (data) => {
+  login = (data: any) => {
     const { username, password } = data;
     this.props.dispatch(login(username, password))
     .then(() => {
 
     })
-    .catch(err => {
+    .catch((err: any) => {
       console.log(this.props.user);
     })
     ;
@@ -82,7 +86,7 @@ class CreatePost extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   // console.log(state)
   return {
     user: state.userReducer,

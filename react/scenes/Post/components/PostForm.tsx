@@ -1,11 +1,13 @@
+//@ts-ignore
 import DropZone from "react-dropzone";
 import React, { Component } from 'react';
 import Snippet from "./Snippet";
-import { Field, FieldArray, Fields, reduxForm } from 'redux-form';
+import { Field, FieldArray, Fields, reduxForm, InjectedFormProps } from 'redux-form';
+//@ts-ignore
 import { dateTillNow, hasText, hasTextInBlock } from "root/services/validation/form.validate";
 
 // Stateless methods to render redux-form
-const renderField = ({ input, label, placeholder, type, meta: { touched, error, warning } }) => {
+const renderField = ({ input, label, placeholder, type, meta: { touched, error, warning } }: any) => {
   return (<div className="field">
     <label>
       {label}
@@ -20,13 +22,13 @@ const renderField = ({ input, label, placeholder, type, meta: { touched, error, 
 }
 
 
-const renderBlocks = (props) => {
+const renderBlocks = (props: any) => {
   const { fields, meta: { touched, error, submitFailed } } = props;
   // console.log(props);
   return (
     <div className="code-blocks">
       <label>Content*</label>
-      {fields.map((name, i, fields) =>
+      {fields.map((name: any, i: any, fields: any) =>
         <section key={i} className="code-section">
 
 
@@ -58,16 +60,16 @@ const renderBlocks = (props) => {
  *
  * @return An anonymous function passed to "renderDropZone".
 */
-const onDrop = (input) => {
-  return (files, rejectedFile) => {
+const onDrop = (input: any) => {
+  return (files: any, rejectedFile: any) => {
     input.onChange(files[0]);
   }
 }
 
 
-const renderDropZone = (field) => {
+const renderDropZone = (field: any) => {
   // field == { input: { value:any, onChange: func(newVal) } }
-  const clearImage = (event) => {
+  const clearImage = (event: any) => {
     event.preventDefault();;
     input.onChange(null);
   }
@@ -101,9 +103,15 @@ const renderDropZone = (field) => {
   )
 }
 
+interface PostFormProps {
+  handleSubmit: any;
+  pristine: boolean;
+  reset: any;
+  submitting: any;
+}
 
 
-class PostForm extends Component {
+ class PostForm extends Component<InjectedFormProps<any>> {
 
   componentDidMount() {
     // a dirty way to make the  "AddBtn" and "SubmitBtn" same line.
@@ -141,8 +149,8 @@ class PostForm extends Component {
 }
 
 // Decorate the form component
-PostForm = reduxForm({
+const WrappedPostForm = reduxForm({
   form: 'post', // a unique name for this form,
 })(PostForm);
 
-export default PostForm;
+export default WrappedPostForm;

@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "outDir": "./build/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "es2015",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "target": "es5",
+        "jsx": "react",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "root/*": [
+                "react/*"
+            ]
+        },
+        "allowSyntheticDefaultImports": true,
+        "typeRoots": [
+            "./node_modules/@types",
+        ]
+    },
+    "include": [
+        "./react/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "types"
+    ]
+}

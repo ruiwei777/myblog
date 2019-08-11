@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-export default class PostMeta extends React.Component {
+interface PostMetaProps {
+  user: any;
+  date: string;
+}
+
+
+export default class PostMeta extends React.Component<PostMetaProps, {}> {
 
   render() {
     const { user, date } = this.props;
@@ -28,12 +33,3 @@ export default class PostMeta extends React.Component {
     )
   }
 }
-
-
-
-
-
-PostMeta.propTypes = {
-  user: PropTypes.object,
-  date: PropTypes.string
-};

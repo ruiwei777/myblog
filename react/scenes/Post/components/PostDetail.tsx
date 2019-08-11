@@ -2,15 +2,21 @@ import { NavLink } from "react-router-dom";
 import Markdown from "react-markdown";
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
+// @ts-ignore
 import { fetchAPost } from "root/actions/postActions";
 import Win8Spinner from "root/components/Win8Spinner";
 import PostMeta from "./PostMeta";
 
 import "../styles/post_detail.scss";
 
-class PostDetail extends React.Component {
+interface PostDetailProps {
+  dispatch: Function;
+  params: any;
+  post: any;
+}
+
+class PostDetail extends React.Component<PostDetailProps, {}> {
 
   componentWillMount() {
     this.props.dispatch(fetchAPost(this.props.params.postid))
@@ -45,14 +51,7 @@ class PostDetail extends React.Component {
   }
 }
 
-PostDetail.propTypes = {
-  user: PropTypes.object,
-  post: PropTypes.object,
-  params: PropTypes.object,
-  dispatch: PropTypes.func
-}
-
-function mapStateToProps(state) {
+function mapStateToProps(state: any) {
   // console.log(state)
   return {
     user: state.userReducer,

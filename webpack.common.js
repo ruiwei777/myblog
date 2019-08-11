@@ -10,16 +10,17 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: {
     accounts: "./react/entries/accounts/index.jsx",
-    posts: "./react/entries/posts/index.jsx",
+    posts: "./react/entries/posts/index.tsx",
   },
   resolve: {
     alias: {
       root: path.resolve("./react")
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: "ts-loader" },
       {
         test: /\.jsx?$/,
         include: [
