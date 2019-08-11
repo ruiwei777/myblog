@@ -103,6 +103,7 @@ Post.propTypes = {
 function mapStateToProps(state) {
   // console.log(state)
   return {
+    loading: state.postReducer.fetching,
     posts: state.postReducer.posts,
     user: state.userReducer,
     portal: state.portalReducer

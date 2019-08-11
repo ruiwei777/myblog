@@ -14,7 +14,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from permissions import WriteOnly
+from permissions.generics import WriteOnly
 from .permissions import IsOwnAllowAny
 
 
@@ -22,7 +22,7 @@ def home(request):
     """
     index page for `posts`: www.domain.com/accounts/
     """
-    return render(request, "account_home.html", {})
+    return render(request, "account_home.html")
 
 
 class UserLoginView(ObtainAuthToken):

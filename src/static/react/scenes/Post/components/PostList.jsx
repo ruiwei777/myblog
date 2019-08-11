@@ -6,26 +6,17 @@ import PostItem from "./PostItem";
 
 export default class PostList extends React.Component {
 
-  navigate() {
-    this.props.router.push("/");
-  }
-
   render() {
-    let content = null;
-    if (this.props.posts.length) {
-      let { posts } = this.props;
-      posts = posts.filter(({ publish }) => new Date(publish) < new Date());
-      content = posts.map(function (post, i) {
-        return <PostItem post={post} key={i} id={i} />;
-      })
-    } else {
-      content = <Win8Spinner />;
-    }
-    
+    const { loading, posts } = this.props;
+
     return (
       <div className="posts">
         <h1 className="content-subhead">Recent Posts</h1>
-        {content}
+        {!loading ? posts
+          .filter(({ publish }) => new Date(publish) < new Date())
+          .map((post, i) => <PostItem post={post} key={i} id={i} />)
+          : <Win8Spinner />
+        }
       </div>
     )
   }
@@ -35,5 +26,6 @@ PostList.propTypes = {
   dispatch: PropTypes.func,
   router: PropTypes.object,
   userState: PropTypes.object,
+  loading: PropTypes.bool,
   posts: PropTypes.array
 }

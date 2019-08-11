@@ -17,7 +17,7 @@ Django setup
 Webpack setup _Make sure Node.js 8.9.1+ is installed._
 
 6. `npm install`
-7. `npm run dev` (for production, `npm run build`)
+7. `npm start` (for production, `npm run build`)
 
 Finally, after activating virtualenv
 

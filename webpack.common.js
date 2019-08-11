@@ -1,14 +1,9 @@
 /**
  * Webpack 3 config for both dev and prod.
  */
-const json = require('./package.json');
 const path = require('path');
-const webpack = require('webpack');
 
 const BundleTracker = require('webpack-bundle-tracker');
-const SRC_PATH = path.resolve('./src');
-const ASSETS_BUILD_PATH = path.resolve('./build');
-const ASSETS_PUBLIC_PATH = '/static/';
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -19,13 +14,14 @@ const cleanOptions = {
   watch: false  // do not clean on watch
 };
 
+/* when using django-webpack-loader, HtmlWebpackPlugin is not needed */
 
 module.exports = {
-  context: SRC_PATH,
+  context: path.resolve('./src'),
   entry: {
     // relative to proj/src
-    accounts: ["./static/react/entries/accounts/index.jsx"],
-    posts: ["./static/react/entries/posts/index.jsx"],
+    accounts: "./static/react/entries/accounts/index.jsx",
+    posts: "./static/react/entries/posts/index.jsx",
   },
   resolve: {
     alias: {
@@ -48,32 +44,44 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        use: [{ loader: "html-loader", options: { minimize: true } }]
+        use: [{ loader: "html-loader" }]
       }
     ]
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      automaticNameMaxLength: 30,
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
   output: {
-    path: ASSETS_BUILD_PATH,
-    publicPath: ASSETS_PUBLIC_PATH,
-    filename: '[name]-[chunkhash].js',
-    chunkFilename: '[name]-[chunkhash].js', 
+    path: path.resolve('./build'),
+    publicPath: '/static/',
+    filename: '[name]-[hash].js',
+    chunkFilename: '[name]-[hash].js', 
   },
   plugins: [
     new CleanWebpackPlugin(pathToClean, cleanOptions),
     new BundleTracker(
       { path: __dirname, filename: './build/webpack-stats.json', indent: 4 }
     ),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ resource }) => /node_modules/.test(resource),
-    }),
-    new webpack.optimize.CommonsChunkPlugin('manifest')
-    /* when combining Django with webpack-dev-server, HtmlWebpackPlugin is not needed */
-    // new HtmlWebpackPlugin({
-    //     // paths relative to proj/src
-    //     template: "./static/templates/post_home.html",
-    //     favicon: "./static/images/nodejs.png",
-    //     filename: "../build/templates/post_home.html"
-    // }),
   ]
 }
