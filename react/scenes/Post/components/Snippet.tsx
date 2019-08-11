@@ -10,12 +10,9 @@ interface SnippetProps {
   remove: Function;
 }
 
-interface SnippetState {
+
+export default class Snippet extends React.Component<SnippetProps>{
   cm: any;
-}
-
-
-export default class Snippet extends React.Component<SnippetProps, SnippetState>{
 
   handleChange(newText: string) {
     const { id } = this.props
@@ -37,7 +34,7 @@ export default class Snippet extends React.Component<SnippetProps, SnippetState>
     // fix the bug that makes CodeMirror mistakenly calculate the gutter width
     // https://github.com/codemirror/CodeMirror/issues/3527
     setTimeout(() => {
-      this.state.cm.getCodeMirror().refresh();
+      this.cm.getCodeMirror().refresh();
     }, 100)
   }
 
@@ -81,7 +78,7 @@ export default class Snippet extends React.Component<SnippetProps, SnippetState>
             }}
             value={text.input.value}
             onChange={this.handleChange.bind(this)}
-            ref={(cm: any) => { this.setState({ cm }) }}>
+            ref={(cm: any) => this.cm = cm}>
           </CodeMirror>
         </div>
       </div>

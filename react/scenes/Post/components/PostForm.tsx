@@ -37,10 +37,7 @@ const renderBlocks = (props: any) => {
             component={Snippet}
             id={i}
             remove={() => { fields.remove(i) }} />
-
-
         </section>
-
       )}
 
       {error && <span className="error">{error}</span>}
@@ -111,7 +108,7 @@ interface PostFormProps {
 }
 
 
- class PostForm extends Component<InjectedFormProps<any>> {
+ class PostForm extends Component<any> {
 
   componentDidMount() {
     // a dirty way to make the  "AddBtn" and "SubmitBtn" same line.
