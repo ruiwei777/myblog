@@ -8,15 +8,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 /* when using django-webpack-loader, HtmlWebpackPlugin is not needed */
 
 module.exports = {
-  entry: {
-    accounts: "./react/entries/accounts/index.jsx",
-    posts: "./react/entries/posts/index.tsx",
-  },
+  entry: ['./front-end/index.tsx'],
   resolve: {
     alias: {
-      root: path.resolve("./react")
+      root: path.resolve("./front-end")
     },
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
   module: {
     rules: [
@@ -24,7 +21,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [
-          path.resolve(__dirname, "react"),
+          path.resolve(__dirname, "front-end"),
         ],
         use: [{ loader: "babel-loader", }]
       },
@@ -33,30 +30,6 @@ module.exports = {
         use: [{ loader: "html-loader" }]
       }
     ]
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'async',
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      automaticNameMaxLength: 30,
-      name: true,
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
   },
   output: {
     path: path.resolve('./build'),

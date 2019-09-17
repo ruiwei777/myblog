@@ -15,16 +15,16 @@
         "baseUrl": ".",
         "paths": {
             "root/*": [
-                "react/*"
+                "front-end/*"
             ]
         },
         "allowSyntheticDefaultImports": true,
         "typeRoots": [
-            "./node_modules/@types",
+            "./node_modules/@types"
         ]
     },
     "include": [
-        "./react/**/*"
+        "./front-end/**/*"
     ],
     "exclude": [
         "node_modules",
