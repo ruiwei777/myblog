@@ -40,7 +40,7 @@ export default class Snippet extends React.Component<SnippetProps> {
     // https://github.com/codemirror/CodeMirror/issues/3527
     setTimeout(() => {
       this.cm.getCodeMirror().refresh();
-    }, 500)
+    }, 100)
   }
 
   render() {
